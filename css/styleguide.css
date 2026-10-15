@@ -1,0 +1,31 @@
+/* Style guide page only. Not part of the shared site CSS. */
+.sg-hero { padding-top: 56px; padding-bottom: 32px; display: flex; flex-direction: column; gap: 12px; }
+.sg-hero p { color: var(--body); max-width: 620px; }
+.sg-toc { display: flex; flex-wrap: wrap; gap: 8px; padding-bottom: 48px; }
+.sg-toc a { display: inline-flex; align-items: center; min-height: 36px; padding: 0 12px; border: 1px solid var(--line-2); font-size: 13px; color: var(--body); }
+.sg-toc a:hover { border-color: var(--text); color: var(--white); }
+.sg-sec { padding-bottom: 72px; display: flex; flex-direction: column; gap: 20px; scroll-margin-top: 16px; }
+.sg-note { color: var(--muted); font-size: 14px; max-width: 700px; }
+.sg-note code, .sg-rules code { font: 12px var(--mono); color: var(--text); background: var(--surface); border: 1px solid var(--line); padding: 1px 6px; }
+.demo { border: 1px solid var(--line); background: var(--bg); padding: 24px; display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+.demo.col { flex-direction: column; align-items: stretch; }
+.demo.flush { padding: 0; }
+.codewrap { position: relative; }
+.codewrap pre { margin: 0; padding: 14px 16px; background: var(--surface); border: 1px solid var(--line); border-top: 0; font: 12px/1.65 var(--mono); color: var(--body); overflow-x: auto; white-space: pre; }
+.copy { position: absolute; top: 8px; right: 8px; min-height: 28px; padding: 0 10px; background: var(--bg); border: 1px solid var(--line-2); color: var(--body); font: 11px var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+.copy:hover { border-color: var(--text); color: var(--white); }
+.swatches { display: flex; flex-wrap: wrap; gap: 1px; background: var(--line); border: 1px solid var(--line); width: 100%; }
+.sw { flex: 1 1 150px; min-width: 0; background: var(--bg); display: flex; flex-direction: column; }
+.sw i { display: block; height: 72px; border-bottom: 1px solid var(--line); }
+.sw div { padding: 10px 12px; display: flex; flex-direction: column; gap: 2px; }
+.sw b { font: 12px var(--mono); color: var(--white); font-weight: 500; }
+.sw span { font: 11px var(--mono); color: var(--muted); }
+.sw em { font-style: normal; font-size: 12px; color: var(--muted); }
+.type-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 24px; padding: 16px 0; border-bottom: 1px solid var(--line); width: 100%; }
+.type-row:last-child { border-bottom: 0; }
+.type-row .k { flex: 0 0 150px; font: 11px var(--mono); color: var(--muted); }
+.rules { display: flex; flex-wrap: wrap; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.rules div { flex: 1 1 320px; min-width: 0; background: var(--bg); padding: 20px 24px; color: var(--body); font-size: 14px; display: flex; flex-direction: column; gap: 6px; }
+.rules b { font: 600 15px var(--display); text-transform: uppercase; color: var(--white); }
+.rules div.no b::before { content: "× "; color: var(--accent); }
+.rules div.yes b::before { content: "✓ "; color: var(--text); }

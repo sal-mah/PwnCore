@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PwnCore Feed</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/pwncore.css">
+<link rel="stylesheet" href="css/pwncore-motion.css">
+<link rel="stylesheet" href="css/pwncore-cursor.css">
+</head><body>
+<svg width="0" height="0" style="position: absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <path id="g4-P" d="M65 -700H504L611 -592V-347L503 -238H201V0H65ZM442 -352 477 -387V-551L442 -586H201V-352Z"></path>
+      <path id="g4-W" d="M25 -700H162L247 -206H251L390 -700H492L628 -206H632L717 -700H854L709 0H582L443 -492H439L297 0H170Z"></path>
+      <path id="g4-N" d="M65 -700H187L499 -225H501V-700H632V0H510L198 -474H196V0H65Z"></path>
+      <path id="g4-C" d="M55 -115V-585L170 -700H512L625 -587V-480H489V-537L442 -584H242L191 -533V-167L242 -116H442L489 -163V-220H625V-113L512 0H170Z"></path>
+      <path id="g4-R" d="M615 -232V0H479V-201L419 -268H201V0H65V-700H504L611 -592V-380L543 -311ZM201 -380H442L477 -415V-551L442 -586H201Z"></path>
+      <path id="g4-E" d="M65 -700H571V-585H201V-408H542V-295H201V-115H571V0H65Z"></path>
+      <path id="chev" d="M8 0 L32 14 L56 0 V9 L32 23 L8 9 Z"></path>
+      <symbol id="w4-radar" viewBox="0 -760 5100 820">
+        <g fill="#ffffff">
+          <use href="#g4-P" x="0"></use>
+          <use href="#g4-W" x="666"></use>
+          <use href="#g4-N" x="1565"></use>
+          <use href="#g4-C" x="2282"></use>
+          <use href="#g4-R" x="3762"></use>
+          <use href="#g4-E" x="4457"></use>
+        </g>
+        <circle cx="3367" cy="-350" r="290" fill="none" stroke="#ffffff" stroke-width="120"></circle>
+        <circle cx="3367" cy="-350" r="115" fill="none" stroke="#5a5a5a" stroke-width="22"></circle>
+        <path d="M3367 -350 L3400 -537.1 A190 190 0 0 1 3489.1 -495.5 Z" fill="#ffffff" fill-opacity="0.25"></path>
+        <path d="M3367 -350 L3489.1 -495.5" fill="none" stroke="#ffffff" stroke-width="36"></path>
+        <circle cx="3462" cy="-275" r="45" fill="#dc2229"></circle>
+      </symbol>
+    </defs>
+  </svg>
+<header class="pc-header" id="pc-header"><div class="wrap">
+  <a class="logo" href="index.html" aria-label="PwnCore home"><svg width="168" height="27" viewBox="0 -760 5100 820" role="img" aria-label="PwnCore"><use href="#w4-radar" x="0" y="-760" width="5100" height="820"></use></svg></a>
+  <nav class="pc-nav" aria-label="Main">
+    <a href="feed.html">Feed</a><a href="index.html#surfaces">Categories</a><a href="index.html#ranks">Leaderboard</a><a href="index.html#pipeline">About</a>
+  </nav>
+  <div class="head-right">
+    <a class="search" href="feed.html"><span>Search reports</span><kbd>/</kbd></a>
+    <a class="login" href="#">Log in</a>
+    <a class="btn red sm" href="#">Register</a>
+  </div>
+</div></header>
+<main>
+<section class="wrap page-head pc-enter"><div class="bar"></div><h1 class="page">Public feed</h1><p>Every published report, newest first. Search by title, report ID or researcher.</p></section>
+<section class="wrap section" style="padding-top:0;gap:20px"><nav class="chips" aria-label="Attack surface"><a class="chip" href="feed.html" data-chip="all"><span>All</span><i class="mono"></i></a><a class="chip" href="feed.html?category=kernel" data-chip="kernel"><span>Kernel</span><i class="mono"></i></a><a class="chip" href="feed.html?category=web" data-chip="web"><span>Web</span><i class="mono"></i></a><a class="chip" href="feed.html?category=mobile" data-chip="mobile"><span>Mobile</span><i class="mono"></i></a><a class="chip" href="feed.html?category=network" data-chip="network"><span>Network</span><i class="mono"></i></a><a class="chip" href="feed.html?category=firmware" data-chip="firmware"><span>Firmware</span><i class="mono"></i></a><a class="chip" href="feed.html?category=cloud" data-chip="cloud"><span>Cloud and API</span><i class="mono"></i></a></nav><div class="controls"><div class="grp"><span class="eyebrow">Severity</span><nav class="chips sm" aria-label="Severity"><a class="chip" href="feed.html" data-sev-chip="all"><span>All</span><i class="mono"></i></a><a class="chip" href="feed.html" data-sev-chip="critical"><span>Critical</span><i class="mono"></i></a><a class="chip" href="feed.html" data-sev-chip="high"><span>High</span><i class="mono"></i></a><a class="chip" href="feed.html" data-sev-chip="medium"><span>Medium</span><i class="mono"></i></a><a class="chip" href="feed.html" data-sev-chip="low"><span>Low</span><i class="mono"></i></a></nav></div><div class="grp"><span class="eyebrow">Sort</span><nav class="chips sm" aria-label="Sort"><a class="chip" href="feed.html" data-sort-chip="newest"><span>Newest</span></a><a class="chip" href="feed.html" data-sort-chip="cvss"><span>Highest CVSS</span></a></nav></div></div><p class="status mono" id="feed-status" aria-live="polite"></p><div class="list" id="feed-list"><a class="row" href="feed.html" data-sev="critical" data-cvss="9.8" data-date="2026-09-28" data-cat="kernel"><span class="id">PWN-2026-0142</span><span class="sq"><span class="crit">■■■■</span><span class="off"></span></span><span class="ttl">Heap overflow in Halcyon OS nf_tables set handling</span><span class="cat">Kernel</span><span class="by">@nullbyte</span><span class="cv">9.8</span><span class="dt">2026-09-28</span></a>
+<a class="row" href="feed.html" data-sev="medium" data-cvss="6.1" data-date="2026-09-25" data-cat="web"><span class="id">PWN-2026-0139</span><span class="sq"><span class="on">■■</span><span class="off">■■</span></span><span class="ttl">Stored XSS in Brightpath comment editor</span><span class="cat">Web</span><span class="by">@tagsoup</span><span class="cv">6.1</span><span class="dt">2026-09-25</span></a>
+<a class="row" href="feed.html" data-sev="high" data-cvss="7.4" data-date="2026-09-21" data-cat="mobile"><span class="id">PWN-2026-0131</span><span class="sq"><span class="on">■■■</span><span class="off">■</span></span><span class="ttl">Insecure deep link handling in Kestrel Chat for Android</span><span class="cat">Mobile</span><span class="by">@dexdump</span><span class="cv">7.4</span><span class="dt">2026-09-21</span></a>
+<a class="row" href="feed.html" data-sev="critical" data-cvss="9.1" data-date="2026-09-17" data-cat="web"><span class="id">PWN-2026-0127</span><span class="sq"><span class="crit">■■■■</span><span class="off"></span></span><span class="ttl">Authentication bypass in Brightpath SSO callback</span><span class="cat">Web</span><span class="by">@tagsoup</span><span class="cv">9.1</span><span class="dt">2026-09-17</span></a>
+<a class="row" href="feed.html" data-sev="high" data-cvss="8.8" data-date="2026-09-12" data-cat="firmware"><span class="id">PWN-2026-0120</span><span class="sq"><span class="on">■■■</span><span class="off">■</span></span><span class="ttl">Command injection in Tessel RT-790 web admin</span><span class="cat">Firmware</span><span class="by">@packetfox</span><span class="cv">8.8</span><span class="dt">2026-09-12</span></a>
+<a class="row" href="feed.html" data-sev="low" data-cvss="3.7" data-date="2026-09-09" data-cat="network"><span class="id">PWN-2026-0116</span><span class="sq"><span class="on">■</span><span class="off">■■■</span></span><span class="ttl">Verbose SMB banner reveals server version in Kestrel File Server</span><span class="cat">Network</span><span class="by">@packetfox</span><span class="cv">3.7</span><span class="dt">2026-09-09</span></a>
+<a class="row" href="feed.html" data-sev="medium" data-cvss="6.5" data-date="2026-09-03" data-cat="cloud"><span class="id">PWN-2026-0108</span><span class="sq"><span class="on">■■</span><span class="off">■■</span></span><span class="ttl">Overly permissive IAM role in Tessel Cloud starter template</span><span class="cat">Cloud</span><span class="by">@zerod4y</span><span class="cv">6.5</span><span class="dt">2026-09-03</span></a>
+<a class="row" href="feed.html" data-sev="high" data-cvss="7.8" data-date="2026-08-29" data-cat="kernel"><span class="id">PWN-2026-0101</span><span class="sq"><span class="on">■■■</span><span class="off">■</span></span><span class="ttl">Local privilege escalation in Halcyon OS audio driver</span><span class="cat">Kernel</span><span class="by">@nullbyte</span><span class="cv">7.8</span><span class="dt">2026-08-29</span></a><a class="row" href="feed.html" data-cat="network" data-sev="high" data-cvss="7.5" data-date="2026-08-21"><span class="id">PWN-2026-0097</span><span class="sq"><span class="on">■■■</span><span class="off">■</span></span><span class="ttl">Path traversal in Kestrel File Server SMB share handling</span><span class="cat">Network</span><span class="by">@shellfish</span><span class="cv">7.5</span><span class="dt">2026-08-21</span></a><a class="row" href="feed.html" data-cat="kernel" data-sev="high" data-cvss="7.8" data-date="2026-08-14"><span class="id">PWN-2026-0090</span><span class="sq"><span class="on">■■■</span><span class="off">■</span></span><span class="ttl">Use-after-free in Halcyon OS GPU driver</span><span class="cat">Kernel</span><span class="by">@bitrot</span><span class="cv">7.8</span><span class="dt">2026-08-14</span></a><a class="row" href="feed.html" data-cat="web" data-sev="medium" data-cvss="4.7" data-date="2026-08-09"><span class="id">PWN-2026-0084</span><span class="sq"><span class="on">■■</span><span class="off">■■</span></span><span class="ttl">Open redirect in Brightpath login</span><span class="cat">Web</span><span class="by">@redpill</span><span class="cv">4.7</span><span class="dt">2026-08-09</span></a></div><div class="empty" id="feed-empty" hidden><b>No reports match these filters.</b><a class="lnk" href="feed.html">Clear filters →</a></div></section>
+</main>
+<footer class="foot"><div class="wrap"><span>PwnCore · Phase 1 prototype</span><nav><a href="feed.html">Feed</a><a href="#" data-req="GET /disclosure">Disclosure policy</a><a href="#" data-req="GET /contact">Contact</a></nav></div></footer>
+<script src="js/pwncore-header.js"></script>
+<script src="js/pwncore-nav.js"></script>
+<script src="js/pwncore-cursor.js"></script>
+<script src="js/feed-filter.js"></script>
+</body></html>

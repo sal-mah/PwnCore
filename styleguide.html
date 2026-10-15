@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PwnCore Style Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/pwncore.css">
+<link rel="stylesheet" href="css/pwncore-motion.css">
+<link rel="stylesheet" href="css/pwncore-cursor.css">
+<link rel="stylesheet" href="css/styleguide.css">
+</head><body>
+<svg width="0" height="0" style="position: absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <path id="g4-P" d="M65 -700H504L611 -592V-347L503 -238H201V0H65ZM442 -352 477 -387V-551L442 -586H201V-352Z"></path>
+      <path id="g4-W" d="M25 -700H162L247 -206H251L390 -700H492L628 -206H632L717 -700H854L709 0H582L443 -492H439L297 0H170Z"></path>
+      <path id="g4-N" d="M65 -700H187L499 -225H501V-700H632V0H510L198 -474H196V0H65Z"></path>
+      <path id="g4-C" d="M55 -115V-585L170 -700H512L625 -587V-480H489V-537L442 -584H242L191 -533V-167L242 -116H442L489 -163V-220H625V-113L512 0H170Z"></path>
+      <path id="g4-R" d="M615 -232V0H479V-201L419 -268H201V0H65V-700H504L611 -592V-380L543 -311ZM201 -380H442L477 -415V-551L442 -586H201Z"></path>
+      <path id="g4-E" d="M65 -700H571V-585H201V-408H542V-295H201V-115H571V0H65Z"></path>
+      <path id="chev" d="M8 0 L32 14 L56 0 V9 L32 23 L8 9 Z"></path>
+      <symbol id="w4-radar" viewBox="0 -760 5100 820">
+        <g fill="#ffffff">
+          <use href="#g4-P" x="0"></use>
+          <use href="#g4-W" x="666"></use>
+          <use href="#g4-N" x="1565"></use>
+          <use href="#g4-C" x="2282"></use>
+          <use href="#g4-R" x="3762"></use>
+          <use href="#g4-E" x="4457"></use>
+        </g>
+        <circle cx="3367" cy="-350" r="290" fill="none" stroke="#ffffff" stroke-width="120"></circle>
+        <circle cx="3367" cy="-350" r="115" fill="none" stroke="#5a5a5a" stroke-width="22"></circle>
+        <path d="M3367 -350 L3400 -537.1 A190 190 0 0 1 3489.1 -495.5 Z" fill="#ffffff" fill-opacity="0.25"></path>
+        <path d="M3367 -350 L3489.1 -495.5" fill="none" stroke="#ffffff" stroke-width="36"></path>
+        <circle cx="3462" cy="-275" r="45" fill="#dc2229"></circle>
+      </symbol>
+    </defs>
+  </svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><path id="chev" d="M8 0 L32 14 L56 0 V9 L32 23 L8 9 Z"/></defs></svg>
+<header class="pc-header" id="pc-header"><div class="wrap">
+  <a class="logo" href="index.html" aria-label="PwnCore home"><svg width="168" height="27" viewBox="0 -760 5100 820" role="img" aria-label="PwnCore"><use href="#w4-radar" x="0" y="-760" width="5100" height="820"></use></svg></a>
+  <nav class="pc-nav" aria-label="Main">
+    <a href="feed.html">Feed</a><a href="index.html#surfaces">Categories</a><a href="index.html#ranks">Leaderboard</a><a href="index.html#pipeline">About</a>
+  </nav>
+  <div class="head-right">
+    <a class="search" href="feed.html"><span>Search reports</span><kbd>/</kbd></a>
+    <a class="login" href="#">Log in</a>
+    <a class="btn red sm" href="#">Register</a>
+  </div>
+</div></header>
+<main>
+<section class="wrap sg-hero pc-enter"><div class="bar"></div><h1 class="page">Style guide</h1>
+<p>Every piece the site is built from, with the code to copy. Use these instead of inventing your own, so all pages look like one product.</p></section>
+<nav class="wrap sg-toc" aria-label="Sections"><a href="#template">Start a page</a><a href="#colors">Colors</a><a href="#type">Type</a><a href="#buttons">Buttons</a><a href="#severity">Severity</a><a href="#rows">Rows</a><a href="#chips">Chips</a><a href="#headings">Headings</a><a href="#card">Card</a><a href="#ranks">Ranks</a><a href="#cells">Cells</a><a href="#motion">Motion</a><a href="#cursor">Cursor</a><a href="#rules">Rules</a></nav>
+<section class="wrap sg-sec" id="template">
+<div class="sec-head"><h2 class="t">Start a page</h2><p>Copy this for every new page. It loads the shared styles, the header, the motion kit and the footer.</p></div>
+<div><div class="demo col"><span style="color:var(--muted);font-size:14px">Copy the code below into a new .html (or .php) file in the site folder.</span></div><div class="codewrap"><button class="copy" type="button">Copy</button><pre>&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Page name | PwnCore&lt;/title&gt;
+&lt;link href=&quot;https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;700&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;css/pwncore.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;css/pwncore-motion.css&quot;&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;!-- paste the shared &lt;svg&gt; symbol sheet here (copy it from index.html, the first &lt;svg&gt; after &lt;body&gt;) --&gt;
+&lt;header class=&quot;pc-header&quot; id=&quot;pc-header&quot;&gt;&lt;/header&gt;
+
+&lt;main&gt;
+  &lt;section class=&quot;wrap page-head pc-enter&quot;&gt;
+    &lt;div class=&quot;bar&quot;&gt;&lt;/div&gt;
+    &lt;h1 class=&quot;page&quot;&gt;Page title&lt;/h1&gt;
+    &lt;p&gt;One line saying what this page is for.&lt;/p&gt;
+  &lt;/section&gt;
+  &lt;section class=&quot;wrap section&quot; data-pc-reveal&gt;
+    &lt;!-- your content --&gt;
+  &lt;/section&gt;
+&lt;/main&gt;
+
+&lt;footer class=&quot;foot&quot;&gt;&lt;div class=&quot;wrap&quot;&gt;&lt;span&gt;PwnCore · Phase 1 prototype&lt;/span&gt;&lt;nav&gt;&lt;a href=&quot;feed.html&quot;&gt;Feed&lt;/a&gt;&lt;a href=&quot;#&quot;&gt;Disclosure policy&lt;/a&gt;&lt;a href=&quot;#&quot;&gt;Contact&lt;/a&gt;&lt;/nav&gt;&lt;/div&gt;&lt;/footer&gt;
+&lt;script src=&quot;js/pwncore-header.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;js/pwncore-nav.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;&lt;/html&gt;</pre></div></div>
+</section><section class="wrap sg-sec" id="colors"><div class="sec-head"><h2 class="t">Colors</h2><p>Black, white and one red. Use the variables, never raw hex values.</p></div><div class="swatches"><div class="sw"><i style="background:var(--bg)"></i><div><b>--bg</b><span>#0a0a0a</span><em>Page background</em></div></div><div class="sw"><i style="background:var(--surface)"></i><div><b>--surface</b><span>#101010</span><em>Cards, inputs, menus</em></div></div><div class="sw"><i style="background:var(--line)"></i><div><b>--line</b><span>#232323</span><em>Dividers</em></div></div><div class="sw"><i style="background:var(--line-2)"></i><div><b>--line-2</b><span>#333333</span><em>Borders on controls</em></div></div><div class="sw"><i style="background:var(--dim)"></i><div><b>--dim</b><span>#5a5a5a</span><em>Inactive marks</em></div></div><div class="sw"><i style="background:var(--muted)"></i><div><b>--muted</b><span>#8f8f8f</span><em>Labels, captions</em></div></div><div class="sw"><i style="background:var(--body)"></i><div><b>--body</b><span>#b8b8b8</span><em>Running text</em></div></div><div class="sw"><i style="background:var(--text)"></i><div><b>--text</b><span>#ededed</span><em>Main text, 2px section rules</em></div></div><div class="sw"><i style="background:var(--white)"></i><div><b>--white</b><span>#ffffff</span><em>Headings, button text</em></div></div><div class="sw"><i style="background:var(--accent)"></i><div><b>--accent</b><span>#dc2229</span><em>The only red</em></div></div></div><p class="sg-note">Red is for one thing per screen: the primary action, a Critical severity, the current state. If everything is red, nothing is. Write <code>color: var(--muted)</code> in CSS.</p></section><section class="wrap sg-sec" id="type"><div class="sec-head"><h2 class="t">Type</h2><p>Three fonts, each with one job.</p></div>
+<div class="demo col">
+<div class="type-row"><span class="k">--display · Chakra Petch</span><span style="font:700 40px/1 var(--display);text-transform:uppercase;color:var(--white)">Headings and numbers</span></div>
+<div class="type-row"><span class="k">--sans · Geist</span><span style="font:15px/1.6 var(--sans);color:var(--body)">Body text, buttons, menus and anything people read in sentences.</span></div>
+<div class="type-row"><span class="k">--mono · Geist Mono</span><span style="font:13px var(--mono);color:var(--body)">PWN-2026-0142 · CVSS:3.1/AV:N/AC:L · 2026-09-28</span></div>
+</div>
+<p class="sg-note">Headings are uppercase Chakra Petch. Report IDs, dates, CVSS vectors, counts and labels are mono. Everything else is Geist. No other fonts.</p></section><section class="wrap sg-sec" id="buttons">
+<div class="sec-head"><h2 class="t">Buttons</h2><p>Red for the one main action. Outlined for the rest. Add <code>sm</code> for header-size buttons.</p></div>
+<div><div class="demo "><a class="btn red" href="#">Register</a><a class="btn line" href="#">Submit a report</a><a class="btn red sm" href="#">Submit a report</a><a class="lnk" href="#">Open the feed →</a></div><div class="codewrap"><button class="copy" type="button">Copy</button><pre>&lt;a class=&quot;btn red&quot; href=&quot;#&quot;&gt;Register&lt;/a&gt;
+&lt;a class=&quot;btn line&quot; href=&quot;#&quot;&gt;Submit a report&lt;/a&gt;
+&lt;a class=&quot;btn red sm&quot; href=&quot;#&quot;&gt;Submit a report&lt;/a&gt;
+&lt;a class=&quot;lnk&quot; href=&quot;#&quot;&gt;Open the feed →&lt;/a&gt;</pre></div></div>
+</section><section class="wrap sg-sec" id="severity">
+<div class="sec-head"><h2 class="t">Severity bar</h2><p>Four blocks plus a label. Critical is the only red one. The same bar is used in lists, cards and the report page.</p></div>
+<div><div class="demo "><span class="sev"><span class="sq"><span class="crit">■■■■</span></span>Critical · CVSS 9.8</span><span class="sev"><span class="sq"><span class="on">■■■</span><span class="off">■</span></span>High · CVSS 8.8</span><span class="sev"><span class="sq"><span class="on">■■</span><span class="off">■■</span></span>Medium · CVSS 6.1</span><span class="sev"><span class="sq"><span class="on">■</span><span class="off">■■■</span></span>Low · CVSS 3.7</span></div><div class="codewrap"><button class="copy" type="button">Copy</button><pre>&lt;span class=&quot;sev&quot;&gt;&lt;span class=&quot;sq&quot;&gt;&lt;span class=&quot;crit&quot;&gt;■■■■&lt;/span&gt;&lt;/span&gt;Critical · CVSS 9.8&lt;/span&gt;
+&lt;span class=&quot;sev&quot;&gt;&lt;span class=&quot;sq&quot;&gt;&lt;span class=&quot;on&quot;&gt;■■■&lt;/span&gt;&lt;span class=&quot;off&quot;&gt;■&lt;/span&gt;&lt;/span&gt;High · CVSS 8.8&lt;/span&gt;
+&lt;span class=&quot;sev&quot;&gt;&lt;span class=&quot;sq&quot;&gt;&lt;span class=&quot;on&quot;&gt;■■&lt;/span&gt;&lt;span class=&quot;off&quot;&gt;■■&lt;/span&gt;&lt;/span&gt;Medium · CVSS 6.1&lt;/span&gt;
+&lt;span class=&quot;sev&quot;&gt;&lt;span class=&quot;sq&quot;&gt;&lt;span class=&quot;on&quot;&gt;■&lt;/span&gt;&lt;span class=&quot;off&quot;&gt;■■■&lt;/span&gt;&lt;/span&gt;Low · CVSS 3.7&lt;/span&gt;
+&lt;!-- Critical 9.0-10.0 · High 7.0-8.9 · Medium 4.0-6.9 · Low 0.1-3.9 --&gt;</pre></div></div>
+</section><section class="wrap sg-sec" id="rows">
+<div class="sec-head"><h2 class="t">Report rows</h2><p>One row per report. Use for any list of reports. Each row is a link.</p></div>
+<div><div class="demo flush"><div class="list" style="width:100%"><a class="row" href="#"><span class="id">PWN-2026-0142</span><span class="sq"><span class="crit">■■■■</span></span><span class="ttl">Heap overflow in Halcyon OS nf_tables set handling</span><span class="cat">Kernel</span><span class="by">@nullbyte</span><span class="cv">9.8</span><span class="dt">2026-09-28</span></a><a class="row" href="#"><span class="id">PWN-2026-0139</span><span class="sq"><span class="on">■■</span><span class="off">■■</span></span><span class="ttl">Stored XSS in Brightpath comment editor</span><span class="cat">Web</span><span class="by">@tagsoup</span><span class="cv">6.1</span><span class="dt">2026-09-25</span></a></div></div><div class="codewrap"><button class="copy" type="button">Copy</button><pre>&lt;div class=&quot;list&quot;&gt;
+  &lt;a class=&quot;row&quot; href=&quot;report.html?id=PWN-2026-0142&quot;&gt;
+    &lt;span class=&quot;id&quot;&gt;PWN-2026-0142&lt;/span&gt;
+    &lt;span class=&quot;sq&quot;&gt;&lt;span class=&quot;crit&quot;&gt;■■■■&lt;/span&gt;&lt;/span&gt;
+    &lt;span class=&quot;ttl&quot;&gt;Heap overflow in Halcyon OS nf_tables set handling&lt;/span&gt;
+    &lt;span class=&quot;cat&quot;&gt;Kernel&lt;/span&gt;&lt;span class=&quot;by&quot;&gt;@nullbyte&lt;/span&gt;
+    &lt;span class=&quot;cv&quot;&gt;9.8&lt;/span&gt;&lt;span class=&quot;dt&quot;&gt;2026-09-28&lt;/span&gt;
+  &lt;/a&gt;
+&lt;/div&gt;</pre></div></div>
+</section><section class="wrap sg-sec" id="chips">
+<div class="sec-head"><h2 class="t">Filter chips</h2><p>Links, not buttons, so they work with the address bar and with PHP later. <code>aria-current="true"</code> marks the active one. Add <code>sm</code> to the nav for the smaller size.</p></div>
+<div><div class="demo "><nav class="chips"><a class="chip" href="#"><span>All</span><i class="mono">8</i></a><a class="chip" href="#" aria-current="true"><span>Kernel</span><i class="mono">2</i></a><a class="chip" href="#"><span>Web</span><i class="mono">2</i></a></nav><nav class="chips sm"><a class="chip" href="#" aria-current="true"><span>Critical</span><i class="mono">2</i></a><a class="chip" href="#"><span>High</span><i class="mono">3</i></a></nav></div><div class="codewrap"><button class="copy" type="button">Copy</button><pre>&lt;nav class=&quot;chips&quot; aria-label=&quot;Attack surface&quot;&gt;
+  &lt;a class=&quot;chip&quot; href=&quot;feed.html&quot;&gt;&lt;span&gt;All&lt;/span&gt;&lt;i class=&quot;mono&quot;&gt;8&lt;/i&gt;&lt;/a&gt;
+  &lt;a class=&quot;chip&quot; href=&quot;feed.html?category=kernel&quot; aria-current=&quot;true&quot;&gt;&lt;span&gt;Kernel&lt;/span&gt;&lt;i class=&quot;mono&quot;&gt;2&lt;/i&gt;&lt;/a&gt;
+&lt;/nav&gt;
+&lt;nav class=&quot;chips sm&quot; aria-label=&quot;Severity&quot;&gt; ... &lt;/nav&gt;</pre></div></div>
+</section><section class="wrap sg-sec" id="headings">
+<div class="sec-head"><h2 class="t">Section heading</h2><p>Every section starts with a 2px white rule, an uppercase title and one muted line. Wrap sections in <code>.section</code> for the spacing.</p></div>
+<div><div class="demo "><div class="sec-head" style="width:100%"><h2 class="t">Latest reports</h2><p>The five newest published reports.</p></div></div><div class="codewrap"><button class="copy" type="button">Copy</button><pre>&lt;section class=&quot;wrap section&quot;&gt;
+  &lt;div class=&quot;sec-head&quot;&gt;&lt;h2 class=&quot;t&quot;&gt;Latest reports&lt;/h2&gt;&lt;p&gt;The five newest published reports.&lt;/p&gt;&lt;/div&gt;
+  ...
+&lt;/section&gt;
+
+&lt;!-- with a link on the right --&gt;
+&lt;div class=&quot;sec-head split&quot;&gt;&lt;h2 class=&quot;t&quot;&gt;Latest reports&lt;/h2&gt;&lt;a class=&quot;lnk&quot; href=&quot;feed.html&quot;&gt;Open the feed →&lt;/a&gt;&lt;/div&gt;</pre></div></div>
+</section><section class="wrap sg-sec" id="card">
+<div class="sec-head"><h2 class="t">Report card</h2><p>The published report summary. Use it on the report page and anywhere a single report is highlighted.</p></div>
+<div><div class="demo "><div class="card" style="width:100%;max-width:640px"><div class="top"><span class="mono" style="font-size:13px;color:var(--muted)">PWN-2026-0142 · Kernel</span><span class="pill">Published</span></div><h3>Heap overflow in Halcyon OS nf_tables set handling</h3><div class="meta"><span class="sev"><span class="sq"><span class="crit">■■■■</span></span>Critical · CVSS 9.8</span><span style="font-size:13px;color:var(--muted)">Halcyon OS 14.2 · by @nullbyte</span></div><div class="vec">CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H</div><div class="tl"><div><i></i><span>Reported</span><time>2026-08-02</time></div><div class="hl"><i></i><span>Patched</span><time>2026-09-19</time></div><div class="pub"><i></i><span>Published</span><time>2026-09-28</time></div></div></div></div><div class="codewrap"><button class="copy" type="button">Copy</button><pre>&lt;div class=&quot;card&quot;&gt;
+  &lt;div class=&quot;top&quot;&gt;&lt;span class=&quot;mono&quot;&gt;PWN-2026-0142 · Kernel&lt;/span&gt;&lt;span class=&quot;pill&quot;&gt;Published&lt;/span&gt;&lt;/div&gt;
+  &lt;h3&gt;Heap overflow in Halcyon OS nf_tables set handling&lt;/h3&gt;
+  &lt;div class=&quot;meta&quot;&gt;&lt;span class=&quot;sev&quot;&gt;...&lt;/span&gt;&lt;/div&gt;
+  &lt;div class=&quot;vec&quot;&gt;CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H&lt;/div&gt;
+  &lt;pre class=&quot;log&quot;&gt;crash log or PoC output&lt;/pre&gt;
+  &lt;div class=&quot;tl&quot;&gt;
+    &lt;div&gt;&lt;i&gt;&lt;/i&gt;&lt;span&gt;Reported&lt;/span&gt;&lt;time&gt;2026-08-02&lt;/time&gt;&lt;/div&gt;
+    &lt;div class=&quot;hl&quot;&gt;&lt;i&gt;&lt;/i&gt;&lt;span&gt;Patched&lt;/span&gt;&lt;time&gt;2026-09-19&lt;/time&gt;&lt;/div&gt;
+    &lt;div class=&quot;pub&quot;&gt;&lt;i&gt;&lt;/i&gt;&lt;span&gt;Published&lt;/span&gt;&lt;time&gt;2026-09-28&lt;/time&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></div></div>
+</section><section class="wrap sg-sec" id="ranks">
+<div class="sec-head"><h2 class="t">Rank badges</h2><p>Five researcher ranks, one more chevron each, the last in red. Needs the <code>#chev</code> symbol from index.html. Ranks come from published reports: 1, 5, 20, 50 and 100.</p></div>
+<div><div class="demo "><div class="rank" style="flex:0 1 170px"><svg width="64" height="64" viewBox="0 0 64 64" role="img" aria-label="Rank 1 badge"><rect x="0.5" y="0.5" width="63" height="63" fill="none" stroke="#333333"/><g fill="#ffffff"><use href="#chev" x="0" y="18"/></g></svg><div><div class="k">RANK I</div><div class="nm">Script Kiddie</div></div></div><div class="rank" style="flex:0 1 170px"><svg width="64" height="64" viewBox="0 0 64 64" role="img" aria-label="Rank 2 badge"><rect x="0.5" y="0.5" width="63" height="63" fill="none" stroke="#333333"/><g fill="#ffffff"><use href="#chev" x="0" y="14"/><use href="#chev" x="0" y="24"/></g></svg><div><div class="k">RANK II</div><div class="nm">Bug Hunter</div></div></div><div class="rank" style="flex:0 1 170px"><svg width="64" height="64" viewBox="0 0 64 64" role="img" aria-label="Rank 3 badge"><rect x="0.5" y="0.5" width="63" height="63" fill="none" stroke="#333333"/><g fill="#ffffff"><use href="#chev" x="0" y="9"/><use href="#chev" x="0" y="19"/><use href="#chev" x="0" y="29"/></g></svg><div><div class="k">RANK III</div><div class="nm">Exploit Dev</div></div></div><div class="rank" style="flex:0 1 170px"><svg width="64" height="64" viewBox="0 0 64 64" role="img" aria-label="Rank 4 badge"><rect x="0.5" y="0.5" width="63" height="63" fill="none" stroke="#333333"/><g fill="#ffffff"><use href="#chev" x="0" y="5"/><use href="#chev" x="0" y="15"/><use href="#chev" x="0" y="25"/><use href="#chev" x="0" y="35"/></g></svg><div><div class="k">RANK IV</div><div class="nm">Zero-Day Hunter</div></div></div><div class="rank top" style="flex:0 1 170px"><svg width="64" height="64" viewBox="0 0 64 64" role="img" aria-label="Rank 5 badge"><rect x="0.5" y="0.5" width="63" height="63" fill="none" stroke="#dc2229"/><g fill="#dc2229"><use href="#chev" x="0" y="2"/><use href="#chev" x="0" y="12"/><use href="#chev" x="0" y="22"/><use href="#chev" x="0" y="32"/><use href="#chev" x="0" y="42"/></g></svg><div><div class="k">RANK V</div><div class="nm">Red Teamer</div></div></div></div><div class="codewrap"><button class="copy" type="button">Copy</button><pre>&lt;div class=&quot;rank&quot;&gt;
+  &lt;svg width=&quot;64&quot; height=&quot;64&quot; viewBox=&quot;0 0 64 64&quot; role=&quot;img&quot; aria-label=&quot;Rank 2 badge&quot;&gt;
+    &lt;rect x=&quot;0.5&quot; y=&quot;0.5&quot; width=&quot;63&quot; height=&quot;63&quot; fill=&quot;none&quot; stroke=&quot;#333333&quot;/&gt;
+    &lt;g fill=&quot;#ffffff&quot;&gt;&lt;use href=&quot;#chev&quot; x=&quot;0&quot; y=&quot;14&quot;/&gt;&lt;use href=&quot;#chev&quot; x=&quot;0&quot; y=&quot;24&quot;/&gt;&lt;/g&gt;
+  &lt;/svg&gt;
+  &lt;div&gt;&lt;div class=&quot;k&quot;&gt;RANK II&lt;/div&gt;&lt;div class=&quot;nm&quot;&gt;Bug Hunter&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- Rank V: add class &quot;top&quot; and use #dc2229 for the stroke and fill --&gt;</pre></div></div>
+</section><section class="wrap sg-sec" id="cells">
+<div class="sec-head"><h2 class="t">Attack surface cells</h2><p>A ruled grid of links. Use for category pages and menus of equal options. The <code>href</code> carries the category value.</p></div>
+<div><div class="demo "><div class="cells" style="width:100%"><a class="cell" href="#"><span class="p">/kernel</span><span class="n">Kernel</span><span class="d">Privilege escalation and memory corruption in kernels and drivers.</span><span class="g">UAF · OOB write · race</span></a><a class="cell" href="#"><span class="p">/web</span><span class="n">Web</span><span class="d">Flaws in web applications and their back ends.</span><span class="g">SQLi · XSS · SSRF</span></a></div></div><div class="codewrap"><button class="copy" type="button">Copy</button><pre>&lt;div class=&quot;cells&quot;&gt;
+  &lt;a class=&quot;cell&quot; href=&quot;feed.html?category=kernel&quot;&gt;
+    &lt;span class=&quot;p&quot;&gt;/kernel&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Kernel&lt;/span&gt;
+    &lt;span class=&quot;d&quot;&gt;Privilege escalation and memory corruption in kernels and drivers.&lt;/span&gt;
+    &lt;span class=&quot;g&quot;&gt;UAF · OOB write · race&lt;/span&gt;
+  &lt;/a&gt;
+&lt;/div&gt;</pre></div></div>
+</section><section class="wrap sg-sec" id="motion">
+<div class="sec-head"><h2 class="t">Motion</h2><p>The motion kit does most of this for you. Just add the class. Everything switches off for people who prefer reduced motion.</p></div>
+<div><div class="demo col"><span class="sg-note" style="max-width:none">Hover the buttons and nav links on this page to see the lift and underline.</span></div><div class="codewrap"><button class="copy" type="button">Copy</button><pre>&lt;nav class=&quot;pc-nav&quot;&gt;      red underline slides in on hover, current page marked automatically
+&lt;div class=&quot;pc-enter&quot;&gt;    children rise in one after another when the page loads
+&lt;section data-pc-reveal&gt;  fades in when scrolled into view
+&lt;a class=&quot;btn&quot;&gt;           lifts 2px on hover
+&lt;!-- Pages fade into each other automatically in Chrome and Edge. Nothing to add. --&gt;</pre></div></div>
+</section>
+<section class="wrap sg-sec" id="cursor">
+<div class="sec-head"><h2 class="t">Cursor</h2><p>A dot with a label showing the request a click will make. Mouse only. Text inputs keep the normal cursor.</p></div>
+<div><div class="demo"><a class="btn red" href="#" data-req="POST /register">Register</a><a class="btn line" href="feed.html?category=web">Web reports</a><a class="lnk" href="index.html#ranks">Ranks →</a><span class="sg-note" style="max-width:none">Move the mouse over these. The label follows the dot.</span></div>
+<div class="codewrap"><button class="copy" type="button">Copy</button><pre>&lt;a href=&quot;feed.html?category=web&quot;&gt;Web&lt;/a&gt;
+&lt;!-- cursor label: GET /feed?category=web  (worked out from the link) --&gt;
+
+&lt;a class=&quot;btn red&quot; href=&quot;#&quot; data-req=&quot;POST /register&quot;&gt;Register&lt;/a&gt;
+&lt;!-- cursor label: POST /register  (buttons and custom elements need data-req) --&gt;
+
+&lt;!-- In &lt;head&gt;:  css/pwncore-cursor.css      Before &lt;/body&gt;:  js/pwncore-cursor.js (after pwncore-nav.js) --&gt;</pre></div></div>
+<p class="sg-note">Links label themselves. Add <code>data-req="METHOD /path"</code> to buttons and custom elements. Do not set your own <code>cursor:</code> styles.</p>
+</section>
+<section class="wrap sg-sec" id="rules"><div class="sec-head"><h2 class="t">Rules</h2><p>What keeps five people's pages looking like one site.</p></div>
+<div class="rules">
+<div class="yes"><b>Use the variables</b>Colors, fonts and spacing come from <code>pwncore.css</code>. If something is missing, ask Tito to add it.</div>
+<div class="yes"><b>Hard edges</b>No rounded corners and no shadows. Borders are 1px, section rules are 2px white.</div>
+<div class="yes"><b>Short copy</b>Plain words, no exclamation marks, no filler. A button says what it does.</div>
+<div class="yes"><b>Use the shared names</b>PwnCore, Researcher, Admin, Vendor, Report, User. The five ranks are Script Kiddie, Bug Hunter, Exploit Dev, Zero-Day Hunter and Red Teamer.</div>
+<div class="no"><b>No new colors</b>No blue links, no green success. Use white, grey and the one red.</div>
+<div class="no"><b>No new fonts or icons</b>Use the three fonts. Marks are squares, bars and chevrons, not emoji.</div>
+<div class="no"><b>Don't copy the header</b>Every page uses <code>&lt;header id="pc-header"&gt;</code> and the script. Never paste header code.</div>
+<div class="no"><b>Don't edit pwncore.css alone</b>Send changes to Tito so all pages stay in sync.</div>
+</div></section>
+</main>
+<footer class="foot"><div class="wrap"><span>PwnCore · Phase 1 prototype</span><nav><a href="feed.html">Feed</a><a href="#" data-req="GET /disclosure">Disclosure policy</a><a href="#" data-req="GET /contact">Contact</a></nav></div></footer>
+<script src="js/pwncore-header.js"></script>
+<script src="js/pwncore-nav.js"></script>
+<script src="js/pwncore-cursor.js"></script>
+<script>
+document.querySelectorAll('.copy').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var t = b.parentNode.querySelector('pre').textContent;
+    function done() { b.textContent = 'Copied'; setTimeout(function () { b.textContent = 'Copy'; }, 1200); }
+    if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(t).then(done, fallback); } else fallback();
+    function fallback() { var r = document.createRange(); r.selectNodeContents(b.parentNode.querySelector('pre')); var s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = 'Press Ctrl+C'; }
+  });
+});
+</script>
+</body></html>

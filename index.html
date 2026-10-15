@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PwnCore</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/pwncore.css">
+<link rel="stylesheet" href="css/pwncore-motion.css">
+<link rel="stylesheet" href="css/pwncore-cursor.css">
+</head><body>
+<svg width="0" height="0" style="position: absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <path id="g4-P" d="M65 -700H504L611 -592V-347L503 -238H201V0H65ZM442 -352 477 -387V-551L442 -586H201V-352Z"></path>
+      <path id="g4-W" d="M25 -700H162L247 -206H251L390 -700H492L628 -206H632L717 -700H854L709 0H582L443 -492H439L297 0H170Z"></path>
+      <path id="g4-N" d="M65 -700H187L499 -225H501V-700H632V0H510L198 -474H196V0H65Z"></path>
+      <path id="g4-C" d="M55 -115V-585L170 -700H512L625 -587V-480H489V-537L442 -584H242L191 -533V-167L242 -116H442L489 -163V-220H625V-113L512 0H170Z"></path>
+      <path id="g4-R" d="M615 -232V0H479V-201L419 -268H201V0H65V-700H504L611 -592V-380L543 -311ZM201 -380H442L477 -415V-551L442 -586H201Z"></path>
+      <path id="g4-E" d="M65 -700H571V-585H201V-408H542V-295H201V-115H571V0H65Z"></path>
+      <path id="chev" d="M8 0 L32 14 L56 0 V9 L32 23 L8 9 Z"></path>
+      <symbol id="w4-radar" viewBox="0 -760 5100 820">
+        <g fill="#ffffff">
+          <use href="#g4-P" x="0"></use>
+          <use href="#g4-W" x="666"></use>
+          <use href="#g4-N" x="1565"></use>
+          <use href="#g4-C" x="2282"></use>
+          <use href="#g4-R" x="3762"></use>
+          <use href="#g4-E" x="4457"></use>
+        </g>
+        <circle cx="3367" cy="-350" r="290" fill="none" stroke="#ffffff" stroke-width="120"></circle>
+        <circle cx="3367" cy="-350" r="115" fill="none" stroke="#5a5a5a" stroke-width="22"></circle>
+        <path d="M3367 -350 L3400 -537.1 A190 190 0 0 1 3489.1 -495.5 Z" fill="#ffffff" fill-opacity="0.25"></path>
+        <path d="M3367 -350 L3489.1 -495.5" fill="none" stroke="#ffffff" stroke-width="36"></path>
+        <circle cx="3462" cy="-275" r="45" fill="#dc2229"></circle>
+      </symbol>
+    </defs>
+  </svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><path id="chev" d="M8 0 L32 14 L56 0 V9 L32 23 L8 9 Z"/></defs></svg><header class="pc-header" id="pc-header"><div class="wrap">
+  <a class="logo" href="index.html" aria-label="PwnCore home"><svg width="168" height="27" viewBox="0 -760 5100 820" role="img" aria-label="PwnCore"><use href="#w4-radar" x="0" y="-760" width="5100" height="820"></use></svg></a>
+  <nav class="pc-nav" aria-label="Main">
+    <a href="feed.html">Feed</a><a href="index.html#surfaces">Categories</a><a href="index.html#ranks">Leaderboard</a><a href="index.html#pipeline">About</a>
+  </nav>
+  <div class="head-right">
+    <a class="search" href="feed.html"><span>Search reports</span><kbd>/</kbd></a>
+    <a class="login" href="#">Log in</a>
+    <a class="btn red sm" href="#">Register</a>
+  </div>
+</div></header><section class="wrap overview" aria-label="Platform overview">
+  <div class="globe-col">
+    <div class="globe-box">
+      <svg id="pc-globe" data-req="DRAG to rotate" viewBox="0 0 600 600" role="img" aria-label="Interactive globe showing sample report locations. Drag to rotate.">
+        <defs>
+          <radialGradient id="pcGlow" cx="50%" cy="50%" r="50%"><stop offset="0.80" stop-color="#000" stop-opacity="0"/><stop offset="0.93" stop-color="#dc2229" stop-opacity="0.16"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
+          <radialGradient id="pcBall" cx="42%" cy="38%" r="75%"><stop offset="0" stop-color="#140507"/><stop offset="1" stop-color="#050505"/></radialGradient>
+        </defs>
+        <circle cx="300" cy="300" r="290" fill="url(#pcGlow)"/>
+        <circle cx="300" cy="300" r="248" fill="url(#pcBall)" stroke="#333" stroke-width="1.5"/>
+        <path id="g-grid" fill="none" stroke="#2a2a2a" stroke-width="1"/>
+        <path id="g-land1" fill="none" stroke="#4a1013" stroke-width="3.2" stroke-linecap="round"/>
+        <path id="g-land2" fill="none" stroke="#8c1a1f" stroke-width="3.4" stroke-linecap="round"/>
+        <path id="g-land3" fill="none" stroke="#dc2229" stroke-width="3.6" stroke-linecap="round"/>
+        <g id="g-pins"></g>
+        <path id="g-ticks" fill="none" stroke="#5a5a5a" stroke-width="1.2"/>
+        <path d="M300 22V38M300 562V578M22 300H38M562 300H578" fill="none" stroke="#ededed" stroke-width="2"/>
+        <g font-family="'Geist Mono', ui-monospace, monospace" font-size="11" fill="#8f8f8f"><text x="300" y="14" text-anchor="middle">000</text><text x="594" y="304" text-anchor="end">090</text><text x="300" y="596" text-anchor="middle">180</text><text x="6" y="304">270</text></g>
+      </svg>
+      <div class="sweep"></div>
+      <div class="globe-card" id="globe-card" role="region" aria-label="Recent reports at this location" hidden></div>
+    </div>
+    <div class="globe-foot"><span>View <span id="g-view">28.0°E 24.0°N</span></span><span>Drag to rotate · click a marker</span></div>
+  </div>
+  <div class="stats pc-enter">
+    <div class="stats-head"><span class="eyebrow" style="color:var(--text)">Threat radar</span><span class="eyebrow">Sample data</span></div>
+    <div class="stat"><span class="eyebrow">Exploits available</span><b>1,284</b><span class="n">Published with a working PoC</span></div>
+    <div class="stat"><span class="eyebrow">Web app bugs found</span><b>862</b><span class="n">Verified by an Admin</span></div>
+    <div class="stat"><span class="eyebrow">Researchers registered</span><b>2,431</b><span class="n">On the platform now</span></div>
+  </div>
+</section>
+<section id="pipeline" class="wrap hero">
+  <div class="hero-copy pc-enter">
+    <div class="bar"></div>
+    <h1>Built by Hunters. Driven by Curiosity.</h1>
+    <p class="lead">One platform for security researchers to share discoveries, learn from exploits, and make the digital world more secure.</p>
+    <div class="btns"><a class="btn red" href="feed.html">Browse reports</a><a class="btn line" href="#" data-req="GET /reports/new">Submit a report</a></div>
+  </div>
+  <div>
+    <div class="track"><span class="eyebrow">Tracking</span><span class="mono" style="font-size:13px;color:var(--body)">PWN-2026-0151</span><span class="ttl">Command injection in Tessel RT-840 web admin</span><span class="sev"><span class="sq"><span class="on">■■■</span><span class="off">■</span></span>High · CVSS 8.8</span></div>
+    <div class="stages"><div class="stage done"><div class="rail"><span class="node"></span><span class="seg"></span></div><div class="txt"><div class="st">2026-08-02</div><div class="nm">01 Submit</div><div class="bd">Report, CVSS score and PoC uploaded.</div></div></div>
+<div class="stage done"><div class="rail"><span class="node"></span><span class="seg"></span></div><div class="txt"><div class="st">2026-08-02</div><div class="nm">02 Triage</div><div class="bd">Automated checks run.</div></div></div>
+<div class="stage done"><div class="rail"><span class="node"></span><span class="seg"></span></div><div class="txt"><div class="st">2026-08-04</div><div class="nm">03 Review</div><div class="bd">An Admin verifies it, or rejects it with a reason.</div></div></div>
+<div class="stage done"><div class="rail"><span class="node"></span><span class="seg"></span></div><div class="txt"><div class="st">2026-08-04</div><div class="nm">04 Notify</div><div class="bd">The vendor is emailed the findings.</div></div></div>
+<div class="stage now"><div class="rail"><span class="node"></span><span class="seg"></span></div><div class="txt"><div class="st">In progress</div><div class="nm">05 Patch</div><div class="bd">The vendor ships a fix. The Admin confirms it.</div></div></div>
+<div class="stage next"><div class="rail"><span class="node"></span><span class="seg"></span></div><div class="txt"><div class="st">Queued</div><div class="nm">06 Publish</div><div class="bd">It goes public and a discussion opens.</div></div></div></div>
+  </div>
+</section>
+
+<section class="wrap section report-row" data-pc-reveal>
+  <div class="sec-head"><h2 class="t">A published report</h2><p>Each one carries a CVSS vector, the evidence, and a dated timeline from report to patch.</p></div>
+  <div class="card">
+    <div class="top"><span class="mono" style="font-size:13px;color:var(--muted)">PWN-2026-0142 · Kernel</span><span class="pill">Published</span></div>
+    <h3>Heap overflow in Halcyon OS nf_tables set handling</h3>
+    <div class="meta"><span class="sev"><span class="sq"><span class="crit">■■■■</span></span>Critical · CVSS 9.8</span><span style="font-size:13px;color:var(--muted)">Halcyon OS 14.2 · by @nullbyte</span></div>
+    <div class="vec">CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H</div>
+    <pre class="log">BUG: KASAN: slab-out-of-bounds in nft_set_elem_init+0x1a4/0x2c0
+Write of size 8 at addr ffff88810a3c4f48 by task poc/2113</pre>
+    <div class="tl"><div><i></i><span>Reported</span><time>2026-08-02</time></div><div><i></i><span>Verified</span><time>2026-08-04</time></div><div><i></i><span>Vendor notified</span><time>2026-08-04</time></div><div class="hl"><i></i><span>Patched</span><time>2026-09-19</time></div><div class="pub"><i></i><span>Published</span><time>2026-09-28</time></div></div>
+  </div>
+</section>
+
+<section class="wrap section" data-pc-reveal>
+  <div class="sec-head split"><h2 class="t">Latest reports</h2><a class="lnk" href="feed.html">Open the feed →</a></div>
+  <div class="list"><a class="row" href="feed.html"><span class="id">PWN-2026-0142</span><span class="sq"><span class="crit">■■■■</span><span class="off"></span></span><span class="ttl">Heap overflow in Halcyon OS nf_tables set handling</span><span class="cat">Kernel</span><span class="by">@nullbyte</span><span class="cv">9.8</span><span class="dt">2026-09-28</span></a>
+<a class="row" href="feed.html"><span class="id">PWN-2026-0139</span><span class="sq"><span class="on">■■</span><span class="off">■■</span></span><span class="ttl">Stored XSS in Brightpath comment editor</span><span class="cat">Web</span><span class="by">@tagsoup</span><span class="cv">6.1</span><span class="dt">2026-09-25</span></a>
+<a class="row" href="feed.html"><span class="id">PWN-2026-0131</span><span class="sq"><span class="on">■■■</span><span class="off">■</span></span><span class="ttl">Insecure deep link handling in Kestrel Chat for Android</span><span class="cat">Mobile</span><span class="by">@dexdump</span><span class="cv">7.4</span><span class="dt">2026-09-21</span></a>
+<a class="row" href="feed.html"><span class="id">PWN-2026-0127</span><span class="sq"><span class="crit">■■■■</span><span class="off"></span></span><span class="ttl">Authentication bypass in Brightpath SSO callback</span><span class="cat">Web</span><span class="by">@tagsoup</span><span class="cv">9.1</span><span class="dt">2026-09-17</span></a>
+<a class="row" href="feed.html"><span class="id">PWN-2026-0120</span><span class="sq"><span class="on">■■■</span><span class="off">■</span></span><span class="ttl">Command injection in Tessel RT-790 web admin</span><span class="cat">Firmware</span><span class="by">@packetfox</span><span class="cv">8.8</span><span class="dt">2026-09-12</span></a></div>
+</section>
+
+<section id="surfaces" class="wrap section" data-pc-reveal>
+  <div class="sec-head"><h2 class="t">Attack surfaces</h2><p>Every report is filed under one.</p></div>
+  <div class="cells"><a class="cell" href="feed.html?category=kernel"><span class="p">/kernel</span><span class="n">Kernel</span><span class="d">Privilege escalation and memory corruption in kernels and drivers.</span><span class="g">UAF · OOB write · race</span></a>
+<a class="cell" href="feed.html?category=web"><span class="p">/web</span><span class="n">Web</span><span class="d">Flaws in web applications and their back ends.</span><span class="g">SQLi · XSS · SSRF · auth bypass</span></a>
+<a class="cell" href="feed.html?category=mobile"><span class="p">/mobile</span><span class="n">Mobile</span><span class="d">Android and iOS applications.</span><span class="g">deep links · IPC · storage</span></a>
+<a class="cell" href="feed.html?category=network"><span class="p">/network</span><span class="n">Network</span><span class="d">Protocols and exposed services.</span><span class="g">protocol flaws · misconfig</span></a>
+<a class="cell" href="feed.html?category=firmware"><span class="p">/firmware</span><span class="n">Firmware</span><span class="d">Routers, embedded and IoT devices.</span><span class="g">RCE · hardcoded keys</span></a>
+<a class="cell" href="feed.html?category=cloud"><span class="p">/cloud</span><span class="n">Cloud and API</span><span class="d">Cloud services and public APIs.</span><span class="g">IAM · BOLA · misconfig</span></a></div>
+</section>
+
+<section id="ranks" class="wrap section" style="padding-bottom:104px" data-pc-reveal>
+  <div class="sec-head"><h2 class="t">Titles and badges</h2><p>Researchers climb five ranks as their reports are published.</p></div>
+  <div class="ranks"><div class="rank"><svg width="64" height="64" viewBox="0 0 64 64" role="img" aria-label="Rank 1 badge"><rect x="0.5" y="0.5" width="63" height="63" fill="none" stroke="#333333"/><g fill="#ffffff"><use href="#chev" x="0" y="18"/></g></svg><div><div class="k">RANK I</div><div class="nm">Script Kiddie</div></div></div><div class="rank"><svg width="64" height="64" viewBox="0 0 64 64" role="img" aria-label="Rank 2 badge"><rect x="0.5" y="0.5" width="63" height="63" fill="none" stroke="#333333"/><g fill="#ffffff"><use href="#chev" x="0" y="14"/><use href="#chev" x="0" y="24"/></g></svg><div><div class="k">RANK II</div><div class="nm">Bug Hunter</div></div></div><div class="rank"><svg width="64" height="64" viewBox="0 0 64 64" role="img" aria-label="Rank 3 badge"><rect x="0.5" y="0.5" width="63" height="63" fill="none" stroke="#333333"/><g fill="#ffffff"><use href="#chev" x="0" y="9"/><use href="#chev" x="0" y="19"/><use href="#chev" x="0" y="29"/></g></svg><div><div class="k">RANK III</div><div class="nm">Exploit Dev</div></div></div><div class="rank"><svg width="64" height="64" viewBox="0 0 64 64" role="img" aria-label="Rank 4 badge"><rect x="0.5" y="0.5" width="63" height="63" fill="none" stroke="#333333"/><g fill="#ffffff"><use href="#chev" x="0" y="5"/><use href="#chev" x="0" y="15"/><use href="#chev" x="0" y="25"/><use href="#chev" x="0" y="35"/></g></svg><div><div class="k">RANK IV</div><div class="nm">Zero-Day Hunter</div></div></div><div class="rank top"><svg width="64" height="64" viewBox="0 0 64 64" role="img" aria-label="Rank 5 badge"><rect x="0.5" y="0.5" width="63" height="63" fill="none" stroke="#dc2229"/><g fill="#dc2229"><use href="#chev" x="0" y="2"/><use href="#chev" x="0" y="12"/><use href="#chev" x="0" y="22"/><use href="#chev" x="0" y="32"/><use href="#chev" x="0" y="42"/></g></svg><div><div class="k">RANK V</div><div class="nm">Red Teamer</div></div></div></div>
+  <div class="notes"><div><b>Certified Researcher.</b> Awarded on your first verified report. Lapses after a period of inactivity.</div><div><b>Community badges.</b> Earned in the forums by every member, researchers included.</div></div>
+</section>
+<footer class="foot"><div class="wrap"><span>PwnCore · Phase 1 prototype</span><nav><a href="feed.html">Feed</a><a href="#" data-req="GET /disclosure">Disclosure policy</a><a href="#" data-req="GET /contact">Contact</a></nav></div></footer>
+<script src="js/globe.js"></script>
+<script src="js/pwncore-header.js"></script>
+<script src="js/pwncore-nav.js"></script>
+<script src="js/pwncore-cursor.js"></script>
+</body></html>
