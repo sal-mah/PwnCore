@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" class="pc-cur">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PwnCore | My Reports</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Geist+Mono:wght@400;500;600&family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Core PwnCore Styles -->
+  <link rel="stylesheet" href="css/pwncore.css">
+  <link rel="stylesheet" href="css/pwncore-motion.css">
+  <link rel="stylesheet" href="css/pwncore-cursor.css">
+  
+</head>
+<body class="dashboard-body">
+  <!-- PwnCore Interactive Cursor -->
+  <div id="pc-cursor">
+    <div class="pc-dot"></div>
+    <div class="pc-tag"></div>
+  </div>
+
+  <aside class="sidebar">
+    <h2>Pwn<span>Core</span></h2>
+    <p class="role">RESEARCHER PORTAL</p>
+
+    <nav class="pc-nav">
+      <a href="index.html">Dashboard</a>
+      <a href="submit-report.html">Submit Report</a>
+      <a class="active" aria-current="page" href="my-reports.html">My Reports</a>
+      <a href="api-keys.html">API Keys</a>
+      <a href="my-profile.html">My Profile</a>
+    </nav>
+
+    <p class="sidebar-footer">Secure vulnerability research</p>
+  </aside>
+
+  <main class="main pc-enter">
+    <header>
+      <div>
+        <p class="eyebrow">RESEARCHER DISCLOSURES</p>
+        <h1>My Reports</h1>
+        <p>Review, filter, and track all submitted vulnerability disclosures.</p>
+      </div>
+      <a href="submit-report.html" class="btn red">+ New Report</a>
+    </header>
+
+    <!-- Filter and Search Controls -->
+    <section class="filter-bar">
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search by report ID or title...">
+      </div>
+
+      <div class="filter-chips">
+        <button class="chip active" data-filter="All">All (<span id="countAll">0</span>)</button>
+        <button class="chip" data-filter="Pending Triage">Pending (<span id="countPending">0</span>)</button>
+        <button class="chip" data-filter="Under Review">Under Review (<span id="countReview">0</span>)</button>
+        <button class="chip" data-filter="Accepted">Accepted (<span id="countAccepted">0</span>)</button>
+      </div>
+    </section>
+
+    <!-- Reports Table / List -->
+    <section class="reports-container">
+      <div id="reportsList" class="reports-grid"></div>
+      <div id="emptyState" class="empty-state" hidden>
+        <p>No vulnerability reports found matching your criteria.</p>
+        <a href="submit-report.html" class="btn line sm">Submit a Report</a>
+      </div>
+    </section>
+
+    <!-- Report Details Modal -->
+    <div id="reportModal" class="modal-backdrop" hidden>
+      <div class="modal-card">
+        <div class="modal-header">
+          <div>
+            <span id="modalId" class="modal-id">PWN-001</span>
+            <h2 id="modalTitle">Report Title</h2>
+          </div>
+          <button id="closeModalBtn" class="modal-close">&times;</button>
+        </div>
+
+        <div class="modal-body">
+          <div class="modal-meta-grid">
+            <div>
+              <span class="meta-label">Target Asset</span>
+              <p id="modalTarget" class="meta-val mono">-</p>
+            </div>
+            <div>
+              <span class="meta-label">Category</span>
+              <p id="modalCategory" class="meta-val">-</p>
+            </div>
+            <div>
+              <span class="meta-label">Severity</span>
+              <p id="modalSeverity" class="meta-val">-</p>
+            </div>
+            <div>
+              <span class="meta-label">Current Status</span>
+              <p id="modalStatus" class="meta-val">-</p>
+            </div>
+          </div>
+
+          <div class="modal-section">
+            <span class="meta-label">Reproduction & Proof of Concept</span>
+            <pre id="modalDescription" class="code-block"></pre>
+          </div>
+
+          <div class="modal-section" id="modalImpactSection">
+            <span class="meta-label">Impact Statement</span>
+            <p id="modalImpact" class="impact-text"></p>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button id="modalOkBtn" class="btn line sm">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <p class="footer">PwnCore © 2026 · Research responsibly</p>
+  </main>
+
+  <script src="js/my-reports.js"></script>
+</body>
+</html>
+

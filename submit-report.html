@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" class="pc-cur">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PwnCore | Submit Vulnerability Report</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Geist+Mono:wght@400;500;600&family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Core PwnCore Styles -->
+  <link rel="stylesheet" href="css/pwncore.css">
+  <link rel="stylesheet" href="css/pwncore-motion.css">
+  <link rel="stylesheet" href="css/pwncore-cursor.css">
+  
+</head>
+<body class="dashboard-body">
+  <!-- PwnCore Interactive Cursor -->
+  <div id="pc-cursor">
+    <div class="pc-dot"></div>
+    <div class="pc-tag"></div>
+  </div>
+
+  <aside class="sidebar">
+    <h2>Pwn<span>Core</span></h2>
+    <p class="role">RESEARCHER PORTAL</p>
+
+    <nav class="pc-nav">
+      <a href="index.html">Dashboard</a>
+      <a class="active" aria-current="page" href="submit-report.html">Submit Report</a>
+      <a href="my-reports.html">My Reports</a>
+      <a href="api-keys.html">API Keys</a>
+      <a href="my-profile.html">My Profile</a>
+    </nav>
+
+    <p class="sidebar-footer">Secure vulnerability research</p>
+  </aside>
+
+  <main class="main pc-enter">
+    <header>
+      <div>
+        <p class="eyebrow">VULNERABILITY DISCLOSURE</p>
+        <h1>Submit Report</h1>
+        <p>Document vulnerability findings with technical proof-of-concept steps.</p>
+      </div>
+    </header>
+
+    <!-- Submission Feedback Toast -->
+    <div id="toast" class="toast" hidden>
+      <div class="toast-dot"></div>
+      <span id="toastMsg">Report submitted successfully!</span>
+    </div>
+
+    <section class="form-container">
+      <form id="reportForm">
+        <div class="form-grid">
+          <!-- Report Title -->
+          <div class="form-group full">
+            <label for="reportTitle">Report Title <span class="req">*</span></label>
+            <input type="text" id="reportTitle" placeholder="e.g., Remote Code Execution in Image Upload Handler" required>
+            <span class="hint">Summarize the vulnerability clearly and concisely.</span>
+          </div>
+
+          <!-- Target Asset -->
+          <div class="form-group half">
+            <label for="reportTarget">Target Asset / Endpoint <span class="req">*</span></label>
+            <input type="text" id="reportTarget" placeholder="e.g., api.target.com/v2/upload" required>
+          </div>
+
+          <!-- Vulnerability Type -->
+          <div class="form-group half">
+            <label for="reportCategory">Vulnerability Type <span class="req">*</span></label>
+            <select id="reportCategory" required>
+              <option value="" disabled selected>Select category...</option>
+              <option value="SQL Injection (SQLi)">SQL Injection (SQLi)</option>
+              <option value="Remote Code Execution (RCE)">Remote Code Execution (RCE)</option>
+              <option value="Broken Access Control">Broken Access Control</option>
+              <option value="Cross-Site Scripting (XSS)">Cross-Site Scripting (XSS)</option>
+              <option value="Server-Side Request Forgery (SSRF)">Server-Side Request Forgery (SSRF)</option>
+              <option value="Insecure Direct Object Reference (IDOR)">Insecure Direct Object Reference (IDOR)</option>
+              <option value="Information Disclosure">Information Disclosure</option>
+              <option value="Authentication Bypass">Authentication Bypass</option>
+              <option value="Other / Business Logic">Other / Business Logic</option>
+            </select>
+          </div>
+
+          <!-- Severity Selection -->
+          <div class="form-group full">
+            <label>Severity Level <span class="req">*</span></label>
+            <input type="hidden" id="reportSeverity" value="High">
+            <div class="severity-picker">
+              <button type="button" class="sev-pill" data-sev="Low">
+                <span class="dot"></span> Low
+              </button>
+              <button type="button" class="sev-pill" data-sev="Medium">
+                <span class="dot"></span> Medium
+              </button>
+              <button type="button" class="sev-pill active" data-sev="High">
+                <span class="dot"></span> High
+              </button>
+              <button type="button" class="sev-pill" data-sev="Critical">
+                <span class="dot"></span> Critical
+              </button>
+            </div>
+          </div>
+
+          <!-- Proof of Concept Description -->
+          <div class="form-group full">
+            <label for="reportDescription">Reproduction Steps & Proof of Concept <span class="req">*</span></label>
+            <textarea id="reportDescription" rows="6" placeholder="Step-by-step instructions to reproduce the vulnerability:&#10;1. Navigate to target URL&#10;2. Send payload: ' OR '1'='1&#10;3. Observe response..." required></textarea>
+          </div>
+
+          <!-- Impact Analysis -->
+          <div class="form-group full">
+            <label for="reportImpact">Impact Analysis <span class="req">*</span></label>
+            <textarea id="reportImpact" rows="3" placeholder="Describe the practical business and technical impact if exploited..." required></textarea>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" id="submitReportBtn" class="btn red">Submit Vulnerability Report</button>
+          <a href="index.html" class="btn line sm">Cancel</a>
+        </div>
+      </form>
+    </section>
+
+    <p class="footer">PwnCore © 2026 · Research responsibly</p>
+  </main>
+
+  <script src="js/submit-report.js"></script>
+</body>
+</html>
+

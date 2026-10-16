@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" class="pc-cur">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PwnCore | Researcher Profile</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Geist+Mono:wght@400;500;600&family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Core PwnCore Styles -->
+  <link rel="stylesheet" href="css/pwncore.css">
+  <link rel="stylesheet" href="css/pwncore-motion.css">
+  <link rel="stylesheet" href="css/pwncore-cursor.css">
+  
+</head>
+<body class="dashboard-body">
+  <!-- PwnCore Interactive Cursor -->
+  <div id="pc-cursor">
+    <div class="pc-dot"></div>
+    <div class="pc-tag"></div>
+  </div>
+
+  <aside class="sidebar">
+    <h2>Pwn<span>Core</span></h2>
+    <p class="role">RESEARCHER PORTAL</p>
+
+    <nav class="pc-nav">
+      <a href="index.html">Dashboard</a>
+      <a href="submit-report.html">Submit Report</a>
+      <a href="my-reports.html">My Reports</a>
+      <a href="api-keys.html">API Keys</a>
+      <a class="active" aria-current="page" href="my-profile.html">My Profile</a>
+    </nav>
+
+    <p class="sidebar-footer">Secure vulnerability research</p>
+  </aside>
+
+  <main class="main pc-enter">
+    <header>
+      <div>
+        <p class="eyebrow">RESEARCHER IDENTITY</p>
+        <h1>My Profile</h1>
+        <p>Manage your public handle, reputation rank, and cryptographic disclosure keys.</p>
+      </div>
+    </header>
+
+    <!-- Save Feedback Toast -->
+    <div id="toast" class="toast" hidden>
+      <div class="toast-dot"></div>
+      <span id="toastMsg">Profile updated successfully!</span>
+    </div>
+
+    <div class="profile-layout">
+      <!-- Profile Summary Card (Left) -->
+      <aside class="profile-card">
+        <div class="avatar-wrap">
+          <div class="avatar-box">0xPWN</div>
+          <div class="status-indicator"></div>
+        </div>
+
+        <h2 id="displayNameSummary">Lugine Haytham</h2>
+        <p id="handleSummary" class="profile-handle">@lugine_sec</p>
+
+        <div class="rank-badge">
+          <span class="rank-title">Tier 1 Elite Researcher</span>
+          <span class="rank-num">Rank #14</span>
+        </div>
+
+        <div class="stats-mini">
+          <div>
+            <b id="repPoints">1,450</b>
+            <span>Reputation</span>
+          </div>
+          <div>
+            <b id="repCount">3</b>
+            <span>Disclosures</span>
+          </div>
+          <div>
+            <b>100%</b>
+            <span>Valid Ratio</span>
+          </div>
+        </div>
+
+        <div class="achievements">
+          <span class="meta-label">EARNED BADGES</span>
+          <div class="badge-list">
+            <span class="ach-badge">🎯 First Blood</span>
+            <span class="ach-badge">⚡ RCE Specialist</span>
+            <span class="ach-badge">🛡️ Responsible Hacker</span>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Profile Form (Right) -->
+      <section class="profile-settings">
+        <div class="sec-head">
+          <h2 class="t">Edit Researcher Information</h2>
+          <p>Your handle and public stats are visible on coordinated disclosure advisories.</p>
+        </div>
+
+        <form id="profileForm">
+          <div class="form-grid">
+            <div class="form-group half">
+              <label for="profName">Full / Display Name</label>
+              <input type="text" id="profName" value="Lugine Haytham" required>
+            </div>
+
+            <div class="form-group half">
+              <label for="profHandle">Researcher Handle</label>
+              <input type="text" id="profHandle" value="lugine_sec" required>
+            </div>
+
+            <div class="form-group full">
+              <label for="profEmail">Notification Email</label>
+              <input type="email" id="profEmail" value="lugin@pwncore.io" required>
+            </div>
+
+            <div class="form-group full">
+              <label for="profBio">Bio & Research Focus</label>
+              <textarea id="profBio" rows="3" placeholder="Web security, API penetration testing, and zero-day vulnerability analysis...">Web penetration testing, OAuth & JWT authentication bypasses, and cloud infrastructure security analysis.</textarea>
+            </div>
+
+            <div class="form-group full">
+              <label for="profPgp">PGP Public Key (for encrypted triage communications)</label>
+              <textarea id="profPgp" rows="4" class="mono" placeholder="-----BEGIN PGP PUBLIC KEY BLOCK-----&#10;...&#10;-----END PGP PUBLIC KEY BLOCK-----">-----BEGIN PGP PUBLIC KEY BLOCK-----
+mQGNBF/9...pwncore-sec-researcher-2026-key
+-----END PGP PUBLIC KEY BLOCK-----</textarea>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn red">Save Profile Changes</button>
+          </div>
+        </form>
+      </section>
+    </div>
+
+    <p class="footer">PwnCore © 2026 · Research responsibly</p>
+  </main>
+
+  <script src="js/my-profile.js"></script>
+</body>
+</html>
+
