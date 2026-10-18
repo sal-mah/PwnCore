@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Log in blocked | PwnCore</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/pwncore.css">
+<link rel="stylesheet" href="css/pwncore-motion.css">
+<link rel="stylesheet" href="css/pwncore-cursor.css">
+</head><body>
+<svg width="0" height="0" style="position: absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <path id="g4-P" d="M65 -700H504L611 -592V-347L503 -238H201V0H65ZM442 -352 477 -387V-551L442 -586H201V-352Z"></path>
+      <path id="g4-W" d="M25 -700H162L247 -206H251L390 -700H492L628 -206H632L717 -700H854L709 0H582L443 -492H439L297 0H170Z"></path>
+      <path id="g4-N" d="M65 -700H187L499 -225H501V-700H632V0H510L198 -474H196V0H65Z"></path>
+      <path id="g4-C" d="M55 -115V-585L170 -700H512L625 -587V-480H489V-537L442 -584H242L191 -533V-167L242 -116H442L489 -163V-220H625V-113L512 0H170Z"></path>
+      <path id="g4-R" d="M615 -232V0H479V-201L419 -268H201V0H65V-700H504L611 -592V-380L543 -311ZM201 -380H442L477 -415V-551L442 -586H201Z"></path>
+      <path id="g4-E" d="M65 -700H571V-585H201V-408H542V-295H201V-115H571V0H65Z"></path>
+      <path id="chev" d="M8 0 L32 14 L56 0 V9 L32 23 L8 9 Z"></path>
+      <symbol id="w4-radar" viewBox="0 -760 5100 820">
+        <g fill="#ffffff">
+          <use href="#g4-P" x="0"></use>
+          <use href="#g4-W" x="666"></use>
+          <use href="#g4-N" x="1565"></use>
+          <use href="#g4-C" x="2282"></use>
+          <use href="#g4-R" x="3762"></use>
+          <use href="#g4-E" x="4457"></use>
+        </g>
+        <circle cx="3367" cy="-350" r="290" fill="none" stroke="#ffffff" stroke-width="120"></circle>
+        <circle cx="3367" cy="-350" r="115" fill="none" stroke="#5a5a5a" stroke-width="22"></circle>
+        <path d="M3367 -350 L3400 -537.1 A190 190 0 0 1 3489.1 -495.5 Z" fill="#ffffff" fill-opacity="0.25"></path>
+        <path d="M3367 -350 L3489.1 -495.5" fill="none" stroke="#ffffff" stroke-width="36"></path>
+        <circle cx="3462" cy="-275" r="45" fill="#dc2229"></circle>
+      </symbol>
+    </defs>
+  </svg>
+<header class="pc-header" id="pc-header"></header>
+
+<main>
+  <section class="wrap page-head pc-enter">
+    <div class="bar"></div>
+    <h1 class="page">Log in blocked</h1>
+    <p>Too many failed attempts. Log in is paused for a short time to protect the account.</p>
+  </section>
+  <section class="wrap section" style="padding-top:0" data-pc-reveal>
+    <div>
+      <div class="card" style="max-width:640px">
+        <div class="top"><span class="mono" style="font-size:13px;color:var(--muted)">HTTP 429 · Too many requests</span><span class="mono" style="font-size:13px;color:var(--white)">Try again in 14:32</span></div>
+        <h3>Log in is blocked for 15 minutes</h3>
+        <p style="color:var(--body)">After 5 failed attempts within 15 minutes, log in is blocked for this account and this device. The block lifts by itself. The message is the same whether or not the account exists.</p>
+        <div class="tl">
+          <div><i></i><span>5 failed attempts</span><time>07:12 UTC</time></div>
+          <div class="hl"><i></i><span>Log in blocked</span><time>07:12 UTC</time></div>
+          <div><i></i><span>Block lifts</span><time>07:27 UTC</time></div>
+        </div>
+        <div class="btns">
+          <a class="btn red" href="feed.html">Back to the feed</a>
+          <a class="btn line" href="#" data-placeholder="Placeholder: the login page is not built yet. This button will link to Person 2's page. The block still applies there." data-req="GET /login · placeholder">Log in</a>
+          <a class="btn line" href="#" data-placeholder="Placeholder: the contact page is not built yet." data-req="GET /contact · placeholder">Contact support</a>
+        </div>
+        <p class="status mono" id="ph-note" aria-live="polite">Sample data. The attempts and the block are recorded as security events. Log in and Contact support are placeholders until those pages exist.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot"><div class="wrap"><span>PwnCore · Phase 1 prototype</span><nav><a href="feed.html">Feed</a><a href="#" data-req="GET /disclosure">Disclosure policy</a><a href="#" data-req="GET /contact">Contact</a></nav></div></footer>
+<script src="js/pwncore-header.js"></script>
+<script src="js/pwncore-nav.js"></script>
+<script src="js/pwncore-cursor.js"></script>
+<script src="js/security-common.js"></script>
+</body></html>

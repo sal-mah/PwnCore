@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Security events | PwnCore</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/pwncore.css">
+<link rel="stylesheet" href="css/pwncore-motion.css">
+<link rel="stylesheet" href="css/pwncore-cursor.css">
+</head><body>
+<svg width="0" height="0" style="position: absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <path id="g4-P" d="M65 -700H504L611 -592V-347L503 -238H201V0H65ZM442 -352 477 -387V-551L442 -586H201V-352Z"></path>
+      <path id="g4-W" d="M25 -700H162L247 -206H251L390 -700H492L628 -206H632L717 -700H854L709 0H582L443 -492H439L297 0H170Z"></path>
+      <path id="g4-N" d="M65 -700H187L499 -225H501V-700H632V0H510L198 -474H196V0H65Z"></path>
+      <path id="g4-C" d="M55 -115V-585L170 -700H512L625 -587V-480H489V-537L442 -584H242L191 -533V-167L242 -116H442L489 -163V-220H625V-113L512 0H170Z"></path>
+      <path id="g4-R" d="M615 -232V0H479V-201L419 -268H201V0H65V-700H504L611 -592V-380L543 -311ZM201 -380H442L477 -415V-551L442 -586H201Z"></path>
+      <path id="g4-E" d="M65 -700H571V-585H201V-408H542V-295H201V-115H571V0H65Z"></path>
+      <path id="chev" d="M8 0 L32 14 L56 0 V9 L32 23 L8 9 Z"></path>
+      <symbol id="w4-radar" viewBox="0 -760 5100 820">
+        <g fill="#ffffff">
+          <use href="#g4-P" x="0"></use>
+          <use href="#g4-W" x="666"></use>
+          <use href="#g4-N" x="1565"></use>
+          <use href="#g4-C" x="2282"></use>
+          <use href="#g4-R" x="3762"></use>
+          <use href="#g4-E" x="4457"></use>
+        </g>
+        <circle cx="3367" cy="-350" r="290" fill="none" stroke="#ffffff" stroke-width="120"></circle>
+        <circle cx="3367" cy="-350" r="115" fill="none" stroke="#5a5a5a" stroke-width="22"></circle>
+        <path d="M3367 -350 L3400 -537.1 A190 190 0 0 1 3489.1 -495.5 Z" fill="#ffffff" fill-opacity="0.25"></path>
+        <path d="M3367 -350 L3489.1 -495.5" fill="none" stroke="#ffffff" stroke-width="36"></path>
+        <circle cx="3462" cy="-275" r="45" fill="#dc2229"></circle>
+      </symbol>
+    </defs>
+  </svg>
+<header class="pc-header" id="pc-header"></header>
+
+<main>
+  <section class="wrap page-head pc-enter">
+    <div class="bar"></div>
+    <h1 class="page">Security events</h1>
+    <p>Suspicious activity picked out of the audit log. Admin only. Review each event and mark it reviewed.</p>
+    <nav class="chips sm" aria-label="Admin security pages"><a class="chip" href="audit-log.html"><span>Audit log</span></a><a class="chip" href="security-events.html" aria-current="true"><span>Security events</span></a><a class="chip" href="admin-api-keys.html"><span>API keys</span></a><a class="chip" href="#" data-placeholder="Placeholder: the Admin dashboard is not built yet. This chip will link to Person 3's page." data-req="GET /admin · placeholder"><span>Admin dashboard</span></a></nav><p class="status mono" id="ph-note" aria-live="polite">Admin dashboard is a placeholder link. Everything on this page is sample data.</p>
+  </section>
+
+  <section class="wrap section" style="padding-top:0;gap:20px" data-pc-reveal>
+    <div class="sec-head split"><h2 class="t">Events</h2><span class="eyebrow">Sample data · times in UTC</span></div>
+    <div class="controls"><div class="grp"><span class="eyebrow">Status</span><nav class="chips sm" id="f-status-chips" aria-label="Status"></nav></div><div class="grp"><span class="eyebrow">Level</span><nav class="chips sm" id="f-level" aria-label="Level"></nav></div></div>
+    <div class="controls"><div class="grp"><span class="eyebrow">Type</span><nav class="chips sm" id="f-type" aria-label="Type"></nav></div></div>
+    <div class="controls"><form class="search" id="f-form" method="get" role="search" style="width:min(420px,100%)"><input id="f-find" type="search" name="find" placeholder="Search event, user, IP or ID" aria-label="Search event, user, IP or ID" autocomplete="off" maxlength="80"></form><a class="btn line sm" href="security-events.html" data-req="RESET filters">Reset filters</a></div>
+    <p class="status mono" id="f-status" aria-live="polite"></p>
+    <p class="status mono" id="f-note" aria-live="polite"></p>
+    <div class="list" id="f-list"></div>
+    <div class="empty" id="f-empty" hidden><b>No events match these filters.</b><a class="lnk" id="f-clear" href="security-events.html">Clear filters →</a></div>
+  </section>
+
+  <section class="wrap section" data-pc-reveal>
+    <div class="sec-head"><h2 class="t">Selected event</h2><p id="f-detail-intro"></p></div>
+    <div id="f-detail"></div>
+  </section>
+
+  <section class="wrap section" data-pc-reveal>
+    <div class="sec-head"><h2 class="t">What counts as a security event</h2><p>Defined in the SRS, Section 6.</p></div>
+    <div class="notes">
+      <div><b>Lockout.</b> Login blocked after 5 failed attempts in 15 minutes (SEC-07).</div>
+      <div><b>Rate limit.</b> A request limit was exceeded and answered with HTTP 429 (SEC-27).</div>
+      <div><b>Access denied.</b> Repeated requests for pages or Reports the role may not open (SEC-08, SEC-11).</div>
+      <div><b>Invalid input and API keys.</b> Rejected input, and revoked API keys (NFR-AUD-08).</div>
+      <div><b>Level</b> shows how urgent an event is. It is not a CVSS score. <b>Entries</b> counts the linked audit log entries.</div>
+    </div>
+  </section>
+  <section class="wrap section" style="padding-bottom:104px" data-pc-reveal>
+    <div class="sec-head"><h2 class="t">Sample data</h2><p>Reviewed marks are kept in this browser only. Reset to go back to the original sample data.</p></div>
+    <div class="btns"><a class="btn line sm" href="#" data-reset data-req="RESET sample data">Reset sample data</a></div>
+  </section>
+</main>
+
+<footer class="foot"><div class="wrap"><span>PwnCore · Phase 1 prototype</span><nav><a href="feed.html">Feed</a><a href="#" data-req="GET /disclosure">Disclosure policy</a><a href="#" data-req="GET /contact">Contact</a></nav></div></footer>
+<script src="js/pwncore-header.js"></script>
+<script src="js/pwncore-nav.js"></script>
+<script src="js/pwncore-cursor.js"></script>
+<script src="js/security-common.js"></script>
+<script src="js/security-events.js"></script>
+</body></html>
