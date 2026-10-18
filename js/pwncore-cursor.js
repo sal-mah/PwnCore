@@ -38,13 +38,22 @@
     el.style.transform = 'translate(' + e.clientX + 'px,' + e.clientY + 'px)';
     html.classList.add('pc-moved');
     var t = e.target;
-    if (!t.closest) return;
-    el.setAttribute('data-hide', t.closest('input, textarea') ? '1' : '0');
-    el.setAttribute('data-hot', t.closest('a[href], button, [role="button"], [data-req], summary, label') ? '1' : '0');
-    var txt = label(t);
+    var isDraggingState = document.body.classList.contains('pc-is-dragging');
+    var isInput = !isDraggingState && !!t.closest('input, textarea');
+    el.setAttribute('data-hide', isInput ? '1' : '0');
+    var isHot = !!t.closest('a[href], button, [role="button"], [data-req], summary, label, select, .pc-scrollbar, .pc-scrollbar-thumb, .pc-scrollbar-track');
+    el.setAttribute('data-hot', (isHot || isDraggingState) ? '1' : '0');
+    var txt = isDraggingState ? 'SHIFT /horizontal' : label(t);
     if (tag.textContent !== txt) tag.textContent = txt;
   });
-  document.addEventListener('mouseleave', function () { html.classList.remove('pc-moved'); });
+  document.addEventListener('mouseleave', function () {
+    if (!document.body.classList.contains('pc-is-dragging')) {
+      html.classList.remove('pc-moved');
+    }
+  });
+  document.addEventListener('mouseenter', function () {
+    html.classList.add('pc-moved');
+  });
   document.addEventListener('mousedown', function () { el.classList.add('press'); });
   document.addEventListener('mouseup', function () { el.classList.remove('press'); });
 })();

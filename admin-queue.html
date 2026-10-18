@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Review Queue | PwnCore Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/pwncore.css">
+<link rel="stylesheet" href="css/pwncore-motion.css">
+<link rel="stylesheet" href="css/pwncore-cursor.css">
+</head><body>
+<svg width="0" height="0" style="position: absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <path id="g4-P" d="M65 -700H504L611 -592V-347L503 -238H201V0H65ZM442 -352 477 -387V-551L442 -586H201V-352Z"></path>
+      <path id="g4-W" d="M25 -700H162L247 -206H251L390 -700H492L628 -206H632L717 -700H854L709 0H582L443 -492H439L297 0H170Z"></path>
+      <path id="g4-N" d="M65 -700H187L499 -225H501V-700H632V0H510L198 -474H196V0H65Z"></path>
+      <path id="g4-C" d="M55 -115V-585L170 -700H512L625 -587V-480H489V-537L442 -584H242L191 -533V-167L242 -116H442L489 -163V-220H625V-113L512 0H170Z"></path>
+      <path id="g4-R" d="M615 -232V0H479V-201L419 -268H201V0H65V-700H504L611 -592V-380L543 -311ZM201 -380H442L477 -415V-551L442 -586H201Z"></path>
+      <path id="g4-E" d="M65 -700H571V-585H201V-408H542V-295H201V-115H571V0H65Z"></path>
+      <path id="chev" d="M8 0 L32 14 L56 0 V9 L32 23 L8 9 Z"></path>
+      <symbol id="w4-radar" viewBox="0 -760 5100 820">
+        <g fill="#ffffff">
+          <use href="#g4-P" x="0"></use>
+          <use href="#g4-W" x="666"></use>
+          <use href="#g4-N" x="1565"></use>
+          <use href="#g4-C" x="2282"></use>
+          <use href="#g4-R" x="3762"></use>
+          <use href="#g4-E" x="4457"></use>
+        </g>
+        <circle cx="3367" cy="-350" r="290" fill="none" stroke="#ffffff" stroke-width="120"></circle>
+        <circle cx="3367" cy="-350" r="115" fill="none" stroke="#5a5a5a" stroke-width="22"></circle>
+        <path d="M3367 -350 L3400 -537.1 A190 190 0 0 1 3489.1 -495.5 Z" fill="#ffffff" fill-opacity="0.25"></path>
+        <path d="M3367 -350 L3489.1 -495.5" fill="none" stroke="#ffffff" stroke-width="36"></path>
+        <circle cx="3462" cy="-275" r="45" fill="#dc2229"></circle>
+      </symbol>
+    </defs>
+  </svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><path id="chev" d="M8 0 L32 14 L56 0 V9 L32 23 L8 9 Z"/></defs></svg>
+<header class="pc-header" id="pc-header"></header>
+
+<main>
+  <section class="wrap page-head pc-enter">
+    <div class="bar"></div>
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px;">
+      <div>
+        <h1 class="page">Vulnerability Review Queue</h1>
+        <p>Submitted reports undergoing verification, automated triage evaluation, and severity confirmation.</p>
+      </div>
+      <div style="font: 12px var(--mono); color: var(--muted);">
+        AUTOMATED TRIAGE ENGINE: <span style="color: var(--white);">ONLINE</span> · <span id="queue-total-count">7</span> IN QUEUE
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter Controls -->
+  <section class="wrap section" data-pc-reveal style="padding-bottom: 24px;">
+    <div class="controls" style="gap: 16px;">
+      <div class="grp">
+        <span class="eyebrow">Triage Status:</span>
+        <nav class="chips sm" aria-label="Triage status filter">
+          <a class="chip" href="admin-queue.html" data-status-filter="all" aria-current="true"><span>All Pending</span><i class="mono">7</i></a>
+          <a class="chip" href="admin-queue.html?status=triage" data-status-filter="triage"><span>Triage Passed</span><i class="mono">2</i></a>
+          <a class="chip" href="admin-queue.html?status=verified" data-status-filter="verified"><span>Verified</span><i class="mono">1</i></a>
+          <a class="chip" href="admin-queue.html?status=rejected" data-status-filter="rejected"><span>Rejected</span><i class="mono">1</i></a>
+        </nav>
+      </div>
+
+      <div class="grp" style="margin-left: auto;">
+        <span class="eyebrow">Category:</span>
+        <nav class="chips sm" aria-label="Category filter">
+          <a class="chip" href="admin-queue.html" data-cat-filter="all" aria-current="true"><span>All</span></a>
+          <a class="chip" href="admin-queue.html?category=kernel" data-cat-filter="kernel"><span>Kernel</span></a>
+          <a class="chip" href="admin-queue.html?category=network" data-cat-filter="network"><span>Network</span></a>
+          <a class="chip" href="admin-queue.html?category=web" data-cat-filter="web"><span>Web</span></a>
+          <a class="chip" href="admin-queue.html?category=mobile" data-cat-filter="mobile"><span>Mobile</span></a>
+          <a class="chip" href="admin-queue.html?category=firmware" data-cat-filter="firmware"><span>Firmware</span></a>
+          <a class="chip" href="admin-queue.html?category=cloud" data-cat-filter="cloud"><span>Cloud</span></a>
+        </nav>
+      </div>
+    </div>
+  </section>
+
+  <!-- Queue Table -->
+  <section class="wrap section" data-pc-reveal style="padding-bottom: 96px;">
+    <div class="pc-table-wrap">
+      <table class="pc-table" id="queue-table">
+        <thead>
+          <tr>
+            <th>Report ID</th>
+            <th>Severity</th>
+            <th>Vulnerability Title</th>
+            <th>Category</th>
+            <th>Researcher</th>
+            <th>Automated Triage</th>
+            <th>Status</th>
+            <th>Submitted</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-status="pending" data-cat="kernel">
+            <td class="mono" style="color: var(--white);">PWN-2026-0151</td>
+            <td><span class="sev"><span class="sq"><span class="crit">■■■■</span></span>Critical 9.8</span></td>
+            <td style="font-weight: 500; color: var(--white); max-width: 320px;">Linux eBPF ring buffer out-of-bounds write LPE</td>
+            <td style="color: var(--muted);">Kernel</td>
+            <td class="mono" style="color: var(--body);">@ret2libc</td>
+            <td class="mono" style="color: var(--white);"><span style="color: var(--white);">0% Dupl</span> · High Conf</td>
+            <td><span class="badge alert"><span class="sq-mark">■</span> Needs Review</span></td>
+            <td class="mono" style="font-size: 12px; color: var(--muted);">2026-10-15</td>
+            <td><a class="btn red sm" href="admin-review.html?id=PWN-2026-0151" data-req="GET /admin/reports/PWN-2026-0151">Verify / Review →</a></td>
+          </tr>
+
+          <tr data-status="pending" data-cat="network">
+            <td class="mono" style="color: var(--white);">PWN-2026-0150</td>
+            <td><span class="sev"><span class="sq"><span class="crit">■■■■</span></span>Critical 9.1</span></td>
+            <td style="font-weight: 500; color: var(--white); max-width: 320px;">Pre-auth remote command execution in Synapse Core API</td>
+            <td style="color: var(--muted);">Network</td>
+            <td class="mono" style="color: var(--body);">@nullbyte</td>
+            <td class="mono" style="color: var(--white);">0% Dupl · High Conf</td>
+            <td><span class="badge alert"><span class="sq-mark">■</span> Needs Review</span></td>
+            <td class="mono" style="font-size: 12px; color: var(--muted);">2026-10-14</td>
+            <td><a class="btn red sm" href="admin-review.html?id=PWN-2026-0150" data-req="GET /admin/reports/PWN-2026-0150">Verify / Review →</a></td>
+          </tr>
+
+          <tr data-status="pending" data-cat="web">
+            <td class="mono" style="color: var(--white);">PWN-2026-0149</td>
+            <td><span class="sev"><span class="sq"><span class="on">■■■</span><span class="off">■</span></span>High 8.4</span></td>
+            <td style="font-weight: 500; color: var(--white); max-width: 320px;">Authentication bypass via JWT algorithm confusion in Apex Auth</td>
+            <td style="color: var(--muted);">Web</td>
+            <td class="mono" style="color: var(--body);">@auth0x</td>
+            <td class="mono" style="color: var(--muted);">14% Dupl · Med Conf</td>
+            <td><span class="badge alert"><span class="sq-mark">■</span> Needs Review</span></td>
+            <td class="mono" style="font-size: 12px; color: var(--muted);">2026-10-13</td>
+            <td><a class="btn line sm" href="admin-review.html?id=PWN-2026-0149" data-req="GET /admin/reports/PWN-2026-0149">Verify / Review →</a></td>
+          </tr>
+
+          <tr data-status="triage" data-cat="firmware">
+            <td class="mono" style="color: var(--white);">PWN-2026-0148</td>
+            <td><span class="sev"><span class="sq"><span class="on">■■■</span><span class="off">■</span></span>High 7.5</span></td>
+            <td style="font-weight: 500; color: var(--white); max-width: 320px;">Firmware memory leak exposing decrypted AES keys</td>
+            <td style="color: var(--muted);">Firmware</td>
+            <td class="mono" style="color: var(--body);">@chipsec</td>
+            <td class="mono" style="color: var(--white);">0% Dupl · High Conf</td>
+            <td><span class="badge">Triage Passed</span></td>
+            <td class="mono" style="font-size: 12px; color: var(--muted);">2026-10-12</td>
+            <td><a class="btn line sm" href="admin-review.html?id=PWN-2026-0148" data-req="GET /admin/reports/PWN-2026-0148">Verify / Review →</a></td>
+          </tr>
+
+          <tr data-status="triage" data-cat="cloud">
+            <td class="mono" style="color: var(--white);">PWN-2026-0147</td>
+            <td><span class="sev"><span class="sq"><span class="on">■■</span><span class="off">■■</span></span>Medium 5.8</span></td>
+            <td style="font-weight: 500; color: var(--white); max-width: 320px;">Race condition in multi-tenant bucket synchronization</td>
+            <td style="color: var(--muted);">Cloud</td>
+            <td class="mono" style="color: var(--body);">@cloudsec</td>
+            <td class="mono" style="color: var(--accent);">88% Dupl suspect</td>
+            <td><span class="badge">Dupl Check</span></td>
+            <td class="mono" style="font-size: 12px; color: var(--muted);">2026-10-11</td>
+            <td><a class="btn line sm" href="admin-review.html?id=PWN-2026-0147" data-req="GET /admin/reports/PWN-2026-0147">Verify / Review →</a></td>
+          </tr>
+
+          <tr data-status="verified" data-cat="mobile">
+            <td class="mono" style="color: var(--white);">PWN-2026-0146</td>
+            <td><span class="sev"><span class="sq"><span class="crit">■■■■</span></span>Critical 9.8</span></td>
+            <td style="font-weight: 500; color: var(--white); max-width: 320px;">Remote code execution in Android Bluetooth daemon</td>
+            <td style="color: var(--muted);">Mobile</td>
+            <td class="mono" style="color: var(--body);">@bluepwn</td>
+            <td class="mono" style="color: var(--white);">0% Dupl · Verified</td>
+            <td><span class="badge done">Verified</span></td>
+            <td class="mono" style="font-size: 12px; color: var(--muted);">2026-10-10</td>
+            <td><a class="btn line sm" href="admin-vendors.html?id=PWN-2026-0146" data-req="GET /admin/vendors">Notify Vendor →</a></td>
+          </tr>
+
+          <tr data-status="rejected" data-cat="web">
+            <td class="mono" style="color: var(--dim);">PWN-2026-0144</td>
+            <td><span class="sev"><span class="sq"><span class="on">■</span><span class="off">■■■</span></span>Low 2.4</span></td>
+            <td style="font-weight: 500; color: var(--muted); max-width: 320px;">Missing rate limiting on public password reset form</td>
+            <td style="color: var(--dim);">Web</td>
+            <td class="mono" style="color: var(--muted);">@newbie</td>
+            <td class="mono" style="color: var(--dim);">Out of Scope</td>
+            <td><span class="badge" style="color: var(--dim); border-color: var(--line-2);">Rejected</span></td>
+            <td class="mono" style="font-size: 12px; color: var(--dim);">2026-10-09</td>
+            <td><a class="lnk" href="admin-review.html?id=PWN-2026-0144" style="color: var(--muted);" data-req="GET /admin/reports/PWN-2026-0144">View log →</a></td>
+          </tr>
+
+          <!-- Empty State Row -->
+          <tr id="queue-empty-row" hidden>
+            <td colspan="9" style="text-align: center; padding: 48px 16px; color: var(--muted);">
+              <b style="color: var(--white); display: block; font-size: 16px; margin-bottom: 6px;">No reports match the selected filters</b>
+              <span>Try clearing or selecting a different status or category filter.</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<footer class="foot"><div class="wrap"><span>PwnCore · Phase 1 prototype</span><nav><a href="feed.html">Feed</a><a href="#" data-req="GET /disclosure">Disclosure policy</a><a href="#" data-req="GET /contact">Contact</a></nav></div></footer>
+<script src="js/pwncore-header.js"></script>
+<script src="js/pwncore-nav.js"></script>
+<script src="js/pwncore-cursor.js"></script>
+<script>
+(function() {
+  var statusChips = document.querySelectorAll('[data-status-filter]');
+  var catChips = document.querySelectorAll('[data-cat-filter]');
+  var tableBody = document.querySelector('#queue-table tbody');
+  var rows = tableBody ? Array.prototype.slice.call(tableBody.querySelectorAll('tr[data-status]')) : [];
+  var emptyRow = document.getElementById('queue-empty-row');
+
+  // Compute status counts dynamically from table rows
+  var allCount = rows.length;
+  var triageCount = rows.filter(function(r) { return (r.getAttribute('data-status') || '').toLowerCase() === 'triage'; }).length;
+  var verifiedCount = rows.filter(function(r) { return (r.getAttribute('data-status') || '').toLowerCase() === 'verified'; }).length;
+  var rejectedCount = rows.filter(function(r) { return (r.getAttribute('data-status') || '').toLowerCase() === 'rejected'; }).length;
+
+  var allNum = document.querySelector('[data-status-filter="all"] i.mono');
+  var triageNum = document.querySelector('[data-status-filter="triage"] i.mono');
+  var verifiedNum = document.querySelector('[data-status-filter="verified"] i.mono');
+  var rejectedNum = document.querySelector('[data-status-filter="rejected"] i.mono');
+  var totalQueueEl = document.getElementById('queue-total-count');
+
+  if (allNum) allNum.textContent = allCount;
+  if (triageNum) triageNum.textContent = triageCount;
+  if (verifiedNum) verifiedNum.textContent = verifiedCount;
+  if (rejectedNum) rejectedNum.textContent = rejectedCount;
+  if (totalQueueEl) totalQueueEl.textContent = allCount;
+
+  var currentStatus = 'all';
+  var currentCat = 'all';
+
+  try {
+    var p = new URLSearchParams(location.search);
+    var st = p.get('status');
+    var cat = p.get('category');
+    if (st) currentStatus = st.toLowerCase();
+    if (cat) currentCat = cat.toLowerCase();
+  } catch (e) {}
+
+  function applyQueueFilters() {
+    var visibleCount = 0;
+
+    rows.forEach(function(row) {
+      var rStatus = (row.getAttribute('data-status') || '').toLowerCase();
+      var rCat = (row.getAttribute('data-cat') || '').toLowerCase();
+
+      var matchStatus = false;
+      if (currentStatus === 'all') {
+        matchStatus = true;
+      } else if (currentStatus === 'pending') {
+        matchStatus = (rStatus === 'pending');
+      } else if (currentStatus === 'triage') {
+        matchStatus = (rStatus === 'triage');
+      } else if (currentStatus === 'verified') {
+        matchStatus = (rStatus === 'verified');
+      } else if (currentStatus === 'rejected') {
+        matchStatus = (rStatus === 'rejected');
+      }
+
+      var matchCat = (currentCat === 'all' || rCat === currentCat);
+
+      if (matchStatus && matchCat) {
+        row.hidden = false;
+        visibleCount++;
+      } else {
+        row.hidden = true;
+      }
+    });
+
+    if (emptyRow) {
+      emptyRow.hidden = (visibleCount > 0);
+    }
+
+    statusChips.forEach(function(chip) {
+      var val = chip.getAttribute('data-status-filter');
+      if (val === currentStatus) chip.setAttribute('aria-current', 'true');
+      else chip.removeAttribute('aria-current');
+    });
+
+    catChips.forEach(function(chip) {
+      var val = chip.getAttribute('data-cat-filter');
+      if (val === currentCat) chip.setAttribute('aria-current', 'true');
+      else chip.removeAttribute('aria-current');
+    });
+  }
+
+  statusChips.forEach(function(chip) {
+    chip.addEventListener('click', function(e) {
+      e.preventDefault();
+      currentStatus = chip.getAttribute('data-status-filter') || 'all';
+      applyQueueFilters();
+    });
+  });
+
+  catChips.forEach(function(chip) {
+    chip.addEventListener('click', function(e) {
+      e.preventDefault();
+      currentCat = chip.getAttribute('data-cat-filter') || 'all';
+      applyQueueFilters();
+    });
+  });
+
+  applyQueueFilters();
+})();
+</script>
+</body></html>

@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin Dashboard | PwnCore</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/pwncore.css">
+<link rel="stylesheet" href="css/pwncore-motion.css">
+<link rel="stylesheet" href="css/pwncore-cursor.css">
+</head><body>
+<svg width="0" height="0" style="position: absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <path id="g4-P" d="M65 -700H504L611 -592V-347L503 -238H201V0H65ZM442 -352 477 -387V-551L442 -586H201V-352Z"></path>
+      <path id="g4-W" d="M25 -700H162L247 -206H251L390 -700H492L628 -206H632L717 -700H854L709 0H582L443 -492H439L297 0H170Z"></path>
+      <path id="g4-N" d="M65 -700H187L499 -225H501V-700H632V0H510L198 -474H196V0H65Z"></path>
+      <path id="g4-C" d="M55 -115V-585L170 -700H512L625 -587V-480H489V-537L442 -584H242L191 -533V-167L242 -116H442L489 -163V-220H625V-113L512 0H170Z"></path>
+      <path id="g4-R" d="M615 -232V0H479V-201L419 -268H201V0H65V-700H504L611 -592V-380L543 -311ZM201 -380H442L477 -415V-551L442 -586H201Z"></path>
+      <path id="g4-E" d="M65 -700H571V-585H201V-408H542V-295H201V-115H571V0H65Z"></path>
+      <path id="chev" d="M8 0 L32 14 L56 0 V9 L32 23 L8 9 Z"></path>
+      <symbol id="w4-radar" viewBox="0 -760 5100 820">
+        <g fill="#ffffff">
+          <use href="#g4-P" x="0"></use>
+          <use href="#g4-W" x="666"></use>
+          <use href="#g4-N" x="1565"></use>
+          <use href="#g4-C" x="2282"></use>
+          <use href="#g4-R" x="3762"></use>
+          <use href="#g4-E" x="4457"></use>
+        </g>
+        <circle cx="3367" cy="-350" r="290" fill="none" stroke="#ffffff" stroke-width="120"></circle>
+        <circle cx="3367" cy="-350" r="115" fill="none" stroke="#5a5a5a" stroke-width="22"></circle>
+        <path d="M3367 -350 L3400 -537.1 A190 190 0 0 1 3489.1 -495.5 Z" fill="#ffffff" fill-opacity="0.25"></path>
+        <path d="M3367 -350 L3489.1 -495.5" fill="none" stroke="#ffffff" stroke-width="36"></path>
+        <circle cx="3462" cy="-275" r="45" fill="#dc2229"></circle>
+      </symbol>
+    </defs>
+  </svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><path id="chev" d="M8 0 L32 14 L56 0 V9 L32 23 L8 9 Z"/></defs></svg>
+<header class="pc-header" id="pc-header"></header>
+
+<main>
+  <section class="wrap page-head pc-enter">
+    <div class="bar"></div>
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px;">
+      <div>
+        <h1 class="page">Admin Dashboard</h1>
+        <p>Operational vulnerability lifecycle oversight, triage queue, and active vendor disclosures.</p>
+      </div>
+      <div style="display: flex; gap: 10px;">
+        <a class="btn red sm" href="admin-queue.html" data-req="GET /admin/reports">Open Review Queue →</a>
+        <a class="btn line sm" href="admin-vendors.html" data-req="GET /admin/vendors">Vendors</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Metric Counters -->
+  <section class="wrap section" data-pc-reveal style="padding-bottom: 48px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
+      <div class="panel" style="padding: 20px;">
+        <span class="eyebrow" style="display: flex; align-items: center; gap: 8px;">
+          <span style="width: 8px; height: 8px; background: var(--accent);"></span>
+          PENDING REVIEW
+        </span>
+        <b style="font: 700 48px/1 var(--display); color: var(--white); margin: 6px 0;">12</b>
+        <span style="font-size: 13px; color: var(--muted);">4 Critical · 5 High · 3 Medium</span>
+      </div>
+
+      <div class="panel" style="padding: 20px;">
+        <span class="eyebrow" style="display: flex; align-items: center; gap: 8px;">
+          <span style="width: 8px; height: 8px; background: var(--white);"></span>
+          IN DISCLOSURE
+        </span>
+        <b style="font: 700 48px/1 var(--display); color: var(--white); margin: 6px 0;">5</b>
+        <span style="font-size: 13px; color: var(--muted);">Active 90-day vendor embargoes</span>
+      </div>
+
+      <div class="panel" style="padding: 20px;">
+        <span class="eyebrow" style="display: flex; align-items: center; gap: 8px;">
+          <span style="width: 8px; height: 8px; background: var(--dim);"></span>
+          PATCH CONFIRMED
+        </span>
+        <b style="font: 700 48px/1 var(--display); color: var(--white); margin: 6px 0;">3</b>
+        <span style="font-size: 13px; color: var(--muted);">Staged for public feed publication</span>
+      </div>
+
+      <div class="panel" style="padding: 20px;">
+        <span class="eyebrow" style="display: flex; align-items: center; gap: 8px;">
+          <span style="width: 8px; height: 8px; background: var(--line-2);"></span>
+          RESEARCHERS
+        </span>
+        <b style="font: 700 48px/1 var(--display); color: var(--white); margin: 6px 0;">2,431</b>
+        <span style="font-size: 13px; color: var(--muted);">142 Certified Bug Hunters</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Urgent Queue & Embargo Tracker -->
+  <section class="wrap section" data-pc-reveal>
+    <div class="sec-head split">
+      <div>
+        <h2 class="t">Urgent Triage Queue</h2>
+        <p>Highest severity reports requiring immediate admin verification or rejection.</p>
+      </div>
+      <a class="lnk" href="admin-queue.html" data-req="GET /admin/reports">View all 12 pending reports →</a>
+    </div>
+
+    <div class="pc-table-wrap">
+      <table class="pc-table">
+        <thead>
+          <tr>
+            <th>Report ID</th>
+            <th>Severity</th>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Researcher</th>
+            <th>Triage Score</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="mono" style="color: var(--white);">PWN-2026-0151</td>
+            <td><span class="sev"><span class="sq"><span class="crit">■■■■</span></span> 9.8</span></td>
+            <td style="font-weight: 500; color: var(--white);">Linux eBPF ring buffer out-of-bounds write LPE</td>
+            <td style="color: var(--muted);">Kernel</td>
+            <td class="mono" style="color: var(--body);">@ret2libc</td>
+            <td class="mono" style="color: var(--white);">98% Match · 0% Dupl</td>
+            <td><span class="badge alert"><span class="sq-mark">■</span> Pending</span></td>
+            <td><a class="btn red sm" href="admin-review.html?id=PWN-2026-0151" data-req="GET /admin/reports/PWN-2026-0151">Review →</a></td>
+          </tr>
+          <tr>
+            <td class="mono" style="color: var(--white);">PWN-2026-0150</td>
+            <td><span class="sev"><span class="sq"><span class="crit">■■■■</span></span> 9.1</span></td>
+            <td style="font-weight: 500; color: var(--white);">Pre-auth remote command execution in Synapse Core</td>
+            <td style="color: var(--muted);">Network</td>
+            <td class="mono" style="color: var(--body);">@nullbyte</td>
+            <td class="mono" style="color: var(--white);">94% Match · 0% Dupl</td>
+            <td><span class="badge alert"><span class="sq-mark">■</span> Pending</span></td>
+            <td><a class="btn line sm" href="admin-review.html?id=PWN-2026-0150" data-req="GET /admin/reports/PWN-2026-0150">Review →</a></td>
+          </tr>
+          <tr>
+            <td class="mono" style="color: var(--white);">PWN-2026-0149</td>
+            <td><span class="sev"><span class="sq"><span class="on">■■■</span><span class="off">■</span></span> 8.4</span></td>
+            <td style="font-weight: 500; color: var(--white);">Authentication bypass via JWT algorithm confusion in Apex Auth</td>
+            <td style="color: var(--muted);">Web</td>
+            <td class="mono" style="color: var(--body);">@auth0x</td>
+            <td class="mono" style="color: var(--white);">89% Match · 12% Dupl</td>
+            <td><span class="badge alert"><span class="sq-mark">■</span> Pending</span></td>
+            <td><a class="btn line sm" href="admin-review.html?id=PWN-2026-0149" data-req="GET /admin/reports/PWN-2026-0149">Review →</a></td>
+          </tr>
+          <tr>
+            <td class="mono" style="color: var(--white);">PWN-2026-0148</td>
+            <td><span class="sev"><span class="sq"><span class="on">■■■</span><span class="off">■</span></span> 7.5</span></td>
+            <td style="font-weight: 500; color: var(--white);">Firmware memory leak exposing decrypted AES keys</td>
+            <td style="color: var(--muted);">Firmware</td>
+            <td class="mono" style="color: var(--body);">@chipsec</td>
+            <td class="mono" style="color: var(--white);">82% Match · 0% Dupl</td>
+            <td><span class="badge alert"><span class="sq-mark">■</span> Pending</span></td>
+            <td><a class="btn line sm" href="admin-review.html?id=PWN-2026-0148" data-req="GET /admin/reports/PWN-2026-0148">Review →</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Active Responsible Disclosures Overview -->
+  <section class="wrap section" data-pc-reveal>
+    <div class="sec-head split">
+      <div>
+        <h2 class="t">Active Vendor Disclosures</h2>
+        <p>Reports in responsible 90-day embargo coordination with affected software vendors.</p>
+      </div>
+      <a class="lnk" href="admin-vendors.html" data-req="GET /admin/vendors">Manage vendors & disclosures →</a>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 20px;">
+      <!-- Disclosure card 1 -->
+      <div class="card">
+        <div class="top">
+          <span class="mono" style="font-size: 13px; color: var(--muted);">PWN-2026-0142 · Halcyon OS</span>
+          <span class="badge done">Patch In Development</span>
+        </div>
+        <h3 style="font-size: 20px;">Heap overflow in Halcyon OS nf_tables set handling</h3>
+        <div class="embargo-meter" style="margin-top: 8px;">
+          <div class="meter-labels">
+            <span>DISCLOSURE EMBARGO PROGRESS</span>
+            <span style="color: var(--accent);">Day 48 of 90 (42 days left)</span>
+          </div>
+          <div class="meter-track">
+            <div class="meter-fill" style="width: 53%;"></div>
+          </div>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 12px; font-size: 13px; color: var(--muted);">
+          <span>Vendor Contact: <span class="mono" style="color: var(--body);">security@halcyon.org</span></span>
+          <a class="lnk" href="admin-vendors.html" data-req="GET /admin/vendors">Details →</a>
+        </div>
+      </div>
+
+      <!-- Disclosure card 2 -->
+      <div class="card">
+        <div class="top">
+          <span class="mono" style="font-size: 13px; color: var(--muted);">PWN-2026-0145 · Brightpath CMS</span>
+          <span class="badge alert"><span class="sq-mark">■</span> Awaiting Vendor Ack</span>
+        </div>
+        <h3 style="font-size: 20px;">Stored XSS in Brightpath comment editor & session hijack</h3>
+        <div class="embargo-meter" style="margin-top: 8px;">
+          <div class="meter-labels">
+            <span>DISCLOSURE EMBARGO PROGRESS</span>
+            <span style="color: var(--white);">Day 12 of 90 (78 days left)</span>
+          </div>
+          <div class="meter-track">
+            <div class="meter-fill" style="width: 13%; background: var(--dim);"></div>
+          </div>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 12px; font-size: 13px; color: var(--muted);">
+          <span>Vendor Contact: <span class="mono" style="color: var(--body);">psirt@brightpath.io</span></span>
+          <a class="lnk" href="admin-vendors.html" data-req="GET /admin/vendors">Details →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Administrative Action Cells -->
+  <section class="wrap section" data-pc-reveal style="padding-bottom: 96px;">
+    <div class="sec-head">
+      <h2 class="t">Platform Governance Modules</h2>
+      <p>Direct navigation to administrative responsibilities.</p>
+    </div>
+    <div class="cells">
+      <a class="cell" href="admin-queue.html" data-req="GET /admin/reports">
+        <span class="p">/queue</span>
+        <span class="n">Review Queue</span>
+        <span class="d">Inspect pending vulnerability submissions, examine automated triage metrics, and verify or reject.</span>
+        <span class="g">Triage · CVSS verification · Rejection notes</span>
+      </a>
+      <a class="cell" href="admin-verified.html" data-req="GET /admin/verified">
+        <span class="p">/verified</span>
+        <span class="n">Verified Reports</span>
+        <span class="d">Track confirmed vulnerabilities across all lifecycle stages from vendor disclosure to patch staging.</span>
+        <span class="g">Lifecycle stages · Vendor status · Embargo pipeline</span>
+      </a>
+      <a class="cell" href="admin-vendors.html" data-req="GET /admin/vendors">
+        <span class="p">/vendors</span>
+        <span class="n">Vendor Coordination</span>
+        <span class="d">Send security advisories to vendors, log vendor patch responses, and track 90-day embargo timelines.</span>
+        <span class="g">Advisories · Patch SLA · Token generation</span>
+      </a>
+      <a class="cell" href="admin-publish.html" data-req="GET /admin/publish">
+        <span class="p">/publish</span>
+        <span class="n">Publication Staging</span>
+        <span class="d">Perform pre-publication sanitization, scrub proprietary secrets, and publish verified zero-days to feed.</span>
+        <span class="g">Sanitization · CVE link · Feed release</span>
+      </a>
+      <a class="cell" href="admin-users.html" data-req="GET /admin/users">
+        <span class="p">/users</span>
+        <span class="n">User Management</span>
+        <span class="d">Manage researchers and platform accounts. Promote to Certified Bug Hunter, ban abusers, or reset credentials.</span>
+        <span class="g">Roles · Ranks I–V · Account suspension</span>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer class="foot"><div class="wrap"><span>PwnCore · Phase 1 prototype</span><nav><a href="feed.html">Feed</a><a href="#" data-req="GET /disclosure">Disclosure policy</a><a href="#" data-req="GET /contact">Contact</a></nav></div></footer>
+<script src="js/pwncore-header.js"></script>
+<script src="js/pwncore-nav.js"></script>
+<script src="js/pwncore-cursor.js"></script>
+</body></html>

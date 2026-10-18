@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Publication Staging | PwnCore Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/pwncore.css">
+<link rel="stylesheet" href="css/pwncore-motion.css">
+<link rel="stylesheet" href="css/pwncore-cursor.css">
+</head><body>
+<svg width="0" height="0" style="position: absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <path id="g4-P" d="M65 -700H504L611 -592V-347L503 -238H201V0H65ZM442 -352 477 -387V-551L442 -586H201V-352Z"></path>
+      <path id="g4-W" d="M25 -700H162L247 -206H251L390 -700H492L628 -206H632L717 -700H854L709 0H582L443 -492H439L297 0H170Z"></path>
+      <path id="g4-N" d="M65 -700H187L499 -225H501V-700H632V0H510L198 -474H196V0H65Z"></path>
+      <path id="g4-C" d="M55 -115V-585L170 -700H512L625 -587V-480H489V-537L442 -584H242L191 -533V-167L242 -116H442L489 -163V-220H625V-113L512 0H170Z"></path>
+      <path id="g4-R" d="M615 -232V0H479V-201L419 -268H201V0H65V-700H504L611 -592V-380L543 -311ZM201 -380H442L477 -415V-551L442 -586H201Z"></path>
+      <path id="g4-E" d="M65 -700H571V-585H201V-408H542V-295H201V-115H571V0H65Z"></path>
+      <path id="chev" d="M8 0 L32 14 L56 0 V9 L32 23 L8 9 Z"></path>
+      <symbol id="w4-radar" viewBox="0 -760 5100 820">
+        <g fill="#ffffff">
+          <use href="#g4-P" x="0"></use>
+          <use href="#g4-W" x="666"></use>
+          <use href="#g4-N" x="1565"></use>
+          <use href="#g4-C" x="2282"></use>
+          <use href="#g4-R" x="3762"></use>
+          <use href="#g4-E" x="4457"></use>
+        </g>
+        <circle cx="3367" cy="-350" r="290" fill="none" stroke="#ffffff" stroke-width="120"></circle>
+        <circle cx="3367" cy="-350" r="115" fill="none" stroke="#5a5a5a" stroke-width="22"></circle>
+        <path d="M3367 -350 L3400 -537.1 A190 190 0 0 1 3489.1 -495.5 Z" fill="#ffffff" fill-opacity="0.25"></path>
+        <path d="M3367 -350 L3489.1 -495.5" fill="none" stroke="#ffffff" stroke-width="36"></path>
+        <circle cx="3462" cy="-275" r="45" fill="#dc2229"></circle>
+      </symbol>
+    </defs>
+  </svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><path id="chev" d="M8 0 L32 14 L56 0 V9 L32 23 L8 9 Z"/></defs></svg>
+<header class="pc-header" id="pc-header"></header>
+
+<main>
+  <section class="wrap page-head pc-enter">
+    <div class="bar"></div>
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px;">
+      <div>
+        <h1 class="page">Publication Staging</h1>
+        <p>Pre-flight sanitization, disclosure sign-off, and final release authorization to the public exploit feed.</p>
+      </div>
+      <div>
+        <span class="badge alert"><span class="sq-mark">■</span> Ready For Authorization</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pre-Flight Checklist & Details -->
+  <section class="wrap section" data-pc-reveal style="padding-bottom: 32px;">
+    <div class="sec-head">
+      <h2 class="t">Pre-Publication Release Checklist</h2>
+      <p>Ensure all responsible disclosure criteria are satisfied prior to public feed disclosure.</p>
+    </div>
+
+    <div class="checklist">
+      <label class="check-item">
+        <input type="checkbox" checked disabled>
+        <div>
+          <b style="color: var(--white); display: block;">Vendor Patch Released & Verified</b>
+          <span style="color: var(--muted); font-size: 13px;">Halcyon OS patch confirmed merged in commit <code class="mono" style="color: var(--text);">8f21bc90a42</code>.</span>
+        </div>
+      </label>
+
+      <label class="check-item">
+        <input type="checkbox" checked disabled>
+        <div>
+          <b style="color: var(--white); display: block;">PoC Sanitization & PII Scrubbing</b>
+          <span style="color: var(--muted); font-size: 13px;">Raw crash dump and reproduction steps verified clean of private customer data, IP addresses, and secret keys.</span>
+        </div>
+      </label>
+
+      <label class="check-item">
+        <input type="checkbox" checked disabled>
+        <div>
+          <b style="color: var(--white); display: block;">Researcher Attribution Confirmed</b>
+          <span style="color: var(--muted); font-size: 13px;">Primary attribution assigned to researcher <code class="mono" style="color: var(--white);">@nullbyte</code> (Bug Hunter). Will advance published count to 5.</span>
+        </div>
+      </label>
+
+      <label class="check-item">
+        <input type="checkbox" checked disabled>
+        <div>
+          <b style="color: var(--white); display: block;">CVE Cross-Reference Assigned</b>
+          <span style="color: var(--muted); font-size: 13px;">Assigned identifier <code class="mono" style="color: var(--white);">CVE-2026-31904</code> via MITRE CVE Numbering Authority.</span>
+        </div>
+      </label>
+    </div>
+  </section>
+
+  <!-- Live Feed Preview Section -->
+  <section class="wrap section" data-pc-reveal style="padding-bottom: 48px;">
+    <div class="sec-head">
+      <h2 class="t">Public Feed Preview</h2>
+      <p>Exact rendering of the vulnerability report card as it will display on feed.html.</p>
+    </div>
+
+    <div class="card" style="max-width: 720px;">
+      <div class="top">
+        <span class="mono" style="font-size: 13px; color: var(--muted);">PWN-2026-0142 · Kernel · CVE-2026-31904</span>
+        <span class="pill">Published</span>
+      </div>
+      <h3>Heap overflow in Halcyon OS nf_tables set handling</h3>
+      <div class="meta">
+        <span class="sev"><span class="sq"><span class="crit">■■■■</span></span>Critical · CVSS 9.8</span>
+        <span style="font-size: 13px; color: var(--muted);">Halcyon OS 14.2 · by @nullbyte</span>
+      </div>
+      <div class="vec">CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H</div>
+      <pre class="log">crash log or PoC output:
+[  142.109281] bpf_ringbuf: alloc requested size=0xffffffff (neg offset bypass)
+[  142.109370] [*] Target credentials rewritten: cred->uid = 0, cred->gid = 0
+[  142.109385] [*] Spawning root shell: uid=0(root) gid=0(root)</pre>
+      <div class="tl">
+        <div><i></i><span>Reported</span><time>2026-08-02</time></div>
+        <div class="hl"><i></i><span>Patched</span><time>2026-09-19</time></div>
+        <div class="pub"><i></i><span>Published</span><time>2026-10-16</time></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Authorization Actions -->
+  <section class="wrap section" data-pc-reveal style="padding-bottom: 120px;">
+    <div class="panel" style="max-width: 720px;">
+      <div class="panel-head">
+        <h3>Final Publication Authorization</h3>
+        <span class="mono" style="font-size: 11px; color: var(--accent);">IRREVERSIBLE ACTION</span>
+      </div>
+
+      <p style="color: var(--body); font-size: 14px; line-height: 1.6;">
+        Authorizing release will assign the permanent public ID <code class="mono" style="color: var(--white);">PWN-2026-0142</code>, populate the report row into the public feed (<code class="mono" style="color: var(--white);">feed.html</code>), credit researcher <code class="mono" style="color: var(--white);">@nullbyte</code> with a verified published report, and send a final closure notice to the vendor.
+      </p>
+
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 12px;">
+        <a class="btn red" href="feed.html" data-req="POST /admin/reports/PWN-2026-0142/publish">
+          Authorize & Publish to Public Feed →
+        </a>
+        <a class="btn line" href="admin-vendors.html" data-req="GET /admin/vendors">
+          Return to Vendors (Hold Release)
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot"><div class="wrap"><span>PwnCore · Phase 1 prototype</span><nav><a href="feed.html">Feed</a><a href="#" data-req="GET /disclosure">Disclosure policy</a><a href="#" data-req="GET /contact">Contact</a></nav></div></footer>
+<script src="js/pwncore-header.js"></script>
+<script src="js/pwncore-nav.js"></script>
+<script src="js/pwncore-cursor.js"></script>
+</body></html>

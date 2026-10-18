@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>User Management | PwnCore Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/pwncore.css">
+<link rel="stylesheet" href="css/pwncore-motion.css">
+<link rel="stylesheet" href="css/pwncore-cursor.css">
+</head><body>
+<svg width="0" height="0" style="position: absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <path id="g4-P" d="M65 -700H504L611 -592V-347L503 -238H201V0H65ZM442 -352 477 -387V-551L442 -586H201V-352Z"></path>
+      <path id="g4-W" d="M25 -700H162L247 -206H251L390 -700H492L628 -206H632L717 -700H854L709 0H582L443 -492H439L297 0H170Z"></path>
+      <path id="g4-N" d="M65 -700H187L499 -225H501V-700H632V0H510L198 -474H196V0H65Z"></path>
+      <path id="g4-C" d="M55 -115V-585L170 -700H512L625 -587V-480H489V-537L442 -584H242L191 -533V-167L242 -116H442L489 -163V-220H625V-113L512 0H170Z"></path>
+      <path id="g4-R" d="M615 -232V0H479V-201L419 -268H201V0H65V-700H504L611 -592V-380L543 -311ZM201 -380H442L477 -415V-551L442 -586H201Z"></path>
+      <path id="g4-E" d="M65 -700H571V-585H201V-408H542V-295H201V-115H571V0H65Z"></path>
+      <path id="chev" d="M8 0 L32 14 L56 0 V9 L32 23 L8 9 Z"></path>
+      <symbol id="w4-radar" viewBox="0 -760 5100 820">
+        <g fill="#ffffff">
+          <use href="#g4-P" x="0"></use>
+          <use href="#g4-W" x="666"></use>
+          <use href="#g4-N" x="1565"></use>
+          <use href="#g4-C" x="2282"></use>
+          <use href="#g4-R" x="3762"></use>
+          <use href="#g4-E" x="4457"></use>
+        </g>
+        <circle cx="3367" cy="-350" r="290" fill="none" stroke="#ffffff" stroke-width="120"></circle>
+        <circle cx="3367" cy="-350" r="115" fill="none" stroke="#5a5a5a" stroke-width="22"></circle>
+        <path d="M3367 -350 L3400 -537.1 A190 190 0 0 1 3489.1 -495.5 Z" fill="#ffffff" fill-opacity="0.25"></path>
+        <path d="M3367 -350 L3489.1 -495.5" fill="none" stroke="#ffffff" stroke-width="36"></path>
+        <circle cx="3462" cy="-275" r="45" fill="#dc2229"></circle>
+      </symbol>
+    </defs>
+  </svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><path id="chev" d="M8 0 L32 14 L56 0 V9 L32 23 L8 9 Z"/></defs></svg>
+<header class="pc-header" id="pc-header"></header>
+
+<main>
+  <section class="wrap page-head pc-enter">
+    <div class="bar"></div>
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px;">
+      <div>
+        <h1 class="page">User & Researcher Moderation</h1>
+        <p>Inspect registered community accounts, monitor researcher certification status, and moderate platform privileges.</p>
+      </div>
+      <div style="font: 12px var(--mono); color: var(--muted);">
+        ACCOUNTS: <span id="user-total-count" style="color: var(--white);">7 TOTAL</span> · <span id="user-certified-count">3</span> CERTIFIED RESEARCHERS
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter & Search Controls -->
+  <section class="wrap section" data-pc-reveal style="padding-bottom: 24px;">
+    <div class="controls" style="gap: 16px;">
+      <div class="grp">
+        <span class="eyebrow">Account Filter:</span>
+        <nav class="chips sm" aria-label="User filter">
+          <a class="chip" href="admin-users.html" data-user-filter="all" aria-current="true"><span>All Accounts</span><i class="mono">7</i></a>
+          <a class="chip" href="admin-users.html?filter=researcher" data-user-filter="researcher"><span>Researchers</span><i class="mono">4</i></a>
+          <a class="chip" href="admin-users.html?filter=user" data-user-filter="user"><span>Users</span><i class="mono">3</i></a>
+          <a class="chip" href="admin-users.html?filter=suspended" data-user-filter="suspended"><span>Suspended</span><i class="mono">2</i></a>
+        </nav>
+      </div>
+
+      <div class="grp" style="margin-left: auto;">
+        <input class="input" id="user-search-input" type="search" placeholder="Search handle, email, or rank..." style="min-width: 260px; height: 38px; padding: 6px 12px; font-size: 13px;">
+      </div>
+    </div>
+  </section>
+
+  <!-- Users Table -->
+  <section class="wrap section" data-pc-reveal>
+    <div class="pc-table-wrap">
+      <table class="pc-table" id="users-table">
+        <thead>
+          <tr>
+            <th>User Handle</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Researcher Rank</th>
+            <th>Published Reports</th>
+            <th>Certification</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Row 1: Researcher -->
+          <tr data-role="researcher" data-status="active">
+            <td>
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <span style="display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; background: var(--surface); border: 1px solid var(--line-2); font: 600 12px var(--display); color: var(--white);">N</span>
+                <b class="mono" style="color: var(--white);">@nullbyte</b>
+              </div>
+            </td>
+            <td class="mono" style="color: var(--muted);">nullbyte@proton.me</td>
+            <td><span class="badge">Researcher</span></td>
+            <td>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <svg width="24" height="24" viewBox="0 0 64 64" role="img" aria-label="Rank 2 badge"><rect x="0.5" y="0.5" width="63" height="63" fill="none" stroke="#333333"/><g fill="#ffffff"><use href="#chev" x="0" y="14"/><use href="#chev" x="0" y="24"/></g></svg>
+                <span class="mono" style="font-size: 13px; color: var(--text);">Rank II · Bug Hunter</span>
+              </div>
+            </td>
+            <td class="mono" style="color: var(--white); font-weight: 600;">5</td>
+            <td><span class="badge done">Certified</span></td>
+            <td><span class="badge done">Active</span></td>
+            <td>
+              <div style="display: flex; gap: 8px;">
+                <a class="btn line sm" href="#mod-section" data-mod-handle="@nullbyte" data-mod-action="demote" data-req="GET /admin/users/@nullbyte/demote" style="border-color: var(--dim); color: var(--text);">Demote</a>
+                <a class="btn line sm" href="#mod-section" data-mod-handle="@nullbyte" data-mod-action="moderate" data-req="GET /admin/users/@nullbyte/moderate">Moderate</a>
+              </div>
+            </td>
+          </tr>
+
+          <!-- Row 2: Researcher -->
+          <tr data-role="researcher" data-status="active">
+            <td>
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <span style="display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; background: var(--surface); border: 1px solid var(--line-2); font: 600 12px var(--display); color: var(--white);">R</span>
+                <b class="mono" style="color: var(--white);">@ret2libc</b>
+              </div>
+            </td>
+            <td class="mono" style="color: var(--muted);">ret2libc@kernelsec.io</td>
+            <td><span class="badge">Researcher</span></td>
+            <td>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <svg width="24" height="24" viewBox="0 0 64 64" role="img" aria-label="Rank 3 badge"><rect x="0.5" y="0.5" width="63" height="63" fill="none" stroke="#333333"/><g fill="#ffffff"><use href="#chev" x="0" y="9"/><use href="#chev" x="0" y="19"/><use href="#chev" x="0" y="29"/></g></svg>
+                <span class="mono" style="font-size: 13px; color: var(--text);">Rank III · Exploit Dev</span>
+              </div>
+            </td>
+            <td class="mono" style="color: var(--white); font-weight: 600;">22</td>
+            <td><span class="badge done">Certified</span></td>
+            <td><span class="badge done">Active</span></td>
+            <td>
+              <div style="display: flex; gap: 8px;">
+                <a class="btn line sm" href="#mod-section" data-mod-handle="@ret2libc" data-mod-action="demote" data-req="GET /admin/users/@ret2libc/demote" style="border-color: var(--dim); color: var(--text);">Demote</a>
+                <a class="btn line sm" href="#mod-section" data-mod-handle="@ret2libc" data-mod-action="moderate" data-req="GET /admin/users/@ret2libc/moderate">Moderate</a>
+              </div>
+            </td>
+          </tr>
+
+          <!-- Row 3: Researcher -->
+          <tr data-role="researcher" data-status="active">
+            <td>
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <span style="display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; background: var(--surface); border: 1px solid var(--line-2); font: 600 12px var(--display); color: var(--white);">A</span>
+                <b class="mono" style="color: var(--white);">@auth0x</b>
+              </div>
+            </td>
+            <td class="mono" style="color: var(--muted);">auth0x@research.net</td>
+            <td><span class="badge">Researcher</span></td>
+            <td>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <svg width="24" height="24" viewBox="0 0 64 64" role="img" aria-label="Rank 1 badge"><rect x="0.5" y="0.5" width="63" height="63" fill="none" stroke="#333333"/><g fill="#ffffff"><use href="#chev" x="0" y="18"/></g></svg>
+                <span class="mono" style="font-size: 13px; color: var(--text);">Rank I · Script Kiddie</span>
+              </div>
+            </td>
+            <td class="mono" style="color: var(--white); font-weight: 600;">2</td>
+            <td><span class="badge done">Certified</span></td>
+            <td><span class="badge done">Active</span></td>
+            <td>
+              <div style="display: flex; gap: 8px;">
+                <a class="btn line sm" href="#mod-section" data-mod-handle="@auth0x" data-mod-action="demote" data-req="GET /admin/users/@auth0x/demote" style="border-color: var(--dim); color: var(--text);">Demote</a>
+                <a class="btn line sm" href="#mod-section" data-mod-handle="@auth0x" data-mod-action="moderate" data-req="GET /admin/users/@auth0x/moderate">Moderate</a>
+              </div>
+            </td>
+          </tr>
+
+          <!-- Row 4: User -->
+          <tr data-role="user" data-status="active">
+            <td>
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <span style="display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; background: var(--surface); border: 1px solid var(--line-2); font: 600 12px var(--display); color: var(--white);">N</span>
+                <b class="mono" style="color: var(--white);">@newcomer</b>
+              </div>
+            </td>
+            <td class="mono" style="color: var(--muted);">student@university.edu</td>
+            <td><span class="badge">User</span></td>
+            <td class="mono" style="color: var(--dim);">None (0 reports)</td>
+            <td class="mono" style="color: var(--dim);">0</td>
+            <td><span class="badge" style="color: var(--dim);">Uncertified</span></td>
+            <td><span class="badge done">Active</span></td>
+            <td>
+              <a class="btn line sm" href="#mod-section" data-mod-handle="@newcomer" data-mod-action="promote" data-req="GET /admin/users/@newcomer/promote">Promote</a>
+            </td>
+          </tr>
+
+          <!-- Row 5: User -->
+          <tr data-role="user" data-status="active">
+            <td>
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <span style="display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; background: var(--surface); border: 1px solid var(--line-2); font: 600 12px var(--display); color: var(--white);">J</span>
+                <b class="mono" style="color: var(--white);">@johndoe_dev</b>
+              </div>
+            </td>
+            <td class="mono" style="color: var(--muted);">john.doe@company.org</td>
+            <td><span class="badge">User</span></td>
+            <td class="mono" style="color: var(--dim);">None (0 reports)</td>
+            <td class="mono" style="color: var(--dim);">0</td>
+            <td><span class="badge" style="color: var(--dim);">Uncertified</span></td>
+            <td><span class="badge done">Active</span></td>
+            <td>
+              <a class="btn line sm" href="#mod-section" data-mod-handle="@johndoe_dev" data-mod-action="promote" data-req="GET /admin/users/@johndoe_dev/promote">Promote</a>
+            </td>
+          </tr>
+
+          <!-- Row 6: Suspended User -->
+          <tr data-role="user" data-status="suspended">
+            <td>
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <span style="display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; background: var(--surface); border: 1px solid var(--accent); font: 600 12px var(--display); color: var(--accent);">S</span>
+                <b class="mono" style="color: var(--muted);">@spammer_bot</b>
+              </div>
+            </td>
+            <td class="mono" style="color: var(--dim);">bot49@mailproxy.cc</td>
+            <td><span class="badge" style="color: var(--dim);">User</span></td>
+            <td class="mono" style="color: var(--dim);">None</td>
+            <td class="mono" style="color: var(--dim);">0</td>
+            <td><span class="badge" style="color: var(--dim);">Uncertified</span></td>
+            <td><span class="badge alert"><span class="sq-mark">■</span> Suspended</span></td>
+            <td>
+              <div style="display: flex; gap: 8px;">
+                <a class="btn danger sm" href="#mod-section" data-mod-handle="@spammer_bot" data-mod-action="ban" data-req="POST /admin/users/@spammer_bot/ban">Ban User</a>
+                <a class="btn line sm" href="#mod-section" data-mod-handle="@spammer_bot" data-mod-action="restore" data-req="POST /admin/users/@spammer_bot/restore">Restore</a>
+              </div>
+            </td>
+          </tr>
+
+          <!-- Row 7: Suspended Researcher -->
+          <tr data-role="researcher" data-status="suspended">
+            <td>
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <span style="display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; background: var(--surface); border: 1px solid var(--accent); font: 600 12px var(--display); color: var(--accent);">X</span>
+                <b class="mono" style="color: var(--muted);">@xploit_abuser</b>
+              </div>
+            </td>
+            <td class="mono" style="color: var(--dim);">leak@darkmesh.su</td>
+            <td><span class="badge" style="color: var(--dim);">Researcher</span></td>
+            <td class="mono" style="color: var(--dim);">Rank I (Lapsed)</td>
+            <td class="mono" style="color: var(--dim);">1</td>
+            <td><span class="badge" style="color: var(--dim);">Revoked</span></td>
+            <td><span class="badge alert"><span class="sq-mark">■</span> Suspended</span></td>
+            <td>
+              <div style="display: flex; gap: 8px;">
+                <a class="btn danger sm" href="#mod-section" data-mod-handle="@xploit_abuser" data-mod-action="ban" data-req="POST /admin/users/@xploit_abuser/ban">Ban User</a>
+                <a class="btn line sm" href="#mod-section" data-mod-handle="@xploit_abuser" data-mod-action="restore" data-req="POST /admin/users/@xploit_abuser/restore">Restore</a>
+              </div>
+            </td>
+          </tr>
+
+          <!-- Empty State Row -->
+          <tr id="user-empty-row" hidden>
+            <td colspan="8" style="text-align: center; padding: 48px 16px; color: var(--muted);">
+              <b style="color: var(--white); display: block; font-size: 16px; margin-bottom: 6px;">No matching accounts found</b>
+              <span>Try selecting another account filter or clearing your search term.</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Moderation Action Panel -->
+  <section class="wrap section" id="mod-section" data-pc-reveal style="padding-bottom: 120px;">
+    <div class="panel" style="max-width: 640px;">
+      <div class="panel-head">
+        <h3>Administrative Account Moderation</h3>
+        <span class="mono" style="font-size: 11px; color: var(--muted);">GOVERNANCE & RBAC</span>
+      </div>
+
+      <form style="display: flex; flex-direction: column;">
+        <div class="field">
+          <label for="mod-user">Target Account</label>
+          <select class="select" id="mod-user">
+            <option value="@spammer_bot" selected>@spammer_bot (bot49@mailproxy.cc)</option>
+            <option value="@xploit_abuser">@xploit_abuser (leak@darkmesh.su)</option>
+            <option value="@nullbyte">@nullbyte (nullbyte@proton.me)</option>
+            <option value="@ret2libc">@ret2libc (ret2libc@kernelsec.io)</option>
+            <option value="@auth0x">@auth0x (auth0x@research.net)</option>
+            <option value="@newcomer">@newcomer (student@university.edu)</option>
+            <option value="@johndoe_dev">@johndoe_dev (john.doe@company.org)</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="mod-act">Action</label>
+          <select class="select" id="mod-act">
+            <option value="demote" selected>Demote Researcher (Issue Warning & Revoke Rank)</option>
+            <option value="promote">Promote to Certified Researcher</option>
+            <option value="ban">Permanent Platform Ban (Strike 2 / Severe Violation)</option>
+            <option value="suspend">Temporary Suspension (30 Days)</option>
+            <option value="revoke">Revoke API Keys & Force Password Reset</option>
+            <option value="restore">Lift Suspension / Clear Warnings & Restore Account</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="mod-reason">Administrative Rationale / Incident Reference</label>
+          <textarea class="textarea" id="mod-reason" style="min-height: 80px;">First warning (Strike 1): Researcher misbehavior / violation of disclosure guidelines. Researcher rank revoked, demoted to probation status. Repeat offense will result in permanent platform ban.</textarea>
+          <span class="hint">Rationale is signed and logged permanently in the system security audit trail.</span>
+        </div>
+
+        <div style="display: flex; gap: 12px; margin-top: 8px;">
+          <button type="button" id="btn-mod-exec" class="btn danger" style="flex: 1; justify-content: center;" data-req="POST /admin/users/moderate">
+            Execute Moderation Action
+          </button>
+          <button type="button" id="btn-mod-reset" class="btn line" style="flex: 1; justify-content: center;" data-req="RESET /admin/users/moderation">
+            Reset Form
+          </button>
+        </div>
+        <div id="mod-feedback" class="callout" style="display: none; margin-top: 14px;"></div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="foot"><div class="wrap"><span>PwnCore · Phase 1 prototype</span><nav><a href="feed.html">Feed</a><a href="#" data-req="GET /disclosure">Disclosure policy</a><a href="#" data-req="GET /contact">Contact</a></nav></div></footer>
+<script src="js/pwncore-header.js"></script>
+<script src="js/pwncore-nav.js"></script>
+<script src="js/pwncore-select.js"></script>
+<script src="js/pwncore-cursor.js"></script>
+<script>
+(function() {
+  var chips = document.querySelectorAll('[data-user-filter]');
+  var tableBody = document.querySelector('#users-table tbody');
+  var rows = tableBody ? Array.prototype.slice.call(tableBody.querySelectorAll('tr[data-role]')) : [];
+  var searchInput = document.getElementById('user-search-input');
+  var emptyRow = document.getElementById('user-empty-row');
+  var modSelect = document.getElementById('mod-user');
+
+  var currentFilter = 'all';
+  try {
+    var p = new URLSearchParams(location.search);
+    var requested = p.get('filter') || p.get('role') || p.get('status');
+    if (requested) currentFilter = requested.toLowerCase();
+  } catch (e) {}
+
+  // Dynamically compute and synchronize account filter counts from table rows
+  function updateCounts() {
+    var allCount = rows.length;
+    var researcherCount = rows.filter(function(r) { return (r.getAttribute('data-role') || '').toLowerCase() === 'researcher'; }).length;
+    var userCount = rows.filter(function(r) { return (r.getAttribute('data-role') || '').toLowerCase() === 'user'; }).length;
+    var suspendedCount = rows.filter(function(r) { return (r.getAttribute('data-status') || '').toLowerCase() === 'suspended'; }).length;
+
+    var allNum = document.querySelector('[data-user-filter="all"] i.mono');
+    var researcherNum = document.querySelector('[data-user-filter="researcher"] i.mono');
+    var userNum = document.querySelector('[data-user-filter="user"] i.mono');
+    var suspendedNum = document.querySelector('[data-user-filter="suspended"] i.mono');
+    var totalUsersEl = document.getElementById('user-total-count');
+    var certifiedCountEl = document.getElementById('user-certified-count');
+
+    if (allNum) allNum.textContent = allCount;
+    if (researcherNum) researcherNum.textContent = researcherCount;
+    if (userNum) userNum.textContent = userCount;
+    if (suspendedNum) suspendedNum.textContent = suspendedCount;
+    if (totalUsersEl) totalUsersEl.textContent = allCount + ' TOTAL';
+    if (certifiedCountEl) {
+      var certifiedCount = rows.filter(function(r) {
+        return (r.getAttribute('data-role') || '').toLowerCase() === 'researcher' &&
+               r.textContent.indexOf('Certified') !== -1;
+      }).length;
+      certifiedCountEl.textContent = certifiedCount;
+    }
+  }
+
+  updateCounts();
+
+  function applyFilters() {
+    var query = (searchInput ? searchInput.value : '').toLowerCase().trim();
+    var visibleCount = 0;
+
+    rows.forEach(function(row) {
+      var role = (row.getAttribute('data-role') || '').toLowerCase();
+      var status = (row.getAttribute('data-status') || '').toLowerCase();
+      var text = row.textContent.toLowerCase();
+
+      var matchesFilter = false;
+      if (currentFilter === 'all') {
+        matchesFilter = true;
+      } else if (currentFilter === 'researcher') {
+        matchesFilter = (role === 'researcher');
+      } else if (currentFilter === 'user') {
+        matchesFilter = (role === 'user');
+      } else if (currentFilter === 'suspended') {
+        matchesFilter = (status === 'suspended');
+      }
+
+      var matchesSearch = !query || (text.indexOf(query) !== -1);
+
+      if (matchesFilter && matchesSearch) {
+        row.hidden = false;
+        visibleCount++;
+      } else {
+        row.hidden = true;
+      }
+    });
+
+    if (emptyRow) {
+      emptyRow.hidden = (visibleCount > 0);
+    }
+
+    chips.forEach(function(chip) {
+      var val = chip.getAttribute('data-user-filter');
+      if (val === currentFilter) {
+        chip.setAttribute('aria-current', 'true');
+      } else {
+        chip.removeAttribute('aria-current');
+      }
+    });
+  }
+
+  chips.forEach(function(chip) {
+    chip.addEventListener('click', function(e) {
+      e.preventDefault();
+      currentFilter = chip.getAttribute('data-user-filter') || 'all';
+      try {
+        var url = new URL(location.href);
+        if (currentFilter === 'all') url.searchParams.delete('filter');
+        else url.searchParams.set('filter', currentFilter);
+        history.replaceState(null, '', url.toString());
+      } catch (err) {}
+      applyFilters();
+    });
+  });
+
+  if (searchInput) {
+    searchInput.addEventListener('input', applyFilters);
+  }
+
+  // Pre-fill moderation form when clicking Promote / Demote / Moderate / Ban / Restore
+  function bindActionButtons() {
+    document.querySelectorAll('[data-mod-handle]').forEach(function(btn) {
+      if (btn._pcBound) return;
+      btn._pcBound = true;
+
+      btn.addEventListener('click', function() {
+        var h = btn.getAttribute('data-mod-handle');
+        var actType = btn.getAttribute('data-mod-action') || 'moderate';
+
+        if (modSelect) {
+          for (var i = 0; i < modSelect.options.length; i++) {
+            if (modSelect.options[i].value.indexOf(h) !== -1) {
+              modSelect.selectedIndex = i;
+              if (modSelect._pcSyncSelect) modSelect._pcSyncSelect();
+              break;
+            }
+          }
+        }
+
+        var actEl = document.getElementById('mod-act');
+        var reasonEl = document.getElementById('mod-reason');
+
+        if (actEl) {
+          var targetVal = 'demote';
+          if (actType === 'demote') {
+            targetVal = 'demote';
+            if (reasonEl) reasonEl.value = 'First Warning (Strike 1): Researcher code of conduct violation. Researcher rank revoked, demoted to probation status. Formal warning issued: a second misbehavior will result in an automatic permanent ban.';
+          } else if (actType === 'promote') {
+            targetVal = 'promote';
+            if (reasonEl) reasonEl.value = 'Candidate passed triage verification review. Quality security vulnerability reports submitted and verified. Promoted to Certified Researcher.';
+          } else if (actType === 'ban') {
+            targetVal = 'ban';
+            if (reasonEl) reasonEl.value = 'Second strike / critical violation: Submitting malicious payloads across triage queues. Permanent platform ban executed.';
+          } else if (actType === 'restore') {
+            targetVal = 'restore';
+            if (reasonEl) reasonEl.value = 'Remediation review completed. Disciplinary suspension lifted and account restored to normal status.';
+          } else {
+            targetVal = 'demote';
+            if (reasonEl) reasonEl.value = 'Administrative moderation review of researcher permissions and submission quotas.';
+          }
+
+          for (var j = 0; j < actEl.options.length; j++) {
+            if (actEl.options[j].value === targetVal) {
+              actEl.selectedIndex = j;
+              if (actEl._pcSyncSelect) actEl._pcSyncSelect();
+              break;
+            }
+          }
+        }
+      });
+    });
+  }
+
+  bindActionButtons();
+
+  // Execute Moderation Action (Demote, Ban, Promote, Restore)
+  var modExec = document.getElementById('btn-mod-exec');
+  var modFb = document.getElementById('mod-feedback');
+
+  if (modExec && modFb) {
+    modExec.addEventListener('click', function() {
+      var u = modSelect ? modSelect.value : 'Target Account';
+      var actEl = document.getElementById('mod-act');
+      var actionVal = actEl ? actEl.value : 'demote';
+      var actionLabel = actEl && actEl.options[actEl.selectedIndex] ? actEl.options[actEl.selectedIndex].textContent : 'Action';
+      var reasonEl = document.getElementById('mod-reason');
+      var reason = reasonEl ? reasonEl.value : '';
+
+      var targetRow = rows.find(function(r) {
+        return r.textContent.indexOf(u) !== -1;
+      });
+
+      if (actionVal === 'demote') {
+        if (targetRow) {
+          targetRow.setAttribute('data-role', 'user');
+          targetRow.setAttribute('data-status', 'warned');
+          var cells = targetRow.querySelectorAll('td');
+          if (cells[2]) cells[2].innerHTML = '<span class="badge" style="color: var(--dim);">User</span>';
+          if (cells[3]) cells[3].innerHTML = '<span class="mono" style="font-size: 13px; color: var(--accent);">Rank Revoked · 1 Warning</span>';
+          if (cells[5]) cells[5].innerHTML = '<span class="badge alert" style="color: #f39c12; border-color: #f39c12;"><span class="sq-mark" style="color: #f39c12;">■</span> Warned (1/2)</span>';
+          if (cells[6]) cells[6].innerHTML = '<span class="badge done">Probation</span>';
+          if (cells[7]) {
+            cells[7].innerHTML = '<div style="display: flex; gap: 8px;">' +
+              '<a class="btn danger sm" href="#mod-section" data-mod-handle="' + u + '" data-mod-action="ban" data-req="POST /admin/users/' + u + '/ban">Ban (Strike 2)</a>' +
+              '<a class="btn line sm" href="#mod-section" data-mod-handle="' + u + '" data-mod-action="restore" data-req="POST /admin/users/' + u + '/restore">Restore</a>' +
+              '</div>';
+          }
+        }
+        modFb.style.display = 'flex';
+        modFb.style.borderLeftColor = 'var(--accent)';
+        modFb.innerHTML = '<b>[FIRST_WARNING_ISSUED] Demoted & Strike 1 Recorded</b><span>' + u + ' has lost their researcher rank and is placed on disciplinary probation (Warned 1/2). If ' + u + ' misbehaves again, their account will be permanently banned.</span>';
+      } else if (actionVal === 'ban') {
+        if (targetRow) {
+          targetRow.setAttribute('data-status', 'suspended');
+          var cells = targetRow.querySelectorAll('td');
+          if (cells[5]) cells[5].innerHTML = '<span class="badge" style="color: var(--dim);">Revoked</span>';
+          if (cells[6]) cells[6].innerHTML = '<span class="badge alert"><span class="sq-mark">■</span> Suspended</span>';
+          if (cells[7]) {
+            cells[7].innerHTML = '<div style="display: flex; gap: 8px;">' +
+              '<a class="btn danger sm" href="#mod-section" data-mod-handle="' + u + '" data-mod-action="ban" data-req="POST /admin/users/' + u + '/ban">Ban User</a>' +
+              '<a class="btn line sm" href="#mod-section" data-mod-handle="' + u + '" data-mod-action="restore" data-req="POST /admin/users/' + u + '/restore">Restore</a>' +
+              '</div>';
+          }
+        }
+        modFb.style.display = 'flex';
+        modFb.style.borderLeftColor = 'var(--accent)';
+        modFb.innerHTML = '<b>[PLATFORM_BAN_EXECUTED] Account Suspended (Strike 2 / Severe)</b><span>Permanent platform ban applied to ' + u + '. Access tokens revoked and account locked permanently.</span>';
+      } else if (actionVal === 'promote') {
+        if (targetRow) {
+          targetRow.setAttribute('data-role', 'researcher');
+          targetRow.setAttribute('data-status', 'active');
+          var cells = targetRow.querySelectorAll('td');
+          if (cells[2]) cells[2].innerHTML = '<span class="badge">Researcher</span>';
+          if (cells[3]) cells[3].innerHTML = '<div style="display: flex; align-items: center; gap: 8px;"><svg width="24" height="24" viewBox="0 0 64 64" role="img" aria-label="Rank 1 badge"><rect x="0.5" y="0.5" width="63" height="63" fill="none" stroke="#333333"/><g fill="#ffffff"><use href="#chev" x="0" y="18"/></g></svg><span class="mono" style="font-size: 13px; color: var(--text);">Rank I · Bug Hunter</span></div>';
+          if (cells[5]) cells[5].innerHTML = '<span class="badge done">Certified</span>';
+          if (cells[6]) cells[6].innerHTML = '<span class="badge done">Active</span>';
+          if (cells[7]) {
+            cells[7].innerHTML = '<div style="display: flex; gap: 8px;">' +
+              '<a class="btn line sm" href="#mod-section" data-mod-handle="' + u + '" data-mod-action="demote" data-req="GET /admin/users/' + u + '/demote" style="border-color: var(--dim); color: var(--text);">Demote</a>' +
+              '<a class="btn line sm" href="#mod-section" data-mod-handle="' + u + '" data-mod-action="moderate" data-req="GET /admin/users/' + u + '/moderate">Moderate</a>' +
+              '</div>';
+          }
+        }
+        modFb.style.display = 'flex';
+        modFb.style.borderLeftColor = 'var(--text)';
+        modFb.innerHTML = '<b>[PROMOTION_EXECUTED] Privileges Promoted</b><span>' + u + ' promoted to Certified Researcher (Rank I). Vulnerability disclosure submission unlocked.</span>';
+      } else if (actionVal === 'restore') {
+        if (targetRow) {
+          targetRow.setAttribute('data-status', 'active');
+          var cells = targetRow.querySelectorAll('td');
+          if (cells[6]) cells[6].innerHTML = '<span class="badge done">Active</span>';
+        }
+        modFb.style.display = 'flex';
+        modFb.style.borderLeftColor = 'var(--text)';
+        modFb.innerHTML = '<b>[ACCOUNT_RESTORED] Disciplinary Actions Cleared</b><span>' + u + ' has been restored to Active status and disciplinary warnings have been cleared.</span>';
+      } else {
+        modFb.style.display = 'flex';
+        modFb.style.borderLeftColor = 'var(--text)';
+        modFb.innerHTML = '<b>[ACTION_EXECUTED] ' + actionLabel + '</b><span>Action applied to ' + u + '. Cryptographically signed and recorded in platform audit logs.</span>';
+      }
+
+      bindActionButtons();
+      updateCounts();
+      applyFilters();
+    });
+  }
+
+  // Reset Form button logic
+  var modReset = document.getElementById('btn-mod-reset');
+  if (modReset) {
+    modReset.addEventListener('click', function() {
+      if (modSelect) {
+        modSelect.selectedIndex = 0;
+        if (modSelect._pcSyncSelect) modSelect._pcSyncSelect();
+      }
+      var actEl = document.getElementById('mod-act');
+      if (actEl) {
+        actEl.selectedIndex = 0;
+        if (actEl._pcSyncSelect) actEl._pcSyncSelect();
+      }
+      var reasonEl = document.getElementById('mod-reason');
+      if (reasonEl) {
+        reasonEl.value = '';
+      }
+      if (modFb) {
+        modFb.style.display = 'none';
+        modFb.innerHTML = '';
+      }
+    });
+  }
+
+  applyFilters();
+})();
+</script>
+</body></html>

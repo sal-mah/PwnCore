@@ -2,13 +2,17 @@
    Mouse devices only. Touch screens keep their normal behavior. Inputs keep the text cursor. */
 html.pc-cur, html.pc-cur * { cursor: none !important; }
 html.pc-cur input, html.pc-cur textarea { cursor: text !important; }
-html.pc-cur select { cursor: auto !important; }
+html.pc-cur select, html.pc-cur select * { cursor: none !important; }
+html.pc-cur .pc-scrollbar, html.pc-cur .pc-scrollbar * { cursor: none !important; }
+html.pc-cur .pc-table-wrap, html.pc-cur .pc-table-wrap * { cursor: none !important; }
+html.pc-cur .pc-modal, html.pc-cur .pc-modal * { cursor: none !important; }
+body.pc-is-dragging, body.pc-is-dragging * { cursor: none !important; }
 #pc-cursor { position: fixed; left: 0; top: 0; z-index: 99999; pointer-events: none; opacity: 0; will-change: transform; }
 html.pc-moved #pc-cursor { opacity: 1; }
 #pc-cursor[data-hide="1"] { opacity: 0; }
 #pc-cursor .pc-dot { position: absolute; left: -3px; top: -3px; width: 6px; height: 6px; background: #ffffff; transition: transform .12s cubic-bezier(.2,.7,.2,1), background-color .12s linear; }
 #pc-cursor[data-hot="1"] .pc-dot { background: var(--accent, #dc2229); transform: scale(1.35); }
-#pc-cursor.press .pc-dot { transform: scale(.7); }
+#pc-cursor.press .pc-dot { transform: scale(.9); background: var(--accent, #dc2229); }
 #pc-cursor .pc-tag { position: absolute; left: 12px; top: 12px; padding: 3px 7px; background: #101010; border: 1px solid #333333; color: #ededed; font: 11px 'Geist Mono', ui-monospace, monospace; white-space: nowrap; }
 #pc-cursor .pc-tag:empty { display: none; }
 #pc-cursor[data-hot="1"] .pc-tag { border-color: var(--accent, #dc2229); }

@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Report Verification & Triage | PwnCore Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/pwncore.css">
+<link rel="stylesheet" href="css/pwncore-motion.css">
+<link rel="stylesheet" href="css/pwncore-cursor.css">
+</head><body>
+<svg width="0" height="0" style="position: absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <path id="g4-P" d="M65 -700H504L611 -592V-347L503 -238H201V0H65ZM442 -352 477 -387V-551L442 -586H201V-352Z"></path>
+      <path id="g4-W" d="M25 -700H162L247 -206H251L390 -700H492L628 -206H632L717 -700H854L709 0H582L443 -492H439L297 0H170Z"></path>
+      <path id="g4-N" d="M65 -700H187L499 -225H501V-700H632V0H510L198 -474H196V0H65Z"></path>
+      <path id="g4-C" d="M55 -115V-585L170 -700H512L625 -587V-480H489V-537L442 -584H242L191 -533V-167L242 -116H442L489 -163V-220H625V-113L512 0H170Z"></path>
+      <path id="g4-R" d="M615 -232V0H479V-201L419 -268H201V0H65V-700H504L611 -592V-380L543 -311ZM201 -380H442L477 -415V-551L442 -586H201Z"></path>
+      <path id="g4-E" d="M65 -700H571V-585H201V-408H542V-295H201V-115H571V0H65Z"></path>
+      <path id="chev" d="M8 0 L32 14 L56 0 V9 L32 23 L8 9 Z"></path>
+      <symbol id="w4-radar" viewBox="0 -760 5100 820">
+        <g fill="#ffffff">
+          <use href="#g4-P" x="0"></use>
+          <use href="#g4-W" x="666"></use>
+          <use href="#g4-N" x="1565"></use>
+          <use href="#g4-C" x="2282"></use>
+          <use href="#g4-R" x="3762"></use>
+          <use href="#g4-E" x="4457"></use>
+        </g>
+        <circle cx="3367" cy="-350" r="290" fill="none" stroke="#ffffff" stroke-width="120"></circle>
+        <circle cx="3367" cy="-350" r="115" fill="none" stroke="#5a5a5a" stroke-width="22"></circle>
+        <path d="M3367 -350 L3400 -537.1 A190 190 0 0 1 3489.1 -495.5 Z" fill="#ffffff" fill-opacity="0.25"></path>
+        <path d="M3367 -350 L3489.1 -495.5" fill="none" stroke="#ffffff" stroke-width="36"></path>
+        <circle cx="3462" cy="-275" r="45" fill="#dc2229"></circle>
+      </symbol>
+    </defs>
+  </svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><path id="chev" d="M8 0 L32 14 L56 0 V9 L32 23 L8 9 Z"/></defs></svg>
+<header class="pc-header" id="pc-header"></header>
+
+<main>
+  <section class="wrap page-head pc-enter">
+    <div class="bar"></div>
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px;">
+      <div>
+        <div class="eyebrow" style="margin-bottom: 6px;">
+          <a href="admin-queue.html" style="color: var(--muted); text-decoration: underline;">Review Queue</a> / REPORT PWN-2026-0151
+        </div>
+        <h1 class="page" style="font-size: clamp(26px, 3.5vw, 36px);">Linux eBPF ring buffer out-of-bounds write LPE</h1>
+      </div>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <span class="badge alert"><span class="sq-mark">■</span> Awaiting Decision</span>
+        <span class="sev"><span class="sq"><span class="crit">■■■■</span></span> Critical 9.8</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dual-pane Review Container -->
+  <section class="wrap section" data-pc-reveal style="padding-bottom: 120px;">
+    <div class="admin-split">
+
+      <!-- Left Column: Researcher Submission Details -->
+      <div style="display: flex; flex-direction: column; gap: 24px;">
+
+        <!-- Metadata Card -->
+        <div class="card" style="padding: 20px;">
+          <div class="top">
+            <span class="mono" style="font-size: 13px; color: var(--muted);">SUBMISSION METADATA</span>
+            <span class="badge done">Candidate Verified</span>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-top: 8px; font-size: 14px;">
+            <div>
+              <span class="eyebrow" style="display:block;">Affected Target</span>
+              <b style="color: var(--white);">Linux Kernel (bpf subsys 6.4–6.8)</b>
+            </div>
+            <div>
+              <span class="eyebrow" style="display:block;">Researcher</span>
+              <b style="color: var(--white); font-family: var(--mono);">@ret2libc</b> <span style="font-size: 12px; color: var(--muted);">(Rank III)</span>
+            </div>
+            <div>
+              <span class="eyebrow" style="display:block;">Category</span>
+              <b style="color: var(--white);">Kernel</b>
+            </div>
+            <div>
+              <span class="eyebrow" style="display:block;">CWE Class</span>
+              <b style="color: var(--white); font-family: var(--mono);">CWE-787 Out-of-bounds Write</b>
+            </div>
+          </div>
+        </div>
+
+        <!-- Technical Description -->
+        <div class="card">
+          <div class="top">
+            <span class="mono" style="font-size: 13px; color: var(--muted);">VULNERABILITY DESCRIPTION</span>
+          </div>
+          <p style="color: var(--body); line-height: 1.6;">
+            A flaw in the Linux kernel eBPF ring buffer memory allocation allows unprivileged local users with bpf syscall permissions to bypass verifier bounds checking. When allocating contiguous ring buffer pages via <code class="mono" style="color: var(--text);">bpf_ringbuf_reserve</code>, an integer signedness mismatch in calculating slot offsets triggers an out-of-bounds heap write into neighboring slab allocations (<code class="mono" style="color: var(--text);">kmalloc-512</code>).
+          </p>
+          <p style="color: var(--body); line-height: 1.6; margin-top: 12px;">
+            This flaw allows arbitrary code execution in Ring 0, leading to immediate root privilege escalation and full container escape in Kubernetes/Docker environments with unprivileged eBPF enabled.
+          </p>
+        </div>
+
+        <!-- Reproduction Steps -->
+        <div class="card">
+          <div class="top">
+            <span class="mono" style="font-size: 13px; color: var(--muted);">REPRODUCTION STEPS</span>
+          </div>
+          <ol style="margin: 0; padding-left: 20px; color: var(--body); line-height: 1.7; font-size: 14px;">
+            <li>Deploy clean Ubuntu 22.04 LTS VM with kernel 6.5.0-generic.</li>
+            <li>Enable unprivileged eBPF: <code class="mono" style="color: var(--text);">sysctl kernel.unprivileged_bpf_disabled=0</code>.</li>
+            <li>Compile the attached Proof-of-Concept exploit: <code class="mono" style="color: var(--text);">gcc -O2 poc.c -o exp -lbpf</code>.</li>
+            <li>Execute <code class="mono" style="color: var(--text);">./exp</code> as standard low-privilege user <code class="mono" style="color: var(--text);">nobody</code>.</li>
+            <li>Observe kernel slab corruption, credential structure rewrite, and spawned root shell <code class="mono" style="color: var(--text);">/bin/sh (uid=0)</code>.</li>
+          </ol>
+        </div>
+
+        <!-- Proof-of-Concept / Raw Log -->
+        <div class="card">
+          <div class="top">
+            <span class="mono" style="font-size: 13px; color: var(--muted);">PROOF-OF-CONCEPT TRACE & LOG</span>
+            <span class="mono" style="font-size: 11px; color: var(--dim);">KERNEL DMESG LOG</span>
+          </div>
+          <pre class="log">[  142.109281] bpf_ringbuf: alloc requested size=0xffffffff (neg offset bypass)
+[  142.109299] BUG: unable to handle page fault for address: ffff88810482a000
+[  142.109312] #PF: supervisor write access in kernel mode
+[  142.109325] CPU: 2 PID: 4091 Comm: exp Not tainted 6.5.0-28-generic #29-Ubuntu
+[  142.109338] RIP: 0010:bpf_ringbuf_reserve+0x8a/0x140
+[  142.109355] RSP: 0018:ffffc900018f3d60 EFLAGS: 00010246
+[  142.109370] [*] Target credentials rewritten: cred->uid = 0, cred->gid = 0
+[  142.109385] [*] Spawning root shell...
+root@pwncore-sandbox:~# id
+uid=0(root) gid=0(root) groups=0(root)</pre>
+        </div>
+      </div>
+
+      <!-- Right Column: Automated Triage & Admin Action Panel -->
+      <div style="display: flex; flex-direction: column; gap: 24px;">
+
+        <!-- Automated Triage Intelligence Card -->
+        <div class="panel">
+          <div class="panel-head">
+            <h3>Automated Triage Engine</h3>
+            <span class="badge done">ANALYSIS COMPLETE</span>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <div>
+              <div class="eyebrow">Calculated CVSS 3.1</div>
+              <div style="display: flex; align-items: baseline; gap: 8px; margin-top: 4px;">
+                <b style="font: 700 32px/1 var(--display); color: var(--white);">9.8</b>
+                <span class="sev"><span class="sq"><span class="crit">■■■■</span></span> CRITICAL</span>
+              </div>
+              <div class="vec" style="margin-top: 6px;">CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H</div>
+            </div>
+
+            <div style="border-top: 1px solid var(--line); padding-top: 12px;">
+              <div class="eyebrow">Duplicate Similarity Index</div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px;">
+                <b style="font: 600 16px var(--sans); color: var(--white);">2% Similarity</b>
+                <span style="font: 11px var(--mono); color: var(--white);">UNIQUE EXPLOIT</span>
+              </div>
+              <div class="embargo-meter" style="margin-top: 6px;">
+                <div class="meter-track">
+                  <div class="meter-fill" style="width: 2%; background: var(--text);"></div>
+                </div>
+              </div>
+              <span class="hint" style="display: block; margin-top: 4px;">Compared against 1,284 published & archived exploit reports.</span>
+            </div>
+
+            <div style="border-top: 1px solid var(--line); padding-top: 12px;">
+              <div class="eyebrow">Static Verifier Heuristics</div>
+              <ul style="margin: 6px 0 0; padding-left: 18px; font: 12px var(--mono); color: var(--body); display: flex; flex-direction: column; gap: 4px;">
+                <li>[PASS] PoC source compiled with 0 warnings</li>
+                <li>[PASS] Credential overwrite primitive verified</li>
+                <li>[PASS] Reproducible in isolated microVM sandbox</li>
+                <li>[PASS] No customer credentials or private data detected</li>
+              </ul>
+            </div>
+
+            <div class="callout" style="border-left-color: var(--white);">
+              <b>Triage Recommendation</b>
+              <span>High confidence zero-day. Accept report, verify Critical severity, and notify vendor security team immediately.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Admin Decision Form Card -->
+        <div class="panel">
+          <div class="panel-head">
+            <h3>Admin Decision Center</h3>
+            <span class="mono" style="font-size: 11px; color: var(--accent);">ACTION REQUIRED</span>
+          </div>
+
+          <form action="admin-vendors.html" method="get" style="display: flex; flex-direction: column;">
+            <div class="field">
+              <label for="conf-sev">Confirm or Adjust Severity</label>
+              <select class="select" id="conf-sev" data-req="SET /severity">
+                <option selected>Critical · CVSS 9.8 (Confirm Triage)</option>
+                <option>High · CVSS 8.8</option>
+                <option>Medium · CVSS 6.1</option>
+                <option>Low · CVSS 3.7</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="conf-cat">Attack Surface Category</label>
+              <select class="select" id="conf-cat" data-req="SET /category">
+                <option selected>Kernel</option>
+                <option>Web</option>
+                <option>Mobile</option>
+                <option>Network</option>
+                <option>Firmware</option>
+                <option>Cloud and API</option>
+              </select>
+            </div>
+
+            <!-- Action 1: Verify Report -->
+            <div style="border-top: 1px solid var(--line); padding-top: 16px; margin-top: 8px;">
+              <a class="btn red" href="admin-vendors.html?id=PWN-2026-0151" style="width: 100%; justify-content: center;" data-req="POST /admin/reports/PWN-2026-0151/verify">
+                Verify Report & Queue for Vendor →
+              </a>
+              <span class="hint" style="display: block; text-align: center; margin-top: 6px;">Transitions status to VERIFIED and awards candidate points to @ret2libc.</span>
+            </div>
+
+            <!-- Action 2: Reject Report -->
+            <div style="border-top: 1px solid var(--line); padding-top: 16px; margin-top: 16px;">
+              <div class="field">
+                <label for="rej-reason">Rejection Reason (If Rejecting)</label>
+                <select class="select" id="rej-reason" data-req="SELECT /rejection-reason">
+                  <option value="" disabled selected>-- Select rejection rationale --</option>
+                  <option>Duplicate of existing vulnerability</option>
+                  <option>Out of scope / Third-party dependency</option>
+                  <option>Cannot reproduce with provided PoC</option>
+                  <option>Informational / Theoretical without impact</option>
+                  <option>Spam or invalid submission</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="rej-notes">Rejection Technical Rationale</label>
+                <textarea class="textarea" id="rej-notes" placeholder="Detailed explanation returned to researcher..." style="min-height: 80px;"></textarea>
+              </div>
+
+              <div style="display: flex; gap: 8px;">
+                <button type="button" id="btn-reject" class="btn danger" style="flex: 1; justify-content: center;" data-req="POST /admin/reports/PWN-2026-0151/reject">
+                  Reject Report
+                </button>
+                <button type="button" id="btn-req-info" class="btn line" style="flex: 1; justify-content: center; background: transparent; color: var(--white); border: 1px solid var(--text);" data-req="POST /admin/reports/PWN-2026-0151/request-info">
+                  Request Info
+                </button>
+              </div>
+
+              <div id="action-feedback" class="callout" style="display: none; margin-top: 14px;"></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot"><div class="wrap"><span>PwnCore · Phase 1 prototype</span><nav><a href="feed.html">Feed</a><a href="#" data-req="GET /disclosure">Disclosure policy</a><a href="#" data-req="GET /contact">Contact</a></nav></div></footer>
+<script src="js/pwncore-header.js"></script>
+<script src="js/pwncore-nav.js"></script>
+<script src="js/pwncore-select.js"></script>
+<script src="js/pwncore-cursor.js"></script>
+<script>
+(function() {
+  var btnReject = document.getElementById('btn-reject');
+  var btnInfo = document.getElementById('btn-req-info');
+  var feedback = document.getElementById('action-feedback');
+  var rejSelect = document.getElementById('rej-reason');
+
+  if (btnReject && feedback) {
+    btnReject.addEventListener('click', function() {
+      if (!rejSelect || !rejSelect.value) {
+        feedback.style.display = 'flex';
+        feedback.className = 'callout';
+        feedback.innerHTML = '<b>Rejection Rationale Required</b><span>Please choose a rejection reason from the dropdown before rejecting.</span>';
+        return;
+      }
+      feedback.style.display = 'flex';
+      feedback.className = 'callout';
+      feedback.innerHTML = '<b>[REPORT_REJECTED] State Updated</b><span>Report PWN-2026-0151 transitioned to REJECTED. Technical explanation dispatched to @ret2libc.</span>';
+      btnReject.disabled = true;
+    });
+  }
+
+  if (btnInfo && feedback) {
+    btnInfo.addEventListener('click', function() {
+      feedback.style.display = 'flex';
+      feedback.className = 'callout info';
+      feedback.innerHTML = '<b>[INFO_REQUESTED] Notice Dispatched</b><span>Clarification request sent to researcher @ret2libc via secure platform messaging.</span>';
+    });
+  }
+})();
+</script>
+</body></html>

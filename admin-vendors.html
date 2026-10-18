@@ -1,0 +1,617 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vendor Disclosures & Coordination | PwnCore Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/pwncore.css">
+<link rel="stylesheet" href="css/pwncore-motion.css">
+<link rel="stylesheet" href="css/pwncore-cursor.css">
+</head><body>
+<svg width="0" height="0" style="position: absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <path id="g4-P" d="M65 -700H504L611 -592V-347L503 -238H201V0H65ZM442 -352 477 -387V-551L442 -586H201V-352Z"></path>
+      <path id="g4-W" d="M25 -700H162L247 -206H251L390 -700H492L628 -206H632L717 -700H854L709 0H582L443 -492H439L297 0H170Z"></path>
+      <path id="g4-N" d="M65 -700H187L499 -225H501V-700H632V0H510L198 -474H196V0H65Z"></path>
+      <path id="g4-C" d="M55 -115V-585L170 -700H512L625 -587V-480H489V-537L442 -584H242L191 -533V-167L242 -116H442L489 -163V-220H625V-113L512 0H170Z"></path>
+      <path id="g4-R" d="M615 -232V0H479V-201L419 -268H201V0H65V-700H504L611 -592V-380L543 -311ZM201 -380H442L477 -415V-551L442 -586H201Z"></path>
+      <path id="g4-E" d="M65 -700H571V-585H201V-408H542V-295H201V-115H571V0H65Z"></path>
+      <path id="chev" d="M8 0 L32 14 L56 0 V9 L32 23 L8 9 Z"></path>
+      <symbol id="w4-radar" viewBox="0 -760 5100 820">
+        <g fill="#ffffff">
+          <use href="#g4-P" x="0"></use>
+          <use href="#g4-W" x="666"></use>
+          <use href="#g4-N" x="1565"></use>
+          <use href="#g4-C" x="2282"></use>
+          <use href="#g4-R" x="3762"></use>
+          <use href="#g4-E" x="4457"></use>
+        </g>
+        <circle cx="3367" cy="-350" r="290" fill="none" stroke="#ffffff" stroke-width="120"></circle>
+        <circle cx="3367" cy="-350" r="115" fill="none" stroke="#5a5a5a" stroke-width="22"></circle>
+        <path d="M3367 -350 L3400 -537.1 A190 190 0 0 1 3489.1 -495.5 Z" fill="#ffffff" fill-opacity="0.25"></path>
+        <path d="M3367 -350 L3489.1 -495.5" fill="none" stroke="#ffffff" stroke-width="36"></path>
+        <circle cx="3462" cy="-275" r="45" fill="#dc2229"></circle>
+      </symbol>
+    </defs>
+  </svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><path id="chev" d="M8 0 L32 14 L56 0 V9 L32 23 L8 9 Z"/></defs></svg>
+<header class="pc-header" id="pc-header"></header>
+
+<main>
+  <section class="wrap page-head pc-enter">
+    <div class="bar"></div>
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px;">
+      <div>
+        <h1 class="page">Vendor Disclosure Coordination</h1>
+        <p>Manage responsible disclosure notifications, track 90-day embargo periods, and confirm remediation patches.</p>
+      </div>
+      <div style="font: 12px var(--mono); color: var(--muted);">
+        POLICY: <span style="color: var(--white);">90-DAY RESPONSIBLE DISCLOSURE</span> · 5 ACTIVE EMBARGOES
+      </div>
+    </div>
+  </section>
+
+  <!-- Active Disclosures Table -->
+  <section class="wrap section" data-pc-reveal>
+    <div class="sec-head">
+      <h2 class="t">Active Coordinated Disclosures</h2>
+      <p>Verified vulnerabilities currently in confidential remediation with vendors.</p>
+    </div>
+
+    <div class="pc-table-wrap">
+      <table class="pc-table">
+        <thead>
+          <tr>
+            <th>Report ID</th>
+            <th>Target Product</th>
+            <th>Vendor Security Contact</th>
+            <th>90-Day Embargo Timeline</th>
+            <th>Vendor Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Report 1: PWN-2026-0151 -->
+          <tr data-report-id="PWN-2026-0151" style="cursor: none !important;">
+            <td>
+              <button type="button" class="report-link-btn mono" data-report-id="PWN-2026-0151" data-req="GET /admin/reports/PWN-2026-0151" style="background: none; border: none; padding: 0; color: var(--white); font: inherit; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; cursor: none !important;">
+                PWN-2026-0151
+              </button>
+            </td>
+            <td style="font-weight: 500; color: var(--white);">
+              <span class="report-click-target" data-report-id="PWN-2026-0151" data-req="GET /admin/reports/PWN-2026-0151" style="cursor: none !important;">Linux Kernel (bpf)</span>
+            </td>
+            <td class="mono" style="color: var(--body);">security@kernel.org</td>
+            <td style="min-width: 200px;">
+              <div class="embargo-meter">
+                <div class="meter-labels">
+                  <span>Day 1 of 90</span>
+                  <span style="color: var(--white);">89d left</span>
+                </div>
+                <div class="meter-track">
+                  <div class="meter-fill" style="width: 2%;"></div>
+                </div>
+              </div>
+            </td>
+            <td><span class="badge alert"><span class="sq-mark">■</span> Advisory Queued</span></td>
+            <td><a class="btn red sm" href="#notify-section" data-req="POST /admin/vendors/notify">Dispatch Advisory →</a></td>
+          </tr>
+
+          <!-- Report 2: PWN-2026-0150 -->
+          <tr data-report-id="PWN-2026-0150" style="cursor: none !important;">
+            <td>
+              <button type="button" class="report-link-btn mono" data-report-id="PWN-2026-0150" data-req="GET /admin/reports/PWN-2026-0150" style="background: none; border: none; padding: 0; color: var(--white); font: inherit; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; cursor: none !important;">
+                PWN-2026-0150
+              </button>
+            </td>
+            <td style="font-weight: 500; color: var(--white);">
+              <span class="report-click-target" data-report-id="PWN-2026-0150" data-req="GET /admin/reports/PWN-2026-0150" style="cursor: none !important;">Synapse Systems Core API</span>
+            </td>
+            <td class="mono" style="color: var(--body);">security@synapse.io</td>
+            <td style="min-width: 200px;">
+              <div class="embargo-meter">
+                <div class="meter-labels">
+                  <span>Day 2 of 90</span>
+                  <span style="color: var(--white);">88d left</span>
+                </div>
+                <div class="meter-track">
+                  <div class="meter-fill" style="width: 3%;"></div>
+                </div>
+              </div>
+            </td>
+            <td><span class="badge alert"><span class="sq-mark">■</span> Advisory Queued</span></td>
+            <td><a class="btn red sm" href="#notify-section" data-req="POST /admin/vendors/notify">Dispatch Advisory →</a></td>
+          </tr>
+
+          <!-- Report 3: PWN-2026-0142 -->
+          <tr data-report-id="PWN-2026-0142" style="cursor: none !important;">
+            <td>
+              <button type="button" class="report-link-btn mono" data-report-id="PWN-2026-0142" data-req="GET /admin/reports/PWN-2026-0142" style="background: none; border: none; padding: 0; color: var(--white); font: inherit; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; cursor: none !important;">
+                PWN-2026-0142
+              </button>
+            </td>
+            <td style="font-weight: 500; color: var(--white);">
+              <span class="report-click-target" data-report-id="PWN-2026-0142" data-req="GET /admin/reports/PWN-2026-0142" style="cursor: none !important;">Halcyon OS 14.2</span>
+            </td>
+            <td class="mono" style="color: var(--body);">security@halcyon.org</td>
+            <td style="min-width: 200px;">
+              <div class="embargo-meter">
+                <div class="meter-labels">
+                  <span>Day 48 of 90</span>
+                  <span style="color: var(--accent);">42d left</span>
+                </div>
+                <div class="meter-track">
+                  <div class="meter-fill" style="width: 53%;"></div>
+                </div>
+              </div>
+            </td>
+            <td><span class="badge done">Patch Released</span></td>
+            <td><a class="btn red sm" href="admin-publish.html?id=PWN-2026-0142" data-req="POST /admin/reports/PWN-2026-0142/confirm-patch">Confirm Patch →</a></td>
+          </tr>
+
+          <!-- Report 4: PWN-2026-0145 -->
+          <tr data-report-id="PWN-2026-0145" style="cursor: none !important;">
+            <td>
+              <button type="button" class="report-link-btn mono" data-report-id="PWN-2026-0145" data-req="GET /admin/reports/PWN-2026-0145" style="background: none; border: none; padding: 0; color: var(--white); font: inherit; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; cursor: none !important;">
+                PWN-2026-0145
+              </button>
+            </td>
+            <td style="font-weight: 500; color: var(--white);">
+              <span class="report-click-target" data-report-id="PWN-2026-0145" data-req="GET /admin/reports/PWN-2026-0145" style="cursor: none !important;">Brightpath CMS</span>
+            </td>
+            <td class="mono" style="color: var(--body);">psirt@brightpath.io</td>
+            <td style="min-width: 200px;">
+              <div class="embargo-meter">
+                <div class="meter-labels">
+                  <span>Day 21 of 90</span>
+                  <span style="color: var(--white);">69d left</span>
+                </div>
+                <div class="meter-track">
+                  <div class="meter-fill" style="width: 23%; background: var(--text);"></div>
+                </div>
+              </div>
+            </td>
+            <td><span class="badge done">In Remediation</span></td>
+            <td><a class="btn line sm" href="#response-section" data-req="GET /admin/vendors/response">Log Response</a></td>
+          </tr>
+
+          <!-- Report 5: PWN-2026-0146 -->
+          <tr data-report-id="PWN-2026-0146" style="cursor: none !important;">
+            <td>
+              <button type="button" class="report-link-btn mono" data-report-id="PWN-2026-0146" data-req="GET /admin/reports/PWN-2026-0146" style="background: none; border: none; padding: 0; color: var(--white); font: inherit; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; cursor: none !important;">
+                PWN-2026-0146
+              </button>
+            </td>
+            <td style="font-weight: 500; color: var(--white);">
+              <span class="report-click-target" data-report-id="PWN-2026-0146" data-req="GET /admin/reports/PWN-2026-0146" style="cursor: none !important;">Android BT Stack</span>
+            </td>
+            <td class="mono" style="color: var(--body);">security-bulletin@google.com</td>
+            <td style="min-width: 200px;">
+              <div class="embargo-meter">
+                <div class="meter-labels">
+                  <span>Day 64 of 90</span>
+                  <span style="color: var(--accent);">26d left</span>
+                </div>
+                <div class="meter-track">
+                  <div class="meter-fill" style="width: 71%;"></div>
+                </div>
+              </div>
+            </td>
+            <td><span class="badge done">Testing Patch</span></td>
+            <td><a class="btn line sm" href="#response-section" data-req="GET /admin/vendors/response">Log Response</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Two-Column Workflow Forms -->
+  <section class="wrap section" data-pc-reveal style="padding-bottom: 120px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 32px;">
+
+      <!-- Form 1: Dispatch Security Advisory -->
+      <div class="panel" id="notify-section">
+        <div class="panel-head">
+          <h3>Dispatch Security Advisory</h3>
+          <span class="mono" style="font-size: 11px; color: var(--muted);">STAGE: NOTIFY VENDOR</span>
+        </div>
+
+        <form style="display: flex; flex-direction: column;">
+          <div class="field">
+            <label for="adv-rep">Select Verified Report</label>
+            <select class="select" id="adv-rep">
+              <option selected>PWN-2026-0151 · Linux eBPF ring buffer LPE (Kernel)</option>
+              <option>PWN-2026-0150 · Synapse Core API RCE (Network)</option>
+              <option>PWN-2026-0148 · Firmware memory leak (Firmware)</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="adv-email">Vendor Security Email (RFC 9116 / security.txt)</label>
+            <input class="input" id="adv-email" type="email" value="security@kernel.org" required>
+            <span class="hint">Advisory packet is sent with a secure, single-use disclosure token.</span>
+          </div>
+
+          <div class="field">
+            <label for="adv-pgp">Advisory Encryption & Key</label>
+            <select class="select" id="adv-pgp">
+              <option selected>OpenPGP Encrypted (Vendor Key ID: 0x98A1B2C3)</option>
+              <option>Standard TLS 1.3 Secure Token Portal</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="adv-msg">Custom Administrative Cover Note</label>
+            <textarea class="textarea" id="adv-msg" style="min-height: 90px;">PwnCore Security Coordination has verified a Critical severity out-of-bounds write in the Linux eBPF ring buffer. Standard 90-day embargo timeline initiates upon dispatch.</textarea>
+          </div>
+
+          <div style="margin-top: 8px;">
+            <button type="button" id="btn-dispatch" class="btn red" style="width: 100%; justify-content: center;" data-req="POST /admin/vendors/notify">
+              Dispatch Advisory & Start 90-Day Embargo →
+            </button>
+          </div>
+          <div id="dispatch-feedback" class="callout" style="display: none; margin-top: 14px; border-left-color: var(--white);"></div>
+        </form>
+      </div>
+
+      <!-- Form 2: Record Vendor Response & Confirm Patch -->
+      <div class="panel" id="response-section">
+        <div class="panel-head">
+          <h3>Record Vendor Response & Patch</h3>
+          <span class="mono" style="font-size: 11px; color: var(--muted);">STAGE: CONFIRM PATCH</span>
+        </div>
+
+        <form style="display: flex; flex-direction: column;">
+          <div class="field">
+            <label for="resp-rep">Active Disclosure Ticket</label>
+            <select class="select" id="resp-rep">
+              <option selected>PWN-2026-0142 · Halcyon OS 14.2 (nf_tables heap overflow)</option>
+              <option>PWN-2026-0145 · Brightpath CMS 3.1 (Stored XSS)</option>
+              <option>PWN-2026-0146 · Android Bluetooth Stack (Daemon RCE)</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="resp-state">Vendor Response State</label>
+            <select class="select" id="resp-state">
+              <option selected>Patch Released (Ready for Admin Verification)</option>
+              <option>Advisory Acknowledged (Under Investigation)</option>
+              <option>Fix in Development (Remediation In Progress)</option>
+              <option>Embargo Extension Requested (+30 Days)</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="resp-patch">Patch Reference / Commit URL</label>
+            <input class="input mono-code" id="resp-patch" type="url" value="https://github.com/halcyon-os/kernel/commit/8f21bc90a42" required>
+            <span class="hint">Public commit hash or vendor security bulletin link</span>
+          </div>
+
+          <div class="field">
+            <label for="resp-notes">Admin Verification Notes</label>
+            <textarea class="textarea" id="resp-notes" style="min-height: 90px;">Confirmed patch applies bounds check in nf_tables_alloc_set. MicroVM test shows PoC fails to trigger crash after patch.</textarea>
+          </div>
+
+          <div style="margin-top: 8px;">
+            <a class="btn red" href="admin-publish.html?id=PWN-2026-0142" style="width: 100%; justify-content: center;" data-req="POST /admin/reports/PWN-2026-0142/confirm-patch">
+              Confirm Patch & Advance to Publication →
+            </a>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </section>
+  <!-- Report Details Modal Dialog -->
+  <div id="report-modal-backdrop" class="pc-modal-backdrop" aria-hidden="true">
+    <div class="pc-modal" role="dialog" aria-modal="true" aria-labelledby="modal-report-id">
+      <div class="pc-modal-head">
+        <div>
+          <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 8px;">
+            <span class="mono" id="modal-report-id" style="font-size: 16px; font-weight: 700; color: var(--accent);">PWN-2026-0151</span>
+            <span id="modal-sev-badge"></span>
+            <span class="badge" id="modal-cat-badge" style="border-color: var(--line-2); color: var(--muted);"></span>
+          </div>
+          <h2 id="modal-title" style="font: 700 24px/1.2 var(--display); text-transform: uppercase; color: var(--white);"></h2>
+        </div>
+        <button type="button" id="modal-close-btn" class="pc-modal-close" aria-label="Close details" data-req="CLOSE /details">✕</button>
+      </div>
+
+      <!-- Metadata Grid -->
+      <div class="pc-modal-meta">
+        <div class="meta-item">
+          <span class="meta-lbl">Target Product</span>
+          <span class="meta-val mono" id="modal-target"></span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-lbl">Vendor Security Contact</span>
+          <span class="meta-val mono" id="modal-contact"></span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-lbl">Researcher</span>
+          <span class="meta-val mono" id="modal-researcher" style="color: var(--white); font-weight: 600;"></span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-lbl">Verified Date</span>
+          <span class="meta-val mono" id="modal-verified-date"></span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-lbl">CVSS Vector</span>
+          <span class="meta-val mono" id="modal-cvss" style="font-size: 12px; color: var(--muted);"></span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-lbl">Disclosure Status</span>
+          <span class="meta-val" id="modal-phase"></span>
+        </div>
+      </div>
+
+      <!-- 90-Day Embargo Timeline Card -->
+      <div class="panel" style="padding: 16px 20px; background: var(--bg); border: 1px solid var(--line);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+          <span class="eyebrow" style="color: var(--white);">90-Day Embargo Timeline</span>
+          <span class="mono" id="modal-embargo-days" style="font-size: 13px; font-weight: 600; color: var(--accent);"></span>
+        </div>
+        <div class="embargo-meter">
+          <div class="meter-track" style="height: 8px;">
+            <div class="meter-fill" id="modal-embargo-fill" style="width: 0%;"></div>
+          </div>
+          <div class="meter-labels" style="margin-top: 6px;">
+            <span id="modal-embargo-start">Dispatched: Day 1 of 90</span>
+            <span id="modal-embargo-deadline">Policy Deadline: 90 Days</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Technical Vulnerability Summary -->
+      <div>
+        <span class="eyebrow" style="display: block; margin-bottom: 6px;">Technical Vulnerability Summary</span>
+        <div class="pc-modal-box" id="modal-summary"></div>
+      </div>
+
+      <!-- Proof of Concept & Verification -->
+      <div>
+        <span class="eyebrow" style="display: block; margin-bottom: 6px;">Proof of Concept & Triage Verification Notes</span>
+        <div class="pc-modal-box mono" id="modal-poc" style="font-size: 13px; line-height: 1.6; color: var(--muted); background: #080808;"></div>
+      </div>
+
+      <!-- Modal Footer Actions -->
+      <div class="pc-modal-foot">
+        <a id="modal-action-btn" class="btn red sm" href="#"></a>
+        <a id="modal-review-btn" class="btn line sm" href="#">Full Review Log →</a>
+        <button type="button" id="modal-dismiss-btn" class="btn sm" style="border: 1px solid var(--line-2); color: var(--muted);" data-req="CLOSE /details">Close</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="foot"><div class="wrap"><span>PwnCore · Phase 1 prototype</span><nav><a href="feed.html">Feed</a><a href="#" data-req="GET /disclosure">Disclosure policy</a><a href="#" data-req="GET /contact">Contact</a></nav></div></footer>
+<script src="js/pwncore-header.js"></script>
+<script src="js/pwncore-nav.js"></script>
+<script src="js/pwncore-select.js"></script>
+<script src="js/pwncore-cursor.js"></script>
+<script>
+(function() {
+  // Coordinated disclosures database for report details inspection
+  var REPORTS_DATA = {
+    'PWN-2026-0151': {
+      id: 'PWN-2026-0151',
+      title: 'Linux eBPF ring buffer out-of-bounds write LPE',
+      sevBadge: '<span class="sev"><span class="sq"><span class="crit">■■■■</span></span>Critical 9.8</span>',
+      category: 'Kernel',
+      target: 'Linux Kernel (bpf subsystem, v6.1 - v6.8)',
+      contact: 'security@kernel.org',
+      researcher: '@ret2libc',
+      verifiedDate: '2026-10-15',
+      cvss: 'CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H',
+      phase: 'Advisory Queued (Ready for Dispatch)',
+      daysElapsed: 1,
+      daysLeft: 89,
+      percent: 2,
+      summary: 'A boundary computation error in bpf_ringbuf_reserve() allows an unprivileged local user with eBPF access to reserve arbitrary ringbuffer space and write past the allocated memory boundary into adjacent kernel slab chunks, leading to local privilege escalation (LPE) to root.',
+      poc: 'Reproduced in isolated QEMU microVM with kernel 6.6.14. PoC triggers ringbuffer write and reliably achieves root shell in ~1.2s. Verified by PwnCore Automated Triage Engine.',
+      actionText: 'Dispatch Advisory Form ↓',
+      actionHref: '#notify-section',
+      reviewHref: 'admin-review.html?id=PWN-2026-0151'
+    },
+    'PWN-2026-0150': {
+      id: 'PWN-2026-0150',
+      title: 'Pre-auth remote command execution in Synapse Core API',
+      sevBadge: '<span class="sev"><span class="sq"><span class="crit">■■■■</span></span>Critical 9.1</span>',
+      category: 'Network',
+      target: 'Synapse Systems Core API v2.4',
+      contact: 'security@synapse.io',
+      researcher: '@nullbyte',
+      verifiedDate: '2026-10-14',
+      cvss: 'CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N',
+      phase: 'Advisory Queued (Awaiting Vendor GPG Key)',
+      daysElapsed: 2,
+      daysLeft: 88,
+      percent: 3,
+      summary: 'An unsafe YAML deserialization vulnerability on management port 8443 allows an unauthenticated remote attacker to craft arbitrary serialized payloads executing commands as root on the API gateway controller.',
+      poc: 'Verified payload triggers reverse shell callback over TCP port 4444. Vendor security portal notified; awaiting OpenPGP key handshake before advisory transmission.',
+      actionText: 'Dispatch Advisory Form ↓',
+      actionHref: '#notify-section',
+      reviewHref: 'admin-review.html?id=PWN-2026-0150'
+    },
+    'PWN-2026-0142': {
+      id: 'PWN-2026-0142',
+      title: 'Heap overflow in Halcyon OS nf_tables set handling',
+      sevBadge: '<span class="sev"><span class="sq"><span class="crit">■■■■</span></span>Critical 9.8</span>',
+      category: 'Kernel',
+      target: 'Halcyon OS 14.2 (netfilter/nf_tables)',
+      contact: 'security@halcyon.org',
+      researcher: '@nullbyte',
+      verifiedDate: '2026-10-02',
+      cvss: 'CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H',
+      phase: 'Patch Released (Vendor Fix Committed)',
+      daysElapsed: 48,
+      daysLeft: 42,
+      percent: 53,
+      summary: 'An integer overflow during allocation calculations of nft_set elements results in an undersized kmalloc buffer allocation followed by an unbounded heap copy when processing network table rule sets.',
+      poc: 'Vendor acknowledged on day 8. Security patch published in commit 8f21bc90a42. MicroVM regression test confirmed vulnerability neutralized. Ready for public feed release.',
+      actionText: 'Confirm Patch & Advance →',
+      actionHref: 'admin-publish.html?id=PWN-2026-0142',
+      reviewHref: 'admin-review.html?id=PWN-2026-0142'
+    },
+    'PWN-2026-0145': {
+      id: 'PWN-2026-0145',
+      title: 'Stored XSS in Brightpath comment editor & session hijack',
+      sevBadge: '<span class="sev"><span class="sq"><span class="on">■■■</span><span class="off">■</span></span>High 8.2</span>',
+      category: 'Web',
+      target: 'Brightpath CMS 3.1',
+      contact: 'psirt@brightpath.io',
+      researcher: '@tagsoup',
+      verifiedDate: '2026-10-08',
+      cvss: 'CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:H/I:L/A:N',
+      phase: 'In Remediation (Vendor Engineering Patch)',
+      daysElapsed: 21,
+      daysLeft: 69,
+      percent: 23,
+      summary: 'Improper attribute sanitization of nested SVG foreignObject tags in the rich-text comment parser allows an authenticated attacker to inject arbitrary client-side JavaScript that executes within administrator sessions upon review.',
+      poc: 'Staging instance confirmed document.cookie exfiltration via simulated admin click. Vendor security team confirmed receipt and is rewriting the sanitization pipeline with DOMPurify.',
+      actionText: 'Log Vendor Response ↓',
+      actionHref: '#response-section',
+      reviewHref: 'admin-review.html?id=PWN-2026-0145'
+    },
+    'PWN-2026-0146': {
+      id: 'PWN-2026-0146',
+      title: 'Remote code execution in Android Bluetooth daemon',
+      sevBadge: '<span class="sev"><span class="sq"><span class="crit">■■■■</span></span>Critical 9.8</span>',
+      category: 'Mobile',
+      target: 'Android BT Stack (Fluoride daemon)',
+      contact: 'security-bulletin@google.com',
+      researcher: '@bluepwn',
+      verifiedDate: '2026-10-10',
+      cvss: 'CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H',
+      phase: 'Testing Patch (Candidate In Regression Testing)',
+      daysElapsed: 64,
+      daysLeft: 26,
+      percent: 71,
+      summary: 'A heap out-of-bounds write in the SDP attribute parser when processing malformed fragmented L2CAP packets over an adjacent Bluetooth connection allows zero-click remote code execution within the com.android.bluetooth daemon context.',
+      poc: 'Demonstrated via software-defined radio packet injector in RF enclosure. Vendor security team reproduced crash and supplied candidate patch currently under regression testing.',
+      actionText: 'Log Vendor Response ↓',
+      actionHref: '#response-section',
+      reviewHref: 'admin-review.html?id=PWN-2026-0146'
+    }
+  };
+
+  var backdrop = document.getElementById('report-modal-backdrop');
+  var closeBtn = document.getElementById('modal-close-btn');
+  var dismissBtn = document.getElementById('modal-dismiss-btn');
+
+  function openReportModal(id) {
+    var data = REPORTS_DATA[id];
+    if (!data || !backdrop) return;
+
+    document.getElementById('modal-report-id').textContent = data.id;
+    document.getElementById('modal-title').textContent = data.title;
+    document.getElementById('modal-sev-badge').innerHTML = data.sevBadge;
+    document.getElementById('modal-cat-badge').textContent = data.category;
+    document.getElementById('modal-target').textContent = data.target;
+    document.getElementById('modal-contact').textContent = data.contact;
+    document.getElementById('modal-researcher').textContent = data.researcher;
+    document.getElementById('modal-verified-date').textContent = data.verifiedDate;
+    document.getElementById('modal-cvss').textContent = data.cvss;
+    document.getElementById('modal-phase').textContent = data.phase;
+    document.getElementById('modal-embargo-days').textContent = data.daysElapsed + 'd elapsed · ' + data.daysLeft + 'd remaining';
+    document.getElementById('modal-embargo-fill').style.width = data.percent + '%';
+    document.getElementById('modal-summary').textContent = data.summary;
+    document.getElementById('modal-poc').textContent = data.poc;
+
+    var actionBtn = document.getElementById('modal-action-btn');
+    if (actionBtn) {
+      actionBtn.textContent = data.actionText;
+      actionBtn.setAttribute('href', data.actionHref);
+      actionBtn.setAttribute('data-req', 'NAV ' + data.actionHref);
+      actionBtn.onclick = function() {
+        closeReportModal();
+        if (data.actionHref === '#notify-section') {
+          var sel = document.getElementById('adv-rep');
+          if (sel) {
+            for (var i = 0; i < sel.options.length; i++) {
+              if (sel.options[i].text.indexOf(data.id) !== -1) { sel.selectedIndex = i; break; }
+            }
+          }
+        } else if (data.actionHref === '#response-section') {
+          var rsel = document.getElementById('resp-rep');
+          if (rsel) {
+            for (var j = 0; j < rsel.options.length; j++) {
+              if (rsel.options[j].text.indexOf(data.id) !== -1) { rsel.selectedIndex = j; break; }
+            }
+          }
+        }
+      };
+    }
+
+    var revBtn = document.getElementById('modal-review-btn');
+    if (revBtn) {
+      revBtn.setAttribute('href', data.reviewHref);
+      revBtn.setAttribute('data-req', 'GET /admin/reports/' + data.id);
+    }
+
+    backdrop.classList.add('is-open');
+    backdrop.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeReportModal() {
+    if (!backdrop) return;
+    backdrop.classList.remove('is-open');
+    backdrop.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  // Row & Button click triggers
+  document.querySelectorAll('tr[data-report-id]').forEach(function(row) {
+    row.addEventListener('click', function(e) {
+      if (e.target.closest('a.btn')) return;
+      var id = row.getAttribute('data-report-id');
+      if (id) openReportModal(id);
+    });
+  });
+
+  document.querySelectorAll('[data-report-id]').forEach(function(el) {
+    if (el.tagName === 'TR') return;
+    el.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var id = el.getAttribute('data-report-id');
+      if (id) openReportModal(id);
+    });
+  });
+
+  if (closeBtn) closeBtn.addEventListener('click', closeReportModal);
+  if (dismissBtn) dismissBtn.addEventListener('click', closeReportModal);
+
+  if (backdrop) {
+    backdrop.addEventListener('click', function(e) {
+      if (e.target === backdrop) closeReportModal();
+    });
+  }
+
+  window.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && backdrop && backdrop.classList.contains('is-open')) {
+      closeReportModal();
+    }
+  });
+
+  // Check URL query for direct report detail view (e.g. ?id=PWN-2026-0151)
+  try {
+    var p = new URLSearchParams(location.search);
+    var repId = p.get('id') || p.get('report');
+    if (repId && REPORTS_DATA[repId.toUpperCase()]) {
+      openReportModal(repId.toUpperCase());
+    }
+  } catch (err) {}
+
+  // Advisory dispatch mock feedback
+  var btn = document.getElementById('btn-dispatch');
+  var fb = document.getElementById('dispatch-feedback');
+  if (btn && fb) {
+    btn.addEventListener('click', function() {
+      fb.style.display = 'flex';
+      fb.innerHTML = '<b>[ADVISORY_DISPATCHED] Security Advisory Sent</b><span>Encrypted disclosure packet & token dispatched to vendor contact. 90-day embargo timeline initiated.</span>';
+      btn.disabled = true;
+    });
+  }
+})();
+</script>
+</body></html>

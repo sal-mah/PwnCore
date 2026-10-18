@@ -15,11 +15,19 @@
   } catch (e) {}
   if (!ROLES[role]) role = 'visitor';
 
+  /* Admin modules are strictly locked to Admin role */
+  var pagePath = location.pathname.toLowerCase();
+  var isAdminModule = (pagePath.indexOf('admin-') !== -1) && (pagePath.indexOf('admin-login') === -1);
+  if (isAdminModule) {
+    role = 'admin';
+    try { localStorage.setItem('pcRole', 'admin'); } catch (e) {}
+  }
+
   var PUBLIC = [['Feed', 'feed.html'], ['Categories', 'index.html#surfaces'], ['Leaderboard', 'index.html#ranks'], ['About', 'index.html#pipeline']];
   var WHO = {
     user: { handle: '@newcomer', tag: 'User', items: [['Profile', '#'], ['My badges', '#'], ['Settings', '#']] },
     researcher: { handle: '@nullbyte', tag: 'Bug Hunter', items: [['My reports', '#'], ['Profile and rank', '#'], ['My badges', '#'], ['Settings', '#']] },
-    admin: { handle: '@admin', tag: 'Admin', items: [['Review queue', '#'], ['Verified', '#'], ['Vendors', '#'], ['Published', '#'], ['Users', '#'], ['Audit log', '#'], ['Settings', '#']] }
+    admin: { handle: '@admin', tag: 'Admin', items: [['Dashboard', 'admin-dashboard.html'], ['Review queue', 'admin-queue.html'], ['Verified', 'admin-verified.html'], ['Vendors', 'admin-vendors.html'], ['Published', 'admin-publish.html'], ['Users', 'admin-users.html'], ['Settings', '#']] }
   };
 
   var logo = '<a class="logo" href="index.html" aria-label="PwnCore home"><svg width="168" height="27" viewBox="0 -760 5100 820" role="img" aria-label="PwnCore"><use href="#w4-radar" x="0" y="-760" width="5100" height="820"></use></svg></a>';
@@ -65,11 +73,19 @@
   var bar = document.createElement('div');
   bar.className = 'rolebar';
   bar.innerHTML = '<span>Preview as</span>' + Object.keys(ROLES).map(function (k) {
-    return '<button type="button" data-role="' + k + '" aria-pressed="' + (k === role) + '">' + ROLES[k] + '</button>';
+    var extra = '';
+    if (isAdminModule && k !== 'admin') {
+      extra = ' title="Admin console is locked to Admin role" style="opacity: 0.45; cursor: not-allowed;"';
+    }
+    return '<button type="button" data-role="' + k + '" aria-pressed="' + (k === role) + '"' + extra + '>' + ROLES[k] + '</button>';
   }).join('');
   bar.addEventListener('click', function (e) {
     var b = e.target.closest('[data-role]');
     if (!b) return;
+    if (isAdminModule && b.dataset.role !== 'admin') {
+      // On admin pages, non-admin buttons do not take action, keeping the user on the admin page
+      return;
+    }
     try { localStorage.setItem('pcRole', b.dataset.role); } catch (x) {}
     location.reload();
   });

@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Verified Reports | PwnCore Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/pwncore.css">
+<link rel="stylesheet" href="css/pwncore-motion.css">
+<link rel="stylesheet" href="css/pwncore-cursor.css">
+</head><body>
+<svg width="0" height="0" style="position: absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <path id="g4-P" d="M65 -700H504L611 -592V-347L503 -238H201V0H65ZM442 -352 477 -387V-551L442 -586H201V-352Z"></path>
+      <path id="g4-W" d="M25 -700H162L247 -206H251L390 -700H492L628 -206H632L717 -700H854L709 0H582L443 -492H439L297 0H170Z"></path>
+      <path id="g4-N" d="M65 -700H187L499 -225H501V-700H632V0H510L198 -474H196V0H65Z"></path>
+      <path id="g4-C" d="M55 -115V-585L170 -700H512L625 -587V-480H489V-537L442 -584H242L191 -533V-167L242 -116H442L489 -163V-220H625V-113L512 0H170Z"></path>
+      <path id="g4-R" d="M615 -232V0H479V-201L419 -268H201V0H65V-700H504L611 -592V-380L543 -311ZM201 -380H442L477 -415V-551L442 -586H201Z"></path>
+      <path id="g4-E" d="M65 -700H571V-585H201V-408H542V-295H201V-115H571V0H65Z"></path>
+      <path id="chev" d="M8 0 L32 14 L56 0 V9 L32 23 L8 9 Z"></path>
+      <symbol id="w4-radar" viewBox="0 -760 5100 820">
+        <g fill="#ffffff">
+          <use href="#g4-P" x="0"></use>
+          <use href="#g4-W" x="666"></use>
+          <use href="#g4-N" x="1565"></use>
+          <use href="#g4-C" x="2282"></use>
+          <use href="#g4-R" x="3762"></use>
+          <use href="#g4-E" x="4457"></use>
+        </g>
+        <circle cx="3367" cy="-350" r="290" fill="none" stroke="#ffffff" stroke-width="120"></circle>
+        <circle cx="3367" cy="-350" r="115" fill="none" stroke="#5a5a5a" stroke-width="22"></circle>
+        <path d="M3367 -350 L3400 -537.1 A190 190 0 0 1 3489.1 -495.5 Z" fill="#ffffff" fill-opacity="0.25"></path>
+        <path d="M3367 -350 L3489.1 -495.5" fill="none" stroke="#ffffff" stroke-width="36"></path>
+        <circle cx="3462" cy="-275" r="45" fill="#dc2229"></circle>
+      </symbol>
+    </defs>
+  </svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><path id="chev" d="M8 0 L32 14 L56 0 V9 L32 23 L8 9 Z"/></defs></svg>
+<header class="pc-header" id="pc-header"></header>
+
+<main>
+  <section class="wrap page-head pc-enter">
+    <div class="bar"></div>
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px;">
+      <div>
+        <h1 class="page">Verified Reports</h1>
+        <p>Confirmed zero-day and n-day vulnerabilities awaiting vendor notification, in active 90-day embargoes, or staged for public release.</p>
+      </div>
+      <div style="font: 12px var(--mono); color: var(--muted);">
+        PIPELINE STATUS: <span style="color: var(--white);">5 VERIFIED ACTIVE</span> · 2 EMBARGOES · 1 STAGED
+      </div>
+    </div>
+  </section>
+
+  <!-- Metric Overview Cards -->
+  <section class="wrap section" data-pc-reveal style="padding-bottom: 24px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
+      <div class="panel" style="padding: 16px 20px;">
+        <span class="eyebrow" style="display: flex; align-items: center; gap: 8px;">
+          <span style="width: 8px; height: 8px; background: var(--accent);"></span>
+          AWAITING DISCLOSURE
+        </span>
+        <b style="font: 700 36px/1 var(--display); color: var(--white); margin: 6px 0;">2</b>
+        <span style="font-size: 13px; color: var(--muted);">Verified · Ready for vendor advisory dispatch</span>
+      </div>
+
+      <div class="panel" style="padding: 16px 20px;">
+        <span class="eyebrow" style="display: flex; align-items: center; gap: 8px;">
+          <span style="width: 8px; height: 8px; background: var(--white);"></span>
+          IN REMEDIATION
+        </span>
+        <b style="font: 700 36px/1 var(--display); color: var(--white); margin: 6px 0;">2</b>
+        <span style="font-size: 13px; color: var(--muted);">Active 90-day responsible disclosure embargoes</span>
+      </div>
+
+      <div class="panel" style="padding: 16px 20px;">
+        <span class="eyebrow" style="display: flex; align-items: center; gap: 8px;">
+          <span style="width: 8px; height: 8px; background: var(--dim);"></span>
+          PATCH RELEASED
+        </span>
+        <b style="font: 700 36px/1 var(--display); color: var(--white); margin: 6px 0;">1</b>
+        <span style="font-size: 13px; color: var(--muted);">Fix confirmed · Ready for public feed release</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter Controls -->
+  <section class="wrap section" data-pc-reveal style="padding-bottom: 24px;">
+    <div class="controls" style="gap: 16px;">
+      <div class="grp">
+        <span class="eyebrow">Lifecycle Stage:</span>
+        <nav class="chips sm" aria-label="Lifecycle stage filter">
+          <a class="chip" href="admin-verified.html" data-stage-filter="all" aria-current="true"><span>All Verified</span><i class="mono">5</i></a>
+          <a class="chip" href="admin-verified.html?stage=awaiting" data-stage-filter="awaiting"><span>Awaiting Vendor</span><i class="mono">2</i></a>
+          <a class="chip" href="admin-verified.html?stage=remediation" data-stage-filter="remediation"><span>In Remediation</span><i class="mono">2</i></a>
+          <a class="chip" href="admin-verified.html?stage=patch" data-stage-filter="patch"><span>Patch Released</span><i class="mono">1</i></a>
+        </nav>
+      </div>
+
+      <div class="grp" style="margin-left: auto;">
+        <span class="eyebrow">Category:</span>
+        <nav class="chips sm" aria-label="Category filter">
+          <a class="chip" href="admin-verified.html" data-cat-filter="all" aria-current="true"><span>All</span></a>
+          <a class="chip" href="admin-verified.html?category=kernel" data-cat-filter="kernel"><span>Kernel</span></a>
+          <a class="chip" href="admin-verified.html?category=network" data-cat-filter="network"><span>Network</span></a>
+          <a class="chip" href="admin-verified.html?category=web" data-cat-filter="web"><span>Web</span></a>
+          <a class="chip" href="admin-verified.html?category=mobile" data-cat-filter="mobile"><span>Mobile</span></a>
+          <a class="chip" href="admin-verified.html?category=firmware" data-cat-filter="firmware"><span>Firmware</span></a>
+          <a class="chip" href="admin-verified.html?category=cloud" data-cat-filter="cloud"><span>Cloud</span></a>
+        </nav>
+      </div>
+    </div>
+  </section>
+
+  <!-- Verified Reports Table -->
+  <section class="wrap section" data-pc-reveal style="padding-bottom: 96px;">
+    <div class="pc-table-wrap">
+      <table class="pc-table" id="verified-table">
+        <thead>
+          <tr>
+            <th>Report ID</th>
+            <th>Severity</th>
+            <th>Vulnerability Title</th>
+            <th>Category</th>
+            <th>Target Product / Vendor</th>
+            <th>Researcher</th>
+            <th>Lifecycle Stage</th>
+            <th>Verified Date</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Report 1: PWN-2026-0151 (Kernel, Critical, Awaiting Disclosure) -->
+          <tr data-stage="awaiting" data-cat="kernel">
+            <td class="mono" style="color: var(--white);">PWN-2026-0151</td>
+            <td><span class="sev"><span class="sq"><span class="crit">■■■■</span></span>Critical 9.8</span></td>
+            <td style="font-weight: 500; color: var(--white); max-width: 300px;">Linux eBPF ring buffer out-of-bounds write LPE</td>
+            <td style="color: var(--muted);">Kernel</td>
+            <td>
+              <span style="color: var(--white); display: block; font-weight: 500;">Linux Kernel (bpf)</span>
+              <span class="mono" style="font-size: 11px; color: var(--muted);">security@kernel.org</span>
+            </td>
+            <td class="mono" style="color: var(--body);">@ret2libc</td>
+            <td><span class="badge alert"><span class="sq-mark">■</span> Awaiting Disclosure</span></td>
+            <td class="mono" style="font-size: 12px; color: var(--muted);">2026-10-15</td>
+            <td><a class="btn red sm" href="admin-vendors.html#notify-section" data-req="POST /admin/vendors/notify">Dispatch Advisory →</a></td>
+          </tr>
+
+          <!-- Report 2: PWN-2026-0150 (Network, Critical, Awaiting Disclosure) -->
+          <tr data-stage="awaiting" data-cat="network">
+            <td class="mono" style="color: var(--white);">PWN-2026-0150</td>
+            <td><span class="sev"><span class="sq"><span class="crit">■■■■</span></span>Critical 9.1</span></td>
+            <td style="font-weight: 500; color: var(--white); max-width: 300px;">Pre-auth remote command execution in Synapse Core API</td>
+            <td style="color: var(--muted);">Network</td>
+            <td>
+              <span style="color: var(--white); display: block; font-weight: 500;">Synapse Systems</span>
+              <span class="mono" style="font-size: 11px; color: var(--muted);">security@synapse.io</span>
+            </td>
+            <td class="mono" style="color: var(--body);">@nullbyte</td>
+            <td><span class="badge alert"><span class="sq-mark">■</span> Awaiting Disclosure</span></td>
+            <td class="mono" style="font-size: 12px; color: var(--muted);">2026-10-14</td>
+            <td><a class="btn red sm" href="admin-vendors.html#notify-section" data-req="POST /admin/vendors/notify">Dispatch Advisory →</a></td>
+          </tr>
+
+          <!-- Report 3: PWN-2026-0146 (Mobile, Critical, In Remediation) -->
+          <tr data-stage="remediation" data-cat="mobile">
+            <td class="mono" style="color: var(--white);">PWN-2026-0146</td>
+            <td><span class="sev"><span class="sq"><span class="crit">■■■■</span></span>Critical 9.8</span></td>
+            <td style="font-weight: 500; color: var(--white); max-width: 300px;">Remote code execution in Android Bluetooth daemon</td>
+            <td style="color: var(--muted);">Mobile</td>
+            <td>
+              <span style="color: var(--white); display: block; font-weight: 500;">Google Android BT</span>
+              <span class="mono" style="font-size: 11px; color: var(--muted);">security-bulletin@google.com</span>
+            </td>
+            <td class="mono" style="color: var(--body);">@bluepwn</td>
+            <td><span class="badge done">In Remediation (Day 64)</span></td>
+            <td class="mono" style="font-size: 12px; color: var(--muted);">2026-10-10</td>
+            <td><a class="btn line sm" href="admin-vendors.html" data-req="GET /admin/vendors">Track Embargo →</a></td>
+          </tr>
+
+          <!-- Report 4: PWN-2026-0145 (Web, High, In Remediation) -->
+          <tr data-stage="remediation" data-cat="web">
+            <td class="mono" style="color: var(--white);">PWN-2026-0145</td>
+            <td><span class="sev"><span class="sq"><span class="on">■■■</span><span class="off">■</span></span>High 8.2</span></td>
+            <td style="font-weight: 500; color: var(--white); max-width: 300px;">Stored XSS in Brightpath comment editor & session hijack</td>
+            <td style="color: var(--muted);">Web</td>
+            <td>
+              <span style="color: var(--white); display: block; font-weight: 500;">Brightpath CMS</span>
+              <span class="mono" style="font-size: 11px; color: var(--muted);">psirt@brightpath.io</span>
+            </td>
+            <td class="mono" style="color: var(--body);">@tagsoup</td>
+            <td><span class="badge done">In Remediation (Day 21)</span></td>
+            <td class="mono" style="font-size: 12px; color: var(--muted);">2026-10-08</td>
+            <td><a class="btn line sm" href="admin-vendors.html" data-req="GET /admin/vendors">Track Embargo →</a></td>
+          </tr>
+
+          <!-- Report 5: PWN-2026-0142 (Kernel, Critical, Patch Released) -->
+          <tr data-stage="patch" data-cat="kernel">
+            <td class="mono" style="color: var(--white);">PWN-2026-0142</td>
+            <td><span class="sev"><span class="sq"><span class="crit">■■■■</span></span>Critical 9.8</span></td>
+            <td style="font-weight: 500; color: var(--white); max-width: 300px;">Heap overflow in Halcyon OS nf_tables set handling</td>
+            <td style="color: var(--muted);">Kernel</td>
+            <td>
+              <span style="color: var(--white); display: block; font-weight: 500;">Halcyon OS 14.2</span>
+              <span class="mono" style="font-size: 11px; color: var(--muted);">security@halcyon.org</span>
+            </td>
+            <td class="mono" style="color: var(--body);">@nullbyte</td>
+            <td><span class="badge done">Patch Released</span></td>
+            <td class="mono" style="font-size: 12px; color: var(--muted);">2026-10-02</td>
+            <td><a class="btn red sm" href="admin-publish.html?id=PWN-2026-0142" data-req="GET /admin/publish">Stage Publication →</a></td>
+          </tr>
+
+          <!-- Empty State Row -->
+          <tr id="verified-empty-row" hidden>
+            <td colspan="9" style="text-align: center; padding: 48px 16px; color: var(--muted);">
+              <b style="color: var(--white); display: block; font-size: 16px; margin-bottom: 6px;">No verified reports match the selected filters</b>
+              <span>Try clearing or selecting a different lifecycle stage or attack surface category.</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<footer class="foot"><div class="wrap"><span>PwnCore · Phase 1 prototype</span><nav><a href="feed.html">Feed</a><a href="#" data-req="GET /disclosure">Disclosure policy</a><a href="#" data-req="GET /contact">Contact</a></nav></div></footer>
+<script src="js/pwncore-header.js"></script>
+<script src="js/pwncore-nav.js"></script>
+<script src="js/pwncore-cursor.js"></script>
+<script>
+(function() {
+  var stageChips = document.querySelectorAll('[data-stage-filter]');
+  var catChips = document.querySelectorAll('[data-cat-filter]');
+  var tableBody = document.querySelector('#verified-table tbody');
+  var rows = tableBody ? Array.prototype.slice.call(tableBody.querySelectorAll('tr[data-stage]')) : [];
+  var emptyRow = document.getElementById('verified-empty-row');
+
+  var currentStage = 'all';
+  var currentCat = 'all';
+
+  try {
+    var p = new URLSearchParams(location.search);
+    var st = p.get('stage');
+    var cat = p.get('category');
+    if (st) currentStage = st.toLowerCase();
+    if (cat) currentCat = cat.toLowerCase();
+  } catch (e) {}
+
+  function applyVerifiedFilters() {
+    var visibleCount = 0;
+
+    rows.forEach(function(row) {
+      var rStage = (row.getAttribute('data-stage') || '').toLowerCase();
+      var rCat = (row.getAttribute('data-cat') || '').toLowerCase();
+
+      var matchStage = (currentStage === 'all' || rStage === currentStage);
+      var matchCat = (currentCat === 'all' || rCat === currentCat);
+
+      if (matchStage && matchCat) {
+        row.hidden = false;
+        visibleCount++;
+      } else {
+        row.hidden = true;
+      }
+    });
+
+    if (emptyRow) {
+      emptyRow.hidden = (visibleCount > 0);
+    }
+
+    stageChips.forEach(function(chip) {
+      var val = chip.getAttribute('data-stage-filter');
+      if (val === currentStage) chip.setAttribute('aria-current', 'true');
+      else chip.removeAttribute('aria-current');
+    });
+
+    catChips.forEach(function(chip) {
+      var val = chip.getAttribute('data-cat-filter');
+      if (val === currentCat) chip.setAttribute('aria-current', 'true');
+      else chip.removeAttribute('aria-current');
+    });
+  }
+
+  stageChips.forEach(function(chip) {
+    chip.addEventListener('click', function(e) {
+      e.preventDefault();
+      currentStage = chip.getAttribute('data-stage-filter') || 'all';
+      applyVerifiedFilters();
+    });
+  });
+
+  catChips.forEach(function(chip) {
+    chip.addEventListener('click', function(e) {
+      e.preventDefault();
+      currentCat = chip.getAttribute('data-cat-filter') || 'all';
+      applyVerifiedFilters();
+    });
+  });
+
+  applyVerifiedFilters();
+})();
+</script>
+</body></html>
