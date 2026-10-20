@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Published report | PwnCore</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/pwncore.css">
+<link rel="stylesheet" href="css/pwncore-motion.css">
+<link rel="stylesheet" href="css/pwncore-cursor.css">
+</head><body>
+<svg width="0" height="0" style="position: absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <path id="g4-P" d="M65 -700H504L611 -592V-347L503 -238H201V0H65ZM442 -352 477 -387V-551L442 -586H201V-352Z"></path>
+      <path id="g4-W" d="M25 -700H162L247 -206H251L390 -700H492L628 -206H632L717 -700H854L709 0H582L443 -492H439L297 0H170Z"></path>
+      <path id="g4-N" d="M65 -700H187L499 -225H501V-700H632V0H510L198 -474H196V0H65Z"></path>
+      <path id="g4-C" d="M55 -115V-585L170 -700H512L625 -587V-480H489V-537L442 -584H242L191 -533V-167L242 -116H442L489 -163V-220H625V-113L512 0H170Z"></path>
+      <path id="g4-R" d="M615 -232V0H479V-201L419 -268H201V0H65V-700H504L611 -592V-380L543 -311ZM201 -380H442L477 -415V-551L442 -586H201Z"></path>
+      <path id="g4-E" d="M65 -700H571V-585H201V-408H542V-295H201V-115H571V0H65Z"></path>
+      <path id="chev" d="M8 0 L32 14 L56 0 V9 L32 23 L8 9 Z"></path>
+      <symbol id="w4-radar" viewBox="0 -760 5100 820">
+        <g fill="#ffffff">
+          <use href="#g4-P" x="0"></use>
+          <use href="#g4-W" x="666"></use>
+          <use href="#g4-N" x="1565"></use>
+          <use href="#g4-C" x="2282"></use>
+          <use href="#g4-R" x="3762"></use>
+          <use href="#g4-E" x="4457"></use>
+        </g>
+        <circle cx="3367" cy="-350" r="290" fill="none" stroke="#ffffff" stroke-width="120"></circle>
+        <circle cx="3367" cy="-350" r="115" fill="none" stroke="#5a5a5a" stroke-width="22"></circle>
+        <path d="M3367 -350 L3400 -537.1 A190 190 0 0 1 3489.1 -495.5 Z" fill="#ffffff" fill-opacity="0.25"></path>
+        <path d="M3367 -350 L3489.1 -495.5" fill="none" stroke="#ffffff" stroke-width="36"></path>
+        <circle cx="3462" cy="-275" r="45" fill="#dc2229"></circle>
+      </symbol>
+    </defs>
+  </svg>
+<header class="pc-header" id="pc-header"></header>
+
+<main>
+  <!-- Not found state: shown only when ?id= is not a published report -->
+  <section class="wrap page-head pc-enter" id="r-missing" style="display:none">
+    <div class="bar"></div>
+    <h1 class="page">Report not found</h1>
+    <p>This report does not exist or is not published yet. Only published reports are public.</p>
+    <div class="btns"><a class="btn red" href="feed.html">Back to the feed</a></div>
+  </section>
+
+  <div id="r-page">
+    <section class="wrap page-head pc-enter">
+      <div class="bar"></div>
+      <p class="eyebrow"><a href="feed.html" style="text-decoration:underline">Public feed</a> / <a href="feed.html?category=kernel" style="text-decoration:underline">Kernel</a></p>
+      <h1 class="page" style="font-size:clamp(26px,3.5vw,36px)">Heap overflow in Halcyon OS nf_tables set handling</h1>
+      <p>Published with a confirmed vendor patch. Sample data.</p>
+    </section>
+
+    <section class="wrap section" style="padding-top:0" data-pc-reveal>
+      <div class="card">
+        <div class="top"><span class="mono" style="font-size:13px;color:var(--muted)">PWN-2026-0142 · Kernel</span><span class="pill">Published</span></div>
+        <div class="meta">
+          <span class="sev"><span class="sq"><span class="crit">■■■■</span></span>Critical · CVSS 9.8</span>
+          <span style="font-size:13px;color:var(--muted)">Halcyon OS 14.2 · by @nullbyte · Bug Hunter</span>
+        </div>
+        <div class="vec">CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H</div>
+        <p style="color:var(--body)">An integer overflow while sizing set elements leads to an undersized kernel buffer. A later copy writes past the end of it. The Researcher showed that a crafted rule set can corrupt neighbouring kernel memory.</p>
+        <pre class="log">BUG: KASAN: slab-out-of-bounds in nft_set_elem_init+0x1a4/0x2c0
+Write of size 8 at addr ffff88810a3c4f48 by task poc/2113</pre>
+        <div class="tl">
+          <div><i></i><span>Reported</span><time>2026-08-02</time></div>
+          <div><i></i><span>Verified</span><time>2026-08-04</time></div>
+          <div><i></i><span>Vendor notified</span><time>2026-08-04</time></div>
+          <div class="hl"><i></i><span>Patched</span><time>2026-09-19</time></div>
+          <div class="pub"><i></i><span>Published</span><time>2026-09-28</time></div>
+        </div>
+        <div class="btns">
+          <a class="btn line sm" href="feed.html?q=%40nullbyte">More from @nullbyte</a>
+          <a class="btn line sm" href="feed.html?category=kernel">More Kernel reports</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap section" data-pc-reveal>
+      <div class="sec-head split"><h2 class="t">Discussion</h2><span class="eyebrow" id="c-count">3 comments</span></div>
+
+      <div class="list" id="c-list">
+        <div class="c-item" style="padding:16px 8px;border-bottom:1px solid var(--line)"><div style="display:flex;flex-wrap:wrap;gap:4px 16px;margin-bottom:6px"><b class="mono" style="font-size:13px;color:var(--white)">@tagsoup</b><span class="mono" style="font-size:12px;color:var(--muted)">2026-09-29 08:14 UTC</span></div><p style="color:var(--body);white-space:pre-wrap">Can confirm the crash on a clean 14.2 install before the patch. Good write-up.</p></div>
+        <div class="c-item" style="padding:16px 8px;border-bottom:1px solid var(--line)"><div style="display:flex;flex-wrap:wrap;gap:4px 16px;margin-bottom:6px"><b class="mono" style="font-size:13px;color:var(--white)">@packetfox</b><span class="mono" style="font-size:12px;color:var(--muted)">2026-09-29 13:40 UTC</span></div><p style="color:var(--body);white-space:pre-wrap">Does the fix also cover the set-flush path, or only the init path?</p></div>
+        <div class="c-item" style="padding:16px 8px;border-bottom:1px solid var(--line)"><div style="display:flex;flex-wrap:wrap;gap:4px 16px;margin-bottom:6px"><b class="mono" style="font-size:13px;color:var(--white)">@nullbyte</b><span class="mono" style="font-size:12px;color:var(--muted)">2026-09-30 09:02 UTC</span></div><p style="color:var(--body);white-space:pre-wrap">Both paths are covered in the vendor patch. I checked the flush path myself.</p></div>
+      </div>
+
+      <!-- Visitor: cannot comment -->
+      <div class="callout info" data-for="visitor">
+        <b>Log in to join the discussion</b>
+        <span>Anyone can read comments. Only logged-in accounts can post.</span>
+        <div class="btns" style="margin-top:8px">
+          <a class="btn red sm" href="#" data-placeholder="Placeholder: the login page is not built yet. This button will link to Person 2's page." data-req="GET /login · placeholder">Log in</a>
+          <a class="btn line sm" href="#" data-placeholder="Placeholder: the register page is not built yet. This button will link to Person 2's page." data-req="GET /register · placeholder">Register</a>
+        </div>
+      </div>
+
+      <!-- User, Researcher, Admin: can comment -->
+      <form class="panel" id="c-form" data-for="user researcher admin" style="max-width:720px" novalidate>
+        <div class="panel-head"><h3>Add a comment</h3><span class="mono" style="font-size:11px;color:var(--muted)" id="c-as"></span></div>
+        <input type="hidden" name="csrf" value="sample-token">
+        <div class="field" style="margin-bottom:0">
+          <label for="c-text">Comment</label>
+          <textarea class="textarea" id="c-text" name="text" maxlength="1000" placeholder="Share what you found, or ask a question about the fix."></textarea>
+          <span class="hint" id="c-hint">Plain text only. 1 to 1000 characters.</span>
+          <span class="field-err" id="c-err" hidden></span>
+        </div>
+        <div class="btns">
+          <button type="button" class="btn red" id="c-send" data-req="POST /reports/PWN-2026-0142/comments">Post comment</button>
+        </div>
+        <p class="status mono" aria-live="polite" id="c-note">Sample page. Comments are not saved and disappear on reload.</p>
+      </form>
+      <p class="status mono" id="ph-note" aria-live="polite"></p>
+    </section>
+
+    <section class="wrap section" style="padding-bottom:104px" data-pc-reveal>
+      <div class="sec-head"><h2 class="t">How comments are protected</h2><p>Each rule links to a requirement in the SRS, Section 6.</p></div>
+      <div class="notes">
+        <div><b>Plain text only.</b> Comments are escaped and never shown as HTML (SEC-18).</div>
+        <div><b>Checked on the server.</b> Length and format are validated before saving (SEC-16).</div>
+        <div><b>Token required.</b> Posting needs the per-session anti-CSRF token (SEC-20).</div>
+        <div><b>Published only.</b> Discussion opens when an Admin publishes the Report.</div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="foot"><div class="wrap"><span>PwnCore · Phase 1 prototype</span><nav><a href="feed.html">Feed</a><a href="#" data-req="GET /disclosure">Disclosure policy</a><a href="#" data-req="GET /contact">Contact</a></nav></div></footer>
+<script src="js/pwncore-header.js"></script>
+<script src="js/pwncore-nav.js"></script>
+<script src="js/pwncore-cursor.js"></script>
+<script src="js/security-common.js"></script>
+<script>
+(function () {
+  /* Only the sample report is published in this prototype. Phase 2: PHP looks the id up in MySQL (prepared statement). */
+  var SAMPLE = 'PWN-2026-0142';
+  var asked = '';
+  try { asked = (new URLSearchParams(location.search).get('id') || '').toUpperCase(); } catch (e) {}
+  var valid = /^PWN-\d{4}-\d{4}$/.test(asked);
+  if (asked && (!valid || asked !== SAMPLE)) {
+    document.getElementById('r-page').style.display = 'none';
+    document.getElementById('r-missing').style.display = '';
+    document.title = 'Report not found | PwnCore';
+    return;
+  }
+
+  var HANDLE = { user: '@newcomer', researcher: '@nullbyte', admin: '@admin' };
+  var role = 'visitor';
+  try { role = window.PCSEC ? window.PCSEC.role() : 'visitor'; } catch (e) {}
+  var as = document.getElementById('c-as');
+  if (as && HANDLE[role]) as.textContent = 'Posting as ' + HANDLE[role];
+
+  var box = document.getElementById('c-text'), err = document.getElementById('c-err');
+  var list = document.getElementById('c-list'), count = document.getElementById('c-count'), note = document.getElementById('c-note');
+  var send = document.getElementById('c-send');
+  if (!box || !send) return;
+
+  function stamp() {
+    var d = new Date(), p = function (n) { return (n < 10 ? '0' : '') + n; };
+    return d.getUTCFullYear() + '-' + p(d.getUTCMonth() + 1) + '-' + p(d.getUTCDate()) + ' ' + p(d.getUTCHours()) + ':' + p(d.getUTCMinutes()) + ' UTC';
+  }
+  function fail(msg) { err.textContent = msg; err.hidden = false; }
+
+  send.addEventListener('click', function () {
+    var text = box.value.trim();
+    err.hidden = true;
+    if (!text) { fail('Write a comment before posting.'); return; }
+    if (text.length > 1000) { fail('A comment can be at most 1000 characters.'); return; }
+
+    /* textContent only: the comment is never parsed as HTML (SEC-18) */
+    var item = document.createElement('div');
+    item.className = 'c-item';
+    item.style.cssText = 'padding:16px 8px;border-bottom:1px solid var(--line)';
+    var head = document.createElement('div');
+    head.style.cssText = 'display:flex;flex-wrap:wrap;gap:4px 16px;margin-bottom:6px';
+    var who = document.createElement('b'); who.className = 'mono'; who.style.cssText = 'font-size:13px;color:var(--white)'; who.textContent = HANDLE[role] || '@user';
+    var when = document.createElement('span'); when.className = 'mono'; when.style.cssText = 'font-size:12px;color:var(--muted)'; when.textContent = stamp();
+    head.appendChild(who); head.appendChild(when);
+    var body = document.createElement('p'); body.style.cssText = 'color:var(--white);white-space:pre-wrap'; body.style.color = 'var(--body)'; body.textContent = text;
+    item.appendChild(head); item.appendChild(body);
+    list.appendChild(item);
+
+    var n = list.querySelectorAll('.c-item').length;
+    count.textContent = n + (n === 1 ? ' comment' : ' comments');
+    box.value = '';
+    note.textContent = 'Comment added to this page only. Sample page, nothing is saved.';
+  });
+})();
+</script>
+</body></html>
