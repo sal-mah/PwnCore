@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leaderboard | PwnCore</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/pwncore.css">
+<link rel="stylesheet" href="css/pwncore-motion.css">
+<link rel="stylesheet" href="css/pwncore-cursor.css">
+</head><body>
+<svg width="0" height="0" style="position: absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <path id="g4-P" d="M65 -700H504L611 -592V-347L503 -238H201V0H65ZM442 -352 477 -387V-551L442 -586H201V-352Z"></path>
+      <path id="g4-W" d="M25 -700H162L247 -206H251L390 -700H492L628 -206H632L717 -700H854L709 0H582L443 -492H439L297 0H170Z"></path>
+      <path id="g4-N" d="M65 -700H187L499 -225H501V-700H632V0H510L198 -474H196V0H65Z"></path>
+      <path id="g4-C" d="M55 -115V-585L170 -700H512L625 -587V-480H489V-537L442 -584H242L191 -533V-167L242 -116H442L489 -163V-220H625V-113L512 0H170Z"></path>
+      <path id="g4-R" d="M615 -232V0H479V-201L419 -268H201V0H65V-700H504L611 -592V-380L543 -311ZM201 -380H442L477 -415V-551L442 -586H201Z"></path>
+      <path id="g4-E" d="M65 -700H571V-585H201V-408H542V-295H201V-115H571V0H65Z"></path>
+      <path id="chev" d="M8 0 L32 14 L56 0 V9 L32 23 L8 9 Z"></path>
+      <symbol id="w4-radar" viewBox="0 -760 5100 820">
+        <g fill="#ffffff">
+          <use href="#g4-P" x="0"></use>
+          <use href="#g4-W" x="666"></use>
+          <use href="#g4-N" x="1565"></use>
+          <use href="#g4-C" x="2282"></use>
+          <use href="#g4-R" x="3762"></use>
+          <use href="#g4-E" x="4457"></use>
+        </g>
+        <circle cx="3367" cy="-350" r="290" fill="none" stroke="#ffffff" stroke-width="120"></circle>
+        <circle cx="3367" cy="-350" r="115" fill="none" stroke="#5a5a5a" stroke-width="22"></circle>
+        <path d="M3367 -350 L3400 -537.1 A190 190 0 0 1 3489.1 -495.5 Z" fill="#ffffff" fill-opacity="0.25"></path>
+        <path d="M3367 -350 L3489.1 -495.5" fill="none" stroke="#ffffff" stroke-width="36"></path>
+        <circle cx="3462" cy="-275" r="45" fill="#dc2229"></circle>
+      </symbol>
+    </defs>
+  </svg>
+<header class="pc-header" id="pc-header"></header>
+
+<main>
+  <section class="wrap page-head pc-enter">
+    <div class="bar"></div>
+    <h1 class="page">Leaderboard</h1>
+    <p>Researchers ranked by published reports. A report counts once an Admin has published it. Sample data.</p>
+  </section>
+
+  <section class="wrap section" style="padding-top:0;gap:20px" data-pc-reveal>
+    <div class="controls">
+      <div class="grp"><span class="eyebrow">Rank</span><nav class="chips sm" id="lb-chips" aria-label="Rank"></nav></div>
+    </div>
+    <p class="status mono" id="lb-status" aria-live="polite"></p>
+
+    <div class="pc-table-wrap" id="lb-wrap">
+      <table class="pc-table" style="min-width:560px">
+        <thead>
+          <tr><th>Position</th><th>Researcher</th><th>Rank</th><th>Published reports</th></tr>
+        </thead>
+        <tbody id="lb-body"></tbody>
+      </table>
+    </div>
+
+    <div class="empty" id="lb-empty" hidden><b>No researchers at this rank yet.</b><a class="lnk" href="leaderboard.html">Show all ranks →</a></div>
+  </section>
+
+  <section id="ranks" class="wrap section" data-pc-reveal>
+    <div class="sec-head"><h2 class="t">Ranks</h2><p>Researchers climb five ranks as their reports are published.</p></div>
+    <div class="ranks" id="lb-ranks"></div>
+    <div class="notes">
+      <div><b>Ties.</b> Researchers with the same number of published reports share a position.</div>
+      <div><b>Only published counts.</b> Reports that are rejected or still waiting for a patch do not add to the count.</div>
+    </div>
+  </section>
+
+  <section class="wrap section" style="padding-bottom:104px" data-pc-reveal>
+    <div class="sec-head"><h2 class="t">How the ranking is protected</h2><p>Each rule links to a requirement in the SRS, Section 6.</p></div>
+    <div class="notes">
+      <div><b>Admin review first.</b> Credit is given only after an Admin verifies and publishes a Report.</div>
+      <div><b>Public data only.</b> This page shows handles, ranks and counts. No emails or private Report details.</div>
+      <div><b>Safe filters.</b> The rank value in the address is checked against an allow-list (SEC-16).</div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot"><div class="wrap"><span>PwnCore · Phase 1 prototype</span><nav><a href="feed.html">Feed</a><a href="#" data-req="GET /disclosure">Disclosure policy</a><a href="#" data-req="GET /contact">Contact</a></nav></div></footer>
+<script src="js/pwncore-header.js"></script>
+<script src="js/pwncore-nav.js"></script>
+<script src="js/pwncore-cursor.js"></script>
+<script>
+(function () {
+  /* SAMPLE data. Phase 2: PHP counts published Reports per Researcher in MySQL (prepared statement). */
+  var NAMES = ['Script Kiddie', 'Bug Hunter', 'Exploit Dev', 'Zero-Day Hunter', 'Red Teamer'];
+  var FROM = [1, 5, 20, 50, 100];
+  var CHEV = [[18], [14, 24], [9, 19, 29], [5, 15, 25, 35], [2, 12, 22, 32, 42]];
+  var DATA = [
+    ['ret2libc', 22], ['nullbyte', 5], ['tagsoup', 3], ['packetfox', 3], ['auth0x', 2],
+    ['dexdump', 2], ['zerod4y', 1], ['shellfish', 1], ['bitrot', 1], ['redpill', 1]
+  ];
+
+  function rankOf(n) { var r = -1; for (var i = 0; i < FROM.length; i++) if (n >= FROM[i]) r = i; return r; }
+  function el(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
+
+  /* badge drawn with CSS variables only, same shape as the badges on the home page */
+  function badge(i, size) {
+    var top = i === 4, col = top ? 'var(--accent)' : 'var(--white)', edge = top ? 'var(--accent)' : 'var(--line-2)';
+    var uses = CHEV[i].map(function (y) { return '<use href="#chev" x="0" y="' + y + '"/>'; }).join('');
+    var s = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    s.setAttribute('width', size); s.setAttribute('height', size); s.setAttribute('viewBox', '0 0 64 64');
+    s.setAttribute('role', 'img'); s.setAttribute('aria-label', 'Rank ' + (i + 1) + ' badge');
+    s.innerHTML = '<rect x="0.5" y="0.5" width="63" height="63" fill="none" style="stroke:' + edge + '"/><g style="fill:' + col + '">' + uses + '</g>';
+    return s;
+  }
+
+  var rows = DATA.slice().sort(function (a, b) { return b[1] - a[1] || (a[0] < b[0] ? -1 : 1); })
+    .map(function (d, idx, arr) {
+      var first = 0; while (arr[first][1] !== d[1]) first++;
+      return { handle: d[0], n: d[1], pos: first + 1, rank: rankOf(d[1]) };
+    });
+
+  /* ?rank=1..5, anything else falls back to all (SEC-16 allow-list) */
+  var asked = '';
+  try { asked = new URLSearchParams(location.search).get('rank') || ''; } catch (e) {}
+  var cur = ['1', '2', '3', '4', '5'].indexOf(asked) > -1 ? parseInt(asked, 10) - 1 : -1;
+
+  function count(r) { return rows.filter(function (x) { return r < 0 || x.rank === r; }).length; }
+  function chip(label, href, active, n) {
+    var a = el('a', 'chip'); a.href = href;
+    if (active) a.setAttribute('aria-current', 'true');
+    a.appendChild(el('span', '', label)); a.appendChild(el('i', 'mono', String(n)));
+    return a;
+  }
+  var chips = document.getElementById('lb-chips');
+  chips.appendChild(chip('All', 'leaderboard.html', cur < 0, count(-1)));
+  NAMES.forEach(function (nm, i) { chips.appendChild(chip('Rank ' + (i + 1), 'leaderboard.html?rank=' + (i + 1), cur === i, count(i))); });
+
+  var shown = rows.filter(function (x) { return cur < 0 || x.rank === cur; });
+  var body = document.getElementById('lb-body');
+  shown.forEach(function (x) {
+    var tr = document.createElement('tr');
+    var td1 = el('td', 'mono', String(x.pos)); td1.style.color = x.pos === 1 ? 'var(--white)' : 'var(--muted)';
+    var td2 = document.createElement('td');
+    var a = el('a', 'mono', '@' + x.handle); a.href = 'feed.html?q=%40' + x.handle; a.style.cssText = 'color:var(--white);font-weight:600';
+    td2.appendChild(a);
+    var td3 = document.createElement('td');
+    var wrap = el('div'); wrap.style.cssText = 'display:flex;align-items:center;gap:8px';
+    if (x.rank >= 0) {
+      wrap.appendChild(badge(x.rank, 24));
+      wrap.appendChild(el('span', 'mono', 'Rank ' + ['I', 'II', 'III', 'IV', 'V'][x.rank] + ' · ' + NAMES[x.rank]));
+      wrap.lastChild.style.cssText = 'font-size:13px;color:var(--text)';
+    }
+    td3.appendChild(wrap);
+    var td4 = el('td', 'mono', String(x.n)); td4.style.cssText = 'color:var(--white);font-weight:600';
+    [td1, td2, td3, td4].forEach(function (t) { tr.appendChild(t); });
+    body.appendChild(tr);
+  });
+
+  var wrapEl = document.getElementById('lb-wrap'), empty = document.getElementById('lb-empty');
+  wrapEl.style.display = shown.length ? '' : 'none';
+  empty.hidden = shown.length !== 0;
+  document.getElementById('lb-status').textContent =
+    shown.length + (shown.length === 1 ? ' researcher' : ' researchers') + (cur >= 0 ? ' · Rank ' + (cur + 1) + ' ' + NAMES[cur] : '') + ' · most published reports first';
+
+  var cards = document.getElementById('lb-ranks');
+  NAMES.forEach(function (nm, i) {
+    var c = el('div', 'rank' + (i === 4 ? ' top' : ''));
+    c.appendChild(badge(i, 64));
+    var t = el('div');
+    t.appendChild(el('div', 'k', 'RANK ' + ['I', 'II', 'III', 'IV', 'V'][i]));
+    t.appendChild(el('div', 'nm', nm));
+    var f = el('div', 'k', 'From ' + FROM[i] + (FROM[i] === 1 ? ' published report' : ' published reports'));
+    f.style.marginTop = '4px';
+    t.appendChild(f);
+    c.appendChild(t); cards.appendChild(c);
+  });
+})();
+</script>
+</body></html>
