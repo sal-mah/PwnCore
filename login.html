@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Log in | PwnCore</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/pwncore.css">
+<link rel="stylesheet" href="css/pwncore-motion.css">
+<link rel="stylesheet" href="css/pwncore-cursor.css">
+</head><body>
+<svg width="0" height="0" style="position: absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <path id="g4-P" d="M65 -700H504L611 -592V-347L503 -238H201V0H65ZM442 -352 477 -387V-551L442 -586H201V-352Z"></path>
+      <path id="g4-W" d="M25 -700H162L247 -206H251L390 -700H492L628 -206H632L717 -700H854L709 0H582L443 -492H439L297 0H170Z"></path>
+      <path id="g4-N" d="M65 -700H187L499 -225H501V-700H632V0H510L198 -474H196V0H65Z"></path>
+      <path id="g4-C" d="M55 -115V-585L170 -700H512L625 -587V-480H489V-537L442 -584H242L191 -533V-167L242 -116H442L489 -163V-220H625V-113L512 0H170Z"></path>
+      <path id="g4-R" d="M615 -232V0H479V-201L419 -268H201V0H65V-700H504L611 -592V-380L543 -311ZM201 -380H442L477 -415V-551L442 -586H201Z"></path>
+      <path id="g4-E" d="M65 -700H571V-585H201V-408H542V-295H201V-115H571V0H65Z"></path>
+      <path id="chev" d="M8 0 L32 14 L56 0 V9 L32 23 L8 9 Z"></path>
+      <symbol id="w4-radar" viewBox="0 -760 5100 820">
+        <g fill="#ffffff">
+          <use href="#g4-P" x="0"></use>
+          <use href="#g4-W" x="666"></use>
+          <use href="#g4-N" x="1565"></use>
+          <use href="#g4-C" x="2282"></use>
+          <use href="#g4-R" x="3762"></use>
+          <use href="#g4-E" x="4457"></use>
+        </g>
+        <circle cx="3367" cy="-350" r="290" fill="none" stroke="#ffffff" stroke-width="120"></circle>
+        <circle cx="3367" cy="-350" r="115" fill="none" stroke="#5a5a5a" stroke-width="22"></circle>
+        <path d="M3367 -350 L3400 -537.1 A190 190 0 0 1 3489.1 -495.5 Z" fill="#ffffff" fill-opacity="0.25"></path>
+        <path d="M3367 -350 L3489.1 -495.5" fill="none" stroke="#ffffff" stroke-width="36"></path>
+        <circle cx="3462" cy="-275" r="45" fill="#dc2229"></circle>
+      </symbol>
+    </defs>
+  </svg>
+<header class="pc-header" id="pc-header"></header>
+
+<main>
+  <section class="wrap page-head pc-enter">
+    <div class="bar"></div>
+    <h1 class="page">Log in</h1>
+    <p>Log in to submit reports, comment on published reports and manage your API keys.</p>
+  </section>
+
+  <section class="wrap section" data-pc-reveal style="padding-top:0;max-width:540px;margin:0 auto;padding-bottom:120px">
+    <div class="card">
+      <div class="top">
+        <span class="mono" style="font-size:13px;color:var(--muted)">Account</span>
+        <span class="eyebrow">Sample page</span>
+      </div>
+
+      <div class="callout" id="l-blocked" style="display:none">
+        <b>Log in is blocked for 15 minutes</b>
+        <span>After 5 failed attempts within 15 minutes, log in is blocked for this account and this device. The block lifts by itself and is recorded as a security event.</span>
+      </div>
+      <div class="callout" id="l-error" style="display:none" role="alert">
+        <b>Invalid credentials</b>
+        <span>Check your handle or email and your password, then try again.</span>
+      </div>
+
+      <form id="l-form" novalidate style="display:flex;flex-direction:column">
+        <div class="field">
+          <label for="l-id">Handle or email</label>
+          <input class="input" id="l-id" name="identity" type="text" autocomplete="username" maxlength="80">
+          <span class="field-err" id="l-id-err" hidden></span>
+        </div>
+        <div class="field">
+          <label for="l-pw">Password</label>
+          <input class="input" id="l-pw" name="password" type="password" autocomplete="current-password" maxlength="128">
+          <span class="field-err" id="l-pw-err" hidden></span>
+        </div>
+        <input type="hidden" name="csrf" value="sample-token">
+        <div style="display:flex;flex-direction:column;gap:12px;margin-top:4px">
+          <button type="submit" class="btn red" id="l-send" style="width:100%" data-req="POST /login">Log in</button>
+          <a class="btn line" href="register.html" style="width:100%">Create an account</a>
+        </div>
+      </form>
+
+      <p class="status mono">Admin? <a href="admin-login.html" style="text-decoration:underline">Use the Admin log in</a>.</p>
+      <p class="status mono">Sample accounts: @nullbyte (Researcher) and @newcomer (User). Sample password: sample-pass-2026. Nothing is sent to a server.</p>
+    </div>
+  </section>
+
+  <section class="wrap section" style="padding-bottom:104px" data-pc-reveal>
+    <div class="sec-head"><h2 class="t">How log in is protected</h2><p>Each rule links to a requirement in the SRS, Section 6.</p></div>
+    <div class="notes">
+      <div><b>Same message every time.</b> A wrong password and an unknown account both show "Invalid credentials" (SEC-04).</div>
+      <div><b>Blocked after 5 failures.</b> Five failed attempts in 15 minutes block log in for 15 minutes (SEC-07).</div>
+      <div><b>Secure session.</b> A new session ID is issued on log in, in an HttpOnly, Secure, SameSite cookie (SEC-05).</div>
+      <div><b>Passwords are hashed.</b> They are never stored or logged in plain text (SEC-03).</div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot"><div class="wrap"><span>PwnCore · Phase 1 prototype</span><nav><a href="feed.html">Feed</a><a href="#" data-req="GET /disclosure">Disclosure policy</a><a href="#" data-req="GET /contact">Contact</a></nav></div></footer>
+<script src="js/pwncore-header.js"></script>
+<script src="js/pwncore-nav.js"></script>
+<script src="js/pwncore-cursor.js"></script>
+<script>
+(function () {
+  /* PROTOTYPE ONLY. The password check below is fake and lives in the browser.
+     Phase 2: PHP verifies password_verify() against the stored hash, issues the session, and counts failures per account and IP. */
+  var ACCOUNTS = { nullbyte: 'researcher', newcomer: 'user' };
+  var SAMPLE_PASSWORD = 'sample-pass-2026';
+  var LIMIT = 5, fails = 0;
+
+  var form = document.getElementById('l-form');
+  var idEl = document.getElementById('l-id'), pwEl = document.getElementById('l-pw');
+  var idErr = document.getElementById('l-id-err'), pwErr = document.getElementById('l-pw-err');
+  var errBox = document.getElementById('l-error'), blockBox = document.getElementById('l-blocked');
+  var send = document.getElementById('l-send');
+
+  function show(el, msg) { el.textContent = msg; el.hidden = false; }
+  function clear() { idErr.hidden = true; pwErr.hidden = true; errBox.style.display = 'none'; }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (send.disabled) return;
+    clear();
+    var id = idEl.value.trim().replace(/^@/, '').toLowerCase(), pw = pwEl.value;
+    var bad = false;
+    if (!id) { show(idErr, 'Enter your handle or email.'); bad = true; }
+    if (!pw) { show(pwErr, 'Enter your password.'); bad = true; }
+    if (bad) return;
+
+    var role = ACCOUNTS[id];
+    if (role && pw === SAMPLE_PASSWORD) {
+      try { localStorage.setItem('pcRole', role); } catch (x) {}
+      location.href = 'feed.html';
+      return;
+    }
+
+    /* same message for an unknown account and a wrong password (SEC-04) */
+    fails++;
+    pwEl.value = '';
+    if (fails >= LIMIT) {
+      errBox.style.display = 'none';
+      blockBox.style.display = 'flex';
+      send.disabled = true; idEl.disabled = true; pwEl.disabled = true;
+    } else {
+      errBox.style.display = 'flex';
+    }
+  });
+})();
+</script>
+</body></html>
