@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Register | PwnCore</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/pwncore.css">
+<link rel="stylesheet" href="css/pwncore-motion.css">
+<link rel="stylesheet" href="css/pwncore-cursor.css">
+</head><body>
+<svg width="0" height="0" style="position: absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <path id="g4-P" d="M65 -700H504L611 -592V-347L503 -238H201V0H65ZM442 -352 477 -387V-551L442 -586H201V-352Z"></path>
+      <path id="g4-W" d="M25 -700H162L247 -206H251L390 -700H492L628 -206H632L717 -700H854L709 0H582L443 -492H439L297 0H170Z"></path>
+      <path id="g4-N" d="M65 -700H187L499 -225H501V-700H632V0H510L198 -474H196V0H65Z"></path>
+      <path id="g4-C" d="M55 -115V-585L170 -700H512L625 -587V-480H489V-537L442 -584H242L191 -533V-167L242 -116H442L489 -163V-220H625V-113L512 0H170Z"></path>
+      <path id="g4-R" d="M615 -232V0H479V-201L419 -268H201V0H65V-700H504L611 -592V-380L543 -311ZM201 -380H442L477 -415V-551L442 -586H201Z"></path>
+      <path id="g4-E" d="M65 -700H571V-585H201V-408H542V-295H201V-115H571V0H65Z"></path>
+      <path id="chev" d="M8 0 L32 14 L56 0 V9 L32 23 L8 9 Z"></path>
+      <symbol id="w4-radar" viewBox="0 -760 5100 820">
+        <g fill="#ffffff">
+          <use href="#g4-P" x="0"></use>
+          <use href="#g4-W" x="666"></use>
+          <use href="#g4-N" x="1565"></use>
+          <use href="#g4-C" x="2282"></use>
+          <use href="#g4-R" x="3762"></use>
+          <use href="#g4-E" x="4457"></use>
+        </g>
+        <circle cx="3367" cy="-350" r="290" fill="none" stroke="#ffffff" stroke-width="120"></circle>
+        <circle cx="3367" cy="-350" r="115" fill="none" stroke="#5a5a5a" stroke-width="22"></circle>
+        <path d="M3367 -350 L3400 -537.1 A190 190 0 0 1 3489.1 -495.5 Z" fill="#ffffff" fill-opacity="0.25"></path>
+        <path d="M3367 -350 L3489.1 -495.5" fill="none" stroke="#ffffff" stroke-width="36"></path>
+        <circle cx="3462" cy="-275" r="45" fill="#dc2229"></circle>
+      </symbol>
+    </defs>
+  </svg>
+<header class="pc-header" id="pc-header"></header>
+
+<main>
+  <section class="wrap page-head pc-enter">
+    <div class="bar"></div>
+    <h1 class="page">Create an account</h1>
+    <p>Join PwnCore to comment on published reports. An Admin can certify you as a Researcher.</p>
+  </section>
+
+  <section class="wrap section" data-pc-reveal style="padding-top:0;max-width:540px;margin:0 auto;padding-bottom:120px">
+    <div class="card" id="r-card">
+      <div class="top">
+        <span class="mono" style="font-size:13px;color:var(--muted)">New account</span>
+        <span class="eyebrow">Sample page</span>
+      </div>
+
+      <div class="callout info" id="r-done" style="display:none" role="status">
+        <b>Account created</b>
+        <span id="r-done-msg"></span>
+        <div class="btns" style="margin-top:8px">
+          <a class="btn red sm" href="feed.html">Go to the feed</a>
+        </div>
+      </div>
+
+      <form id="r-form" novalidate style="display:flex;flex-direction:column">
+        <div class="field">
+          <label for="r-handle">Handle</label>
+          <input class="input" id="r-handle" name="handle" type="text" autocomplete="username" maxlength="20">
+          <span class="hint">3 to 20 characters. Letters, numbers, underscore and hyphen. Shown publicly.</span>
+          <span class="field-err" id="r-handle-err" hidden></span>
+        </div>
+        <div class="field">
+          <label for="r-email">Email</label>
+          <input class="input" id="r-email" name="email" type="email" autocomplete="email" maxlength="120">
+          <span class="hint">Never shown publicly.</span>
+          <span class="field-err" id="r-email-err" hidden></span>
+        </div>
+        <div class="field">
+          <label for="r-pw">Password</label>
+          <input class="input" id="r-pw" name="password" type="password" autocomplete="new-password" maxlength="128">
+          <span class="hint">At least 12 characters. Common passwords are rejected.</span>
+          <span class="field-err" id="r-pw-err" hidden></span>
+        </div>
+        <div class="field">
+          <label for="r-pw2">Confirm password</label>
+          <input class="input" id="r-pw2" name="password2" type="password" autocomplete="new-password" maxlength="128">
+          <span class="field-err" id="r-pw2-err" hidden></span>
+        </div>
+        <div class="field" style="margin-bottom:12px">
+          <label class="check-item" for="r-agree" style="text-transform:none;letter-spacing:0;font:14px var(--sans);color:var(--text)">
+            <input type="checkbox" id="r-agree" name="agree">
+            <span>I will only test systems I own or have permission to test, and I accept the disclosure policy.</span>
+          </label>
+          <span class="field-err" id="r-agree-err" hidden></span>
+        </div>
+        <input type="hidden" name="csrf" value="sample-token">
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <button type="submit" class="btn red" style="width:100%" data-req="POST /register">Create account</button>
+          <a class="btn line" href="login.html" style="width:100%">I already have an account</a>
+        </div>
+      </form>
+      <p class="status mono">Sample page. Nothing is sent to a server or saved.</p>
+    </div>
+  </section>
+
+  <section class="wrap section" style="padding-bottom:104px" data-pc-reveal>
+    <div class="sec-head"><h2 class="t">How accounts are protected</h2><p>Each rule links to a requirement in the SRS, Section 6.</p></div>
+    <div class="notes">
+      <div><b>Strong passwords.</b> At least 12 characters, and not on a list of common passwords (SEC-02).</div>
+      <div><b>Hashed, never stored.</b> Passwords are stored only as salted Argon2id or bcrypt hashes (SEC-03).</div>
+      <div><b>Checked on the server.</b> Every field is validated against an allow-list (SEC-16).</div>
+      <div><b>Token required.</b> The form needs the per-session anti-CSRF token (SEC-20).</div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot"><div class="wrap"><span>PwnCore · Phase 1 prototype</span><nav><a href="feed.html">Feed</a><a href="#" data-req="GET /disclosure">Disclosure policy</a><a href="#" data-req="GET /contact">Contact</a></nav></div></footer>
+<script src="js/pwncore-header.js"></script>
+<script src="js/pwncore-nav.js"></script>
+<script src="js/pwncore-cursor.js"></script>
+<script>
+(function () {
+  /* PROTOTYPE ONLY. Phase 2: PHP validates again on the server, checks the handle and email are free with a prepared
+     statement, stores password_hash(), and creates the account with the User role. */
+  var TAKEN = ['admin', 'nullbyte', 'newcomer', 'ret2libc', 'tagsoup', 'packetfox', 'zerod4y', 'dexdump'];
+  var COMMON = ['password1234', '123456789012', 'qwertyuiop12', 'letmein12345', 'pwncore12345', 'administrator'];
+
+  var $ = function (id) { return document.getElementById(id); };
+  var form = $('r-form');
+  var fields = ['handle', 'email', 'pw', 'pw2', 'agree'];
+
+  function show(k, msg) { var e = $('r-' + k + '-err'); e.textContent = msg; e.hidden = false; }
+  function clear() { fields.forEach(function (k) { $('r-' + k + '-err').hidden = true; }); }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    clear();
+    var handle = $('r-handle').value.trim(), email = $('r-email').value.trim();
+    var pw = $('r-pw').value, pw2 = $('r-pw2').value;
+    var bad = false;
+
+    if (!/^[A-Za-z0-9_-]{3,20}$/.test(handle)) { show('handle', 'Use 3 to 20 letters, numbers, underscores or hyphens.'); bad = true; }
+    else if (TAKEN.indexOf(handle.toLowerCase()) > -1) { show('handle', 'This handle is not available. Choose another.'); bad = true; }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { show('email', 'Enter a valid email address.'); bad = true; }
+
+    if (pw.length < 12) { show('pw', 'Use at least 12 characters.'); bad = true; }
+    else if (COMMON.indexOf(pw.toLowerCase()) > -1) { show('pw', 'This password is too common. Choose another.'); bad = true; }
+
+    if (pw2 !== pw) { show('pw2', 'The passwords do not match.'); bad = true; }
+    if (!$('r-agree').checked) { show('agree', 'You must accept to create an account.'); bad = true; }
+    if (bad) return;
+
+    try { localStorage.setItem('pcRole', 'user'); } catch (x) {}
+    $('r-pw').value = ''; $('r-pw2').value = '';
+    form.style.display = 'none';
+    $('r-done-msg').textContent = 'Welcome, @' + handle + '. You are logged in as a User. An Admin can certify you as a Researcher after your first verified report.';
+    $('r-done').style.display = 'flex';
+  });
+})();
+</script>
+</body></html>
